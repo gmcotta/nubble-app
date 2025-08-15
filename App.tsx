@@ -8,6 +8,9 @@ function App() {
         <Text preset="headingLarge" style={{ color: 'red' }}>
           Olá mundo
         </Text>
+        <Text preset="headingLarge" style={{ fontFamily: 'Satoshi-Black' }}>
+          Olá mundo
+        </Text>
       </SafeAreaView>
     </SafeAreaProvider>
   );
