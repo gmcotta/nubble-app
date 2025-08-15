@@ -5,12 +5,10 @@ function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <Text preset="headingLarge" style={{ color: 'red' }}>
+        <Text preset="headingLarge" italic style={{ color: 'red' }}>
           Olá mundo
         </Text>
-        <Text preset="headingLarge" style={{ fontFamily: 'Satoshi-Black' }}>
-          Olá mundo
-        </Text>
+        <Text preset="headingLarge">Olá mundo</Text>
       </SafeAreaView>
     </SafeAreaProvider>
   );

@@ -13,4 +13,9 @@ export type TextVariants =
 export interface TextProps extends RNTextProps {
   preset?: TextVariants;
   style?: Omit<TextStyle, 'fontSize' | 'lineHeight'>;
+  black?: boolean;
+  bold?: boolean;
+  medium?: boolean;
+  light?: boolean;
+  italic?: boolean;
 }
