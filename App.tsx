@@ -2,6 +2,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from './src/components/text';
 import { ThemeProvider } from '@shopify/restyle';
 import { theme } from './src/theme/theme';
+import { Button } from './src/components/button';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             Olá mundo
           </Text>
           <Text preset="headingLarge">Olá mundo</Text>
+          <Button title="Entrar" loading={false} />
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>
