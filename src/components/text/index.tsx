@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text as RNText } from 'react-native';
-
+import { Text as RestyleText } from '../restyle/text';
 import { $fontFamily, $fontSizes } from './constants';
 import { TextProps, TextVariants } from './props';
 
@@ -46,22 +45,18 @@ export function Text({
   medium,
   light,
   italic,
-  ...props
+  ...restyleTextProps
 }: TextProps) {
   const presetStyle = $fontSizes[preset];
+  const fontFamily = getFontFamily(preset, black, bold, medium, light, italic);
 
   return (
-    <RNText
-      style={[
-        presetStyle,
-        {
-          fontFamily: getFontFamily(preset, black, bold, medium, light, italic),
-        },
-        style,
-      ]}
-      {...props}
+    <RestyleText
+      style={[presetStyle, { fontFamily }, style]}
+      color="backgroundContrast"
+      {...restyleTextProps}
     >
       {children}
-    </RNText>
+    </RestyleText>
   );
 }
