@@ -3,13 +3,13 @@ import { Text } from '../text';
 import { useTheme } from '@shopify/restyle';
 import { Theme } from '../../theme/theme';
 import { TouchableOpacityBox } from '../restyle/touchable-opacity-box';
+import { ButtonProps } from './props';
 
-interface ButtonProps {
-  title: string;
-  loading?: boolean;
-}
-
-export function Button({ title, loading }: ButtonProps) {
+export function Button({
+  title,
+  loading,
+  ...touchableOpacityBoxProps
+}: ButtonProps) {
   const { colors } = useTheme<Theme>();
 
   return (
@@ -20,6 +20,7 @@ export function Button({ title, loading }: ButtonProps) {
       alignItems="center"
       justifyContent="center"
       borderRadius="s16"
+      {...touchableOpacityBoxProps}
     >
       {loading ? (
         <ActivityIndicator />
