@@ -1,6 +1,5 @@
-import { type ComponentProps } from 'react';
 import { type TextStyle } from 'react-native';
-import { Text as RestyleText } from '../restyle/text';
+import { TextProps as RestyleTextProps } from '../restyle/text/props';
 
 export type TextVariants =
   | 'headingLarge'
@@ -11,8 +10,6 @@ export type TextVariants =
   | 'paragraphSmall'
   | 'paragraphCaption'
   | 'paragraphCaptionSmall';
-
-type RestyleTextProps = ComponentProps<typeof RestyleText>;
 
 export interface TextProps extends RestyleTextProps {
   preset?: TextVariants;
