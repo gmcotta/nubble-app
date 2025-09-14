@@ -9,7 +9,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
         <SafeAreaView>
-          <Text preset="headingLarge" italic style={{ color: 'red' }}>
+          <Text preset="headingLarge" italic>
             Olá mundo
           </Text>
           <Text preset="headingLarge">Olá mundo</Text>

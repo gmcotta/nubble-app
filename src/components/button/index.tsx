@@ -1,7 +1,7 @@
-import { ActivityIndicator } from 'react-native';
 import { Text } from '../text';
 import { TouchableOpacityBox } from '../restyle/touchable-opacity-box';
 import { ButtonProps, ButtonUI, ButtonVariants } from './props';
+import { ActivityIndicator } from '../activity-indicator';
 
 export function Button({
   title,
@@ -38,7 +38,7 @@ export function Button({
       {...touchableOpacityBoxProps}
     >
       {loading ? (
-        <ActivityIndicator />
+        <ActivityIndicator color={activeVariant.content} />
       ) : (
         <Text preset="paragraphMedium" bold color={activeVariant.content}>
           {title}
