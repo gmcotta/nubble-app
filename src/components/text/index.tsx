@@ -9,7 +9,7 @@ function getFontFamily(
   bold?: boolean,
   medium?: boolean,
   light?: boolean,
-  italic?: boolean,
+  italic?: boolean
 ) {
   if (preset === 'headingLarge' || 'headingMedium' || 'headingSmall') {
     return italic ? $fontFamily.blackItalic : $fontFamily.bold;

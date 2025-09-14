@@ -12,17 +12,17 @@ export function Button({
   const buttonVariants: Record<ButtonVariants, ButtonUI> = {
     primary: {
       container: {
-        backgroundColor: 'primary',
+        backgroundColor: 'primary'
       },
-      content: 'primaryContrast',
+      content: 'primaryContrast'
     },
     outline: {
       container: {
         borderWidth: 1,
-        borderColor: 'primary',
+        borderColor: 'primary'
       },
-      content: 'primary',
-    },
+      content: 'primary'
+    }
   };
 
   const activeVariant = buttonVariants[variant];

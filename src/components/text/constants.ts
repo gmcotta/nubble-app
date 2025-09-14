@@ -11,7 +11,7 @@ export const $fontSizes: Record<TextVariants, TextStyle> = {
   paragraphSmall: { fontSize: 14, lineHeight: 19.6 },
 
   paragraphCaption: { fontSize: 12, lineHeight: 16.8 },
-  paragraphCaptionSmall: { fontSize: 10, lineHeight: 14 },
+  paragraphCaptionSmall: { fontSize: 10, lineHeight: 14 }
 };
 
 export const $fontFamily = {
@@ -24,5 +24,5 @@ export const $fontFamily = {
   light: 'Satoshi-Light',
   lightItalic: 'Satoshi-LightItalic',
   medium: 'Satoshi-Medium',
-  mediumItalic: 'Satoshi-MediumItalic',
+  mediumItalic: 'Satoshi-MediumItalic'
 };
