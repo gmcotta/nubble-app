@@ -1,27 +1,46 @@
 import { ActivityIndicator } from 'react-native';
 import { Text } from '../text';
 import { TouchableOpacityBox } from '../restyle/touchable-opacity-box';
-import { ButtonProps } from './props';
+import { ButtonProps, ButtonUI, ButtonVariants } from './props';
 
 export function Button({
   title,
   loading,
+  variant = 'primary',
   ...touchableOpacityBoxProps
 }: ButtonProps) {
+  const buttonVariants: Record<ButtonVariants, ButtonUI> = {
+    primary: {
+      container: {
+        backgroundColor: 'primary',
+      },
+      content: 'primaryContrast',
+    },
+    outline: {
+      container: {
+        borderWidth: 1,
+        borderColor: 'primary',
+      },
+      content: 'primary',
+    },
+  };
+
+  const activeVariant = buttonVariants[variant];
+
   return (
     <TouchableOpacityBox
-      backgroundColor="buttonPrimary"
       paddingHorizontal="s20"
       height={50}
       alignItems="center"
       justifyContent="center"
       borderRadius="s16"
+      {...activeVariant.container}
       {...touchableOpacityBoxProps}
     >
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Text preset="paragraphMedium" bold color="primaryContrast">
+        <Text preset="paragraphMedium" bold color={activeVariant.content}>
           {title}
         </Text>
       )}

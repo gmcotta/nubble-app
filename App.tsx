@@ -14,6 +14,7 @@ function App() {
           </Text>
           <Text preset="headingLarge">Olá mundo</Text>
           <Button title="Entrar" loading={false} />
+          <Button title="Outline" loading={false} variant="outline" />
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>
