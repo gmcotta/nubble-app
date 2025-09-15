@@ -20,7 +20,11 @@ function App() {
               Digite seu e-mail e senha para entrar
             </Text>
             <Box marginBottom="s40">
-              <TextInput label="E-mail" placeholder="Digite seu e-mail" />
+              <TextInput
+                label="E-mail"
+                placeholder="Digite seu e-mail"
+                errorMessage="Mensagem de erro"
+              />
             </Box>
             <Box marginBottom="s10">
               <TextInput label="Senha" placeholder="Digite sua senha" />
