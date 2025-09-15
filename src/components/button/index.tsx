@@ -1,31 +1,18 @@
 import { Text } from '../text';
 import { TouchableOpacityBox } from '../restyle/touchable-opacity-box';
-import { ButtonProps, ButtonUI, ButtonVariants } from './props';
+import { ButtonProps } from './props';
 import { ActivityIndicator } from '../activity-indicator';
+import { buttonVariants } from './variants';
 
 export function Button({
   title,
   loading,
   variant = 'primary',
+  disabled = false,
   ...touchableOpacityBoxProps
 }: ButtonProps) {
-  const buttonVariants: Record<ButtonVariants, ButtonUI> = {
-    primary: {
-      container: {
-        backgroundColor: 'primary'
-      },
-      content: 'primaryContrast'
-    },
-    outline: {
-      container: {
-        borderWidth: 1,
-        borderColor: 'primary'
-      },
-      content: 'primary'
-    }
-  };
-
   const activeVariant = buttonVariants[variant];
+  const activeModifier = disabled ? 'disabled' : 'default';
 
   return (
     <TouchableOpacityBox
@@ -34,13 +21,18 @@ export function Button({
       alignItems="center"
       justifyContent="center"
       borderRadius="s16"
-      {...activeVariant.container}
+      disabled={disabled || loading}
+      {...activeVariant[activeModifier].container}
       {...touchableOpacityBoxProps}
     >
       {loading ? (
-        <ActivityIndicator color={activeVariant.content} />
+        <ActivityIndicator color={activeVariant[activeModifier].content} />
       ) : (
-        <Text preset="paragraphMedium" bold color={activeVariant.content}>
+        <Text
+          preset="paragraphMedium"
+          bold
+          color={activeVariant[activeModifier].content}
+        >
           {title}
         </Text>
       )}

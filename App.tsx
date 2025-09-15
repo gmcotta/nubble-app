@@ -3,18 +3,28 @@ import { Text } from './src/components/text';
 import { ThemeProvider } from '@shopify/restyle';
 import { theme } from './src/theme/theme';
 import { Button } from './src/components/button';
+import { View } from 'react-native';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
         <SafeAreaView>
-          <Text preset="headingLarge" italic>
-            Olá mundo
-          </Text>
-          <Text preset="headingLarge">Olá mundo</Text>
-          <Button title="Entrar" loading={false} />
-          <Button title="Outline" loading={false} variant="outline" />
+          <View style={{ paddingHorizontal: 24, gap: 12 }}>
+            <Text preset="headingLarge" italic>
+              Olá mundo
+            </Text>
+            <Text preset="headingLarge">Olá mundo</Text>
+            <Button title="Entrar" loading={false} />
+            <Button title="Outline" loading={false} variant="outline" />
+            <Button disabled title="Entrar" loading={false} />
+            <Button
+              disabled
+              title="Outline"
+              loading={false}
+              variant="outline"
+            />
+          </View>
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>
