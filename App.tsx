@@ -2,9 +2,10 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from './src/components/text';
 import { ThemeProvider } from '@shopify/restyle';
 import { theme } from './src/theme/theme';
-import { TextInput, View } from 'react-native';
+import { View } from 'react-native';
 import { Box } from './src/components/restyle/box';
 import { Button } from './src/components/button';
+import { TextInput } from './src/components/text-input';
 
 function App() {
   return (
@@ -19,16 +20,10 @@ function App() {
               Digite seu e-mail e senha para entrar
             </Text>
             <Box marginBottom="s40">
-              <TextInput
-                placeholder="Digite seu e-mail"
-                style={{ height: 50, borderWidth: 1 }}
-              />
+              <TextInput label="E-mail" placeholder="Digite seu e-mail" />
             </Box>
             <Box marginBottom="s10">
-              <TextInput
-                placeholder="Digite sua senha"
-                style={{ height: 50, borderWidth: 1 }}
-              />
+              <TextInput label="Senha" placeholder="Digite sua senha" />
             </Box>
             <Text
               color="primary"

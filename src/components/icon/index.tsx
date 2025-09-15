@@ -1,6 +1,6 @@
 import { IconProps } from './props';
 import { iconRegistry } from './registry';
-import { useAppTheme } from '../../hooks/useAppTheme';
+import { useRestyleTheme } from '../../hooks/useRestyleTheme';
 
 export function Icon({
   name,
@@ -8,7 +8,7 @@ export function Icon({
   color = 'backgroundContrast',
   notificationColor = 'carrotSecondary'
 }: IconProps) {
-  const { colors } = useAppTheme();
+  const { colors } = useRestyleTheme();
   const SVGIcon = iconRegistry[name];
 
   return (
