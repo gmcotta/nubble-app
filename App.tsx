@@ -5,6 +5,8 @@ import { theme } from './src/theme/theme';
 import { Button } from './src/components/button';
 import { View } from 'react-native';
 import { Icon } from './src/components/icon';
+import { iconRegistry } from './src/components/icon/registry';
+import { IconName } from './src/components/icon/props';
 
 function App() {
   return (
@@ -25,8 +27,11 @@ function App() {
               loading={false}
               variant="outline"
             />
-            <Icon name="eyeOff" />
-            <Icon name="eyeOn" />
+            <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
+              {Object.keys(iconRegistry).map(iconName => (
+                <Icon key={iconName} name={iconName as IconName} />
+              ))}
+            </View>
           </View>
         </SafeAreaView>
       </SafeAreaProvider>

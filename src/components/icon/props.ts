@@ -7,10 +7,12 @@ export type IconName = keyof IconType;
 export interface BaseIconProps {
   size: number;
   color: string;
+  notificationColor?: string;
 }
 
 export interface IconProps {
   name: IconName;
-  color?: ThemeColors;
   size?: number;
+  color?: ThemeColors;
+  notificationColor?: ThemeColors;
 }
