@@ -10,6 +10,8 @@ import { TextInputProps } from './props';
 export function TextInput({
   label,
   errorMessage = '',
+  rightComponent,
+  boxProps,
   ...textInputProps
 }: TextInputProps) {
   const textInputRef = useRef<RNTextInput>(null);
@@ -20,8 +22,8 @@ export function TextInput({
   };
 
   return (
-    <Pressable onPress={focusInput}>
-      <Box>
+    <Box {...boxProps}>
+      <Pressable onPress={focusInput}>
         <Text marginBottom="s4" preset="paragraphMedium">
           {label}
         </Text>
@@ -32,13 +34,14 @@ export function TextInput({
             style={$textInputStyle}
             {...textInputProps}
           />
+          {rightComponent ? <Box marginLeft="s16">{rightComponent}</Box> : null}
         </Box>
         {errorMessage ? (
           <Text preset="paragraphSmall" color="error" bold>
             {errorMessage}
           </Text>
         ) : null}
-      </Box>
-    </Pressable>
+      </Pressable>
+    </Box>
   );
 }

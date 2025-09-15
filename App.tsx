@@ -3,9 +3,9 @@ import { Text } from './src/components/text';
 import { ThemeProvider } from '@shopify/restyle';
 import { theme } from './src/theme/theme';
 import { View } from 'react-native';
-import { Box } from './src/components/restyle/box';
 import { Button } from './src/components/button';
 import { TextInput } from './src/components/text-input';
+import { Icon } from './src/components/icon';
 
 function App() {
   return (
@@ -19,16 +19,22 @@ function App() {
             <Text preset="paragraphLarge" marginBottom="s40">
               Digite seu e-mail e senha para entrar
             </Text>
-            <Box marginBottom="s40">
-              <TextInput
-                label="E-mail"
-                placeholder="Digite seu e-mail"
-                errorMessage="Mensagem de erro"
-              />
-            </Box>
-            <Box marginBottom="s10">
-              <TextInput label="Senha" placeholder="Digite sua senha" />
-            </Box>
+            <TextInput
+              label="E-mail"
+              placeholder="Digite seu e-mail"
+              errorMessage="Mensagem de erro"
+              boxProps={{
+                marginBottom: 's20'
+              }}
+            />
+            <TextInput
+              label="Senha"
+              placeholder="Digite sua senha"
+              rightComponent={<Icon name="eyeOn" color="gray2" />}
+              boxProps={{
+                marginBottom: 's10'
+              }}
+            />
             <Text
               color="primary"
               preset="paragraphSmall"
