@@ -4,6 +4,7 @@ import { ThemeProvider } from '@shopify/restyle';
 import { theme } from './src/theme/theme';
 import { Button } from './src/components/button';
 import { View } from 'react-native';
+import { Icon } from './src/components/icon';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
               loading={false}
               variant="outline"
             />
+            <Icon name="eyeOff" />
+            <Icon name="eyeOn" />
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
