@@ -11,8 +11,16 @@ function getFontFamily(
   light?: boolean,
   italic?: boolean
 ) {
-  if (preset === 'headingLarge' || 'headingMedium' || 'headingSmall') {
-    return italic ? $fontFamily.blackItalic : $fontFamily.bold;
+  if (
+    preset === 'headingLarge' ||
+    preset === 'headingMedium' ||
+    preset === 'headingSmall'
+  ) {
+    return italic ? $fontFamily.blackItalic : $fontFamily.black;
+  }
+
+  if (preset === 'paragraphLarge') {
+    return italic ? $fontFamily.mediumItalic : $fontFamily.medium;
   }
 
   if (black) {

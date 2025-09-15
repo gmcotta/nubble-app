@@ -2,36 +2,44 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from './src/components/text';
 import { ThemeProvider } from '@shopify/restyle';
 import { theme } from './src/theme/theme';
+import { TextInput, View } from 'react-native';
+import { Box } from './src/components/restyle/box';
 import { Button } from './src/components/button';
-import { View } from 'react-native';
-import { Icon } from './src/components/icon';
-import { iconRegistry } from './src/components/icon/registry';
-import { IconName } from './src/components/icon/props';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
         <SafeAreaView>
-          <View style={{ paddingHorizontal: 24, gap: 12 }}>
-            <Text preset="headingLarge" italic>
-              Olá mundo
+          <View style={{ paddingHorizontal: 24 }}>
+            <Text preset="headingLarge" marginBottom="s8">
+              Olá!
             </Text>
-            <Text preset="headingLarge">Olá mundo</Text>
-            <Button title="Entrar" loading={false} />
-            <Button title="Outline" loading={false} variant="outline" />
-            <Button disabled title="Entrar" loading={false} />
-            <Button
-              disabled
-              title="Outline"
-              loading={false}
-              variant="outline"
-            />
-            <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
-              {Object.keys(iconRegistry).map(iconName => (
-                <Icon key={iconName} name={iconName as IconName} />
-              ))}
-            </View>
+            <Text preset="paragraphLarge" marginBottom="s40">
+              Digite seu e-mail e senha para entrar
+            </Text>
+            <Box marginBottom="s40">
+              <TextInput
+                placeholder="Digite seu e-mail"
+                style={{ height: 50, borderWidth: 1 }}
+              />
+            </Box>
+            <Box marginBottom="s10">
+              <TextInput
+                placeholder="Digite sua senha"
+                style={{ height: 50, borderWidth: 1 }}
+              />
+            </Box>
+            <Text
+              color="primary"
+              preset="paragraphSmall"
+              bold
+              marginBottom="s40"
+            >
+              Esqueci minha senha
+            </Text>
+            <Button title="Entrar" marginBottom="s12" />
+            <Button variant="outline" title="Criar uma conta" />
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
