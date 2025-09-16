@@ -3,9 +3,19 @@ import { PasswordInput } from '../../../components/password-input';
 import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
 import { TextInput } from '../../../components/text-input';
+import { SignUpScreenProps } from './props';
 
-export function SignUpScreen() {
-  function submitForm() {}
+export function SignUpScreen({ navigation }: SignUpScreenProps) {
+  function submitForm() {
+    navigation.navigate('SuccessScreen', {
+      title: 'Sua conta foi criada com sucesso!',
+      description: 'Agora é só fazer login na nossa plataforma.',
+      icon: {
+        name: 'checkRound',
+        color: 'greenSuccess'
+      }
+    });
+  }
 
   return (
     <Screen canGoBack scrollable>

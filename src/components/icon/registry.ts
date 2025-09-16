@@ -8,8 +8,10 @@ import { CameraIcon } from './icons/camera';
 import { ChatIcon } from './icons/chat';
 import { ChatOnIcon } from './icons/chat-on';
 import { CheckIcon } from './icons/check';
+import { CheckRoundIcon } from './icons/check-round';
 import { ChevronRightIcon } from './icons/chevron-right';
 import { CommentIcon } from './icons/comment';
+import { ErrorRoundIcon } from './icons/error-round';
 import { EyeOffIcon } from './icons/eye-off';
 import { EyeOnIcon } from './icons/eye-on';
 import { FlashOffIcon } from './icons/flash-off';
@@ -18,6 +20,7 @@ import { HeartIcon } from './icons/heart';
 import { HeartFillIcon } from './icons/heart-fill';
 import { HomeFillIcon } from './icons/home-fill';
 import { MessageIcon } from './icons/message';
+import { MessageRoundIcon } from './icons/message-round';
 import { MoreIcon } from './icons/more';
 import { NewPostIcon } from './icons/new-post';
 import { ProfileIcon } from './icons/profile';
@@ -53,5 +56,9 @@ export const iconRegistry = {
   profile: ProfileIcon,
   search: SearchIcon,
   send: SendIcon,
-  trash: TrashIcon
+  trash: TrashIcon,
+  // Maiores
+  checkRound: CheckRoundIcon,
+  messageRound: MessageRoundIcon,
+  errorRound: ErrorRoundIcon
 };
