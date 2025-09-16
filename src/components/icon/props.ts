@@ -15,4 +15,5 @@ export interface IconProps {
   size?: number;
   color?: ThemeColors;
   notificationColor?: ThemeColors;
+  onPress?: () => void;
 }

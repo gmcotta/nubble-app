@@ -1,5 +1,5 @@
 import { Button } from '../../../components/button';
-import { Icon } from '../../../components/icon';
+import { PasswordInput } from '../../../components/password-input';
 import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
 import { TextInput } from '../../../components/text-input';
@@ -27,11 +27,10 @@ export function SignUpScreen() {
         label="E-mail"
         placeholder="#"
       />
-      <TextInput
+      <PasswordInput
         boxProps={{ marginBottom: 's48' }}
         label="Senha"
         placeholder="#"
-        rightComponent={<Icon name="eyeOn" />}
       />
       <Button title="Criar uma conta" onPress={submitForm} />
     </Screen>

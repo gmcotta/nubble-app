@@ -1,8 +1,8 @@
 import { Text } from '../../../components/text';
 import { Button } from '../../../components/button';
 import { TextInput } from '../../../components/text-input';
-import { Icon } from '../../../components/icon';
 import { Screen } from '../../../components/screen';
+import { PasswordInput } from '../../../components/password-input';
 
 export function LoginScreen() {
   return (
@@ -21,10 +21,9 @@ export function LoginScreen() {
           marginBottom: 's20'
         }}
       />
-      <TextInput
+      <PasswordInput
         label="Senha"
         placeholder="Digite sua senha"
-        rightComponent={<Icon name="eyeOn" color="gray2" />}
         boxProps={{
           marginBottom: 's10'
         }}
