@@ -2,43 +2,33 @@ import { Button } from '../../../components/button';
 import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
 import { TextInput } from '../../../components/text-input';
-import { ForgotPasswordScreenProps } from './props';
+import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
+import { resetNavigationValues, screenValues } from './constants';
 
-export function ForgotPasswordScreen({
-  navigation
-}: ForgotPasswordScreenProps) {
+export function ForgotPasswordScreen() {
+  const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
   function submitForm() {
     navigateToSuccessScreen();
   }
 
   function navigateToSuccessScreen() {
-    navigation.navigate('SuccessScreen', {
-      title: `Enviamos as\ninstruções para seu\ne-mail`,
-      description:
-        'Clique no link enviado no seu e-mail para recuperar sua senha.',
-      icon: {
-        name: 'messageRound',
-        color: 'primary'
-      }
-    });
+    reset();
   }
 
   return (
     <Screen canGoBack>
       <Text preset="headingLarge" marginTop="s24">
-        Esqueci minha senha
+        {screenValues.title}
       </Text>
       <Text preset="paragraphLarge" marginTop="s16">
-        Digite seu e-mail e enviaremos as instruções para redefinição de senha.
+        {screenValues.description}
       </Text>
-      <TextInput
-        label="E-mail"
-        placeholder="Digite seu e-mail"
-        boxProps={{
-          marginTop: 's32'
-        }}
+      <TextInput boxProps={{ marginTop: 's32' }} {...screenValues.emailInput} />
+      <Button
+        onPress={submitForm}
+        title={screenValues.submitButton.title}
+        marginTop="s48"
       />
-      <Button onPress={submitForm} title="Recuperar senha" marginTop="s48" />
     </Screen>
   );
 }

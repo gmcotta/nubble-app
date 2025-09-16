@@ -3,46 +3,38 @@ import { PasswordInput } from '../../../components/password-input';
 import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
 import { TextInput } from '../../../components/text-input';
-import { SignUpScreenProps } from './props';
+import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
+import { resetNavigationValues, screenValues } from './constants';
 
-export function SignUpScreen({ navigation }: SignUpScreenProps) {
+export function SignUpScreen() {
+  const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
+
   function submitForm() {
-    navigation.navigate('SuccessScreen', {
-      title: 'Sua conta foi criada com sucesso!',
-      description: 'Agora é só fazer login na nossa plataforma.',
-      icon: {
-        name: 'checkRound',
-        color: 'greenSuccess'
-      }
-    });
+    reset();
   }
 
   return (
     <Screen canGoBack scrollable>
       <Text preset="headingLarge" marginBottom="s32">
-        Criar uma conta
+        {screenValues.title}
       </Text>
       <TextInput
         boxProps={{ marginBottom: 's20' }}
-        label="Seu username"
-        placeholder="#"
+        {...screenValues.usernameInput}
       />
       <TextInput
         boxProps={{ marginBottom: 's20' }}
-        label="Nome completo"
-        placeholder="#"
+        {...screenValues.nameInput}
       />
       <TextInput
         boxProps={{ marginBottom: 's20' }}
-        label="E-mail"
-        placeholder="#"
+        {...screenValues.emailInput}
       />
       <PasswordInput
         boxProps={{ marginBottom: 's48' }}
-        label="Senha"
-        placeholder="#"
+        {...screenValues.passwordInput}
       />
-      <Button title="Criar uma conta" onPress={submitForm} />
+      <Button title={screenValues.submitButton.title} onPress={submitForm} />
     </Screen>
   );
 }

@@ -4,9 +4,12 @@ import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
 import { SuccessScreenProps } from './props';
 
-export function SuccessScreen({ route }: SuccessScreenProps) {
+export function SuccessScreen({ navigation, route }: SuccessScreenProps) {
   const { params } = route;
-  function handleBackToBeginning() {}
+
+  function mavigateToBeginning() {
+    navigation.navigate('LoginScreen');
+  }
 
   return (
     <Screen>
@@ -18,7 +21,7 @@ export function SuccessScreen({ route }: SuccessScreenProps) {
         {params.description}
       </Text>
       <Button
-        onPress={handleBackToBeginning}
+        onPress={mavigateToBeginning}
         title="Voltar ao início"
         marginTop="s40"
       />
