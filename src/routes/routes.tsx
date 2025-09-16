@@ -3,8 +3,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { LoginScreen } from '../screens/auth/Login';
 import { SignUpScreen } from '../screens/auth/SignUp';
+import { RootStackParamList } from './route-props';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function Router() {
   return (

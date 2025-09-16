@@ -3,8 +3,9 @@ import { Button } from '../../../components/button';
 import { TextInput } from '../../../components/text-input';
 import { Screen } from '../../../components/screen';
 import { PasswordInput } from '../../../components/password-input';
+import { LoginScreenProps } from './props';
 
-export function LoginScreen({ navigation }) {
+export function LoginScreen({ navigation }: LoginScreenProps) {
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');
   }
