@@ -4,11 +4,17 @@ import { TextInput } from '../../../components/text-input';
 import { Screen } from '../../../components/screen';
 import { PasswordInput } from '../../../components/password-input';
 import { LoginScreenProps } from './props';
+import { Pressable } from 'react-native';
 
 export function LoginScreen({ navigation }: LoginScreenProps) {
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');
   }
+
+  function navigateToForgotPasswordScreen() {
+    navigation.navigate('ForgotPasswordScreen');
+  }
+
   return (
     <Screen>
       <Text preset="headingLarge" marginBottom="s8">
@@ -32,9 +38,11 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
           marginBottom: 's10'
         }}
       />
-      <Text color="primary" preset="paragraphSmall" bold marginBottom="s40">
-        Esqueci minha senha
-      </Text>
+      <Pressable onPress={navigateToForgotPasswordScreen}>
+        <Text color="primary" preset="paragraphSmall" bold marginBottom="s40">
+          Esqueci minha senha
+        </Text>
+      </Pressable>
       <Button title="Entrar" marginBottom="s12" />
       <Button
         onPress={navigateToSignUpScreen}

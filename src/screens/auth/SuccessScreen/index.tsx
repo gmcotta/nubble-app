@@ -9,7 +9,7 @@ export function SuccessScreen({ route }: SuccessScreenProps) {
   function handleBackToBeginning() {}
 
   return (
-    <Screen canGoBack>
+    <Screen>
       <Icon size={48} {...params.icon} />
       <Text preset="headingLarge" marginTop="s24">
         {params.title}
