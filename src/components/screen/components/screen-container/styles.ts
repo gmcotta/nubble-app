@@ -7,6 +7,7 @@ export const $scrollViewStyle = (backgroundColor: string) => {
 
 export const $viewStyle = (backgroundColor: string) => {
   return {
-    backgroundColor
+    backgroundColor,
+    flex: 1
   };
 };
