@@ -5,3 +5,7 @@ export type ForgotPasswordScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'ForgotPasswordScreen'
 >;
+
+export interface ForgotPasswordFormFields {
+  email: string;
+}

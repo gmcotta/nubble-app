@@ -1,10 +1,10 @@
 import { Controller, useForm } from 'react-hook-form';
 
 import { Button } from '../../../components/button';
+import { FormTextInput } from '../../../components/form/form-text-input';
 import { PasswordInput } from '../../../components/password-input';
 import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
-import { TextInput } from '../../../components/text-input';
 import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
 import { resetNavigationValues, screenValues } from './constants';
 import { SignUpFormFields } from './props';
@@ -30,39 +30,25 @@ export function SignUpScreen() {
       <Text preset="headingLarge" marginBottom="s32">
         {screenValues.title}
       </Text>
-      <Controller
+      <FormTextInput
         control={control}
         name="username"
         rules={{
           required: 'Username obrigatório'
         }}
-        render={({ field, fieldState }) => (
-          <TextInput
-            {...screenValues.usernameInput}
-            boxProps={{ marginBottom: 's20' }}
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        {...screenValues.usernameInput}
+        boxProps={{ marginBottom: 's20' }}
       />
-      <Controller
+      <FormTextInput
         control={control}
         name="fullName"
         rules={{
           required: 'Nome obrigatório'
         }}
-        render={({ field, fieldState }) => (
-          <TextInput
-            {...screenValues.nameInput}
-            boxProps={{ marginBottom: 's20' }}
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        {...screenValues.nameInput}
+        boxProps={{ marginBottom: 's20' }}
       />
-      <Controller
+      <FormTextInput
         control={control}
         name="email"
         rules={{
@@ -72,16 +58,10 @@ export function SignUpScreen() {
             message: 'E-mail inválido'
           }
         }}
-        render={({ field, fieldState }) => (
-          <TextInput
-            {...screenValues.emailInput}
-            boxProps={{ marginBottom: 's20' }}
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        {...screenValues.emailInput}
+        boxProps={{ marginBottom: 's20' }}
       />
+
       <Controller
         control={control}
         name="password"
