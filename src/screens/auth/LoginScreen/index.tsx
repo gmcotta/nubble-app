@@ -1,10 +1,10 @@
 import { Alert, Pressable } from 'react-native';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
-import { Text } from '../../../components/text';
 import { Button } from '../../../components/button';
 import { Screen } from '../../../components/screen';
-import { PasswordInput } from '../../../components/password-input';
+import { Text } from '../../../components/text';
+import { FormPasswordInput } from '../../../components/form/form-password-input';
 import { FormTextInput } from '../../../components/form/form-text-input';
 import { LoginFormFields, LoginScreenProps } from './props';
 import { screenValues } from './constants';
@@ -51,7 +51,7 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
         {...screenValues.emailInput}
         boxProps={{ marginBottom: 's20' }}
       />
-      <Controller
+      <FormPasswordInput
         control={control}
         name="password"
         rules={{
@@ -61,15 +61,8 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
             message: 'Senha deve ter no mínimo 8 caracteres'
           }
         }}
-        render={({ field, fieldState }) => (
-          <PasswordInput
-            {...screenValues.passwordInput}
-            boxProps={{ marginBottom: 's10' }}
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        {...screenValues.passwordInput}
+        boxProps={{ marginBottom: 's10' }}
       />
       <Pressable onPress={navigateToForgotPasswordScreen}>
         <Text color="primary" preset="paragraphSmall" bold marginBottom="s40">

@@ -1,10 +1,10 @@
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { Button } from '../../../components/button';
-import { FormTextInput } from '../../../components/form/form-text-input';
-import { PasswordInput } from '../../../components/password-input';
 import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
+import { FormPasswordInput } from '../../../components/form/form-password-input';
+import { FormTextInput } from '../../../components/form/form-text-input';
 import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
 import { resetNavigationValues, screenValues } from './constants';
 import { SignUpFormFields } from './props';
@@ -61,8 +61,7 @@ export function SignUpScreen() {
         {...screenValues.emailInput}
         boxProps={{ marginBottom: 's20' }}
       />
-
-      <Controller
+      <FormPasswordInput
         control={control}
         name="password"
         rules={{
@@ -72,15 +71,8 @@ export function SignUpScreen() {
             message: 'Senha deve ter no mínimo 8 caracteres'
           }
         }}
-        render={({ field, fieldState }) => (
-          <PasswordInput
-            {...screenValues.passwordInput}
-            boxProps={{ marginBottom: 's48' }}
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        {...screenValues.passwordInput}
+        boxProps={{ marginBottom: 's48' }}
       />
       <Button
         title={screenValues.submitButton.title}
