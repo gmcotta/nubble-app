@@ -3,9 +3,9 @@ import { useForm, Controller } from 'react-hook-form';
 
 import { Text } from '../../../components/text';
 import { Button } from '../../../components/button';
-import { TextInput } from '../../../components/text-input';
 import { Screen } from '../../../components/screen';
 import { PasswordInput } from '../../../components/password-input';
+import { FormTextInput } from '../../../components/form/form-text-input';
 import { LoginFormFields, LoginScreenProps } from './props';
 import { screenValues } from './constants';
 
@@ -38,7 +38,7 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
       <Text preset="paragraphLarge" marginBottom="s40">
         {screenValues.description}
       </Text>
-      <Controller
+      <FormTextInput
         control={control}
         name="email"
         rules={{
@@ -48,15 +48,8 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
             message: 'E-mail inválido'
           }
         }}
-        render={({ field, fieldState }) => (
-          <TextInput
-            {...screenValues.emailInput}
-            boxProps={{ marginBottom: 's20' }}
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        {...screenValues.emailInput}
+        boxProps={{ marginBottom: 's20' }}
       />
       <Controller
         control={control}
