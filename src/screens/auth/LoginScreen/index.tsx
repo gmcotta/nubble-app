@@ -1,12 +1,27 @@
+import { Alert, Pressable } from 'react-native';
+import { useForm, Controller } from 'react-hook-form';
+
 import { Text } from '../../../components/text';
 import { Button } from '../../../components/button';
 import { TextInput } from '../../../components/text-input';
 import { Screen } from '../../../components/screen';
 import { PasswordInput } from '../../../components/password-input';
-import { LoginScreenProps } from './props';
-import { Pressable } from 'react-native';
+import { LoginFormType, LoginScreenProps } from './props';
+import { screenValues } from './constants';
 
 export function LoginScreen({ navigation }: LoginScreenProps) {
+  const { control, formState, handleSubmit } = useForm<LoginFormType>({
+    defaultValues: {
+      email: '',
+      password: ''
+    },
+    mode: 'onChange'
+  });
+
+  function submitForm({ email, password }: LoginFormType) {
+    Alert.alert('Teste', `email: ${email}, senha: ${password}`);
+  }
+
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');
   }
@@ -18,36 +33,70 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
   return (
     <Screen>
       <Text preset="headingLarge" marginBottom="s8">
-        Olá!
+        {screenValues.title}
       </Text>
       <Text preset="paragraphLarge" marginBottom="s40">
-        Digite seu e-mail e senha para entrar
+        {screenValues.description}
       </Text>
-      <TextInput
-        label="E-mail"
-        placeholder="Digite seu e-mail"
-        errorMessage="Mensagem de erro"
-        boxProps={{
-          marginBottom: 's20'
+      <Controller
+        control={control}
+        name="email"
+        rules={{
+          required: 'E-mail obrigatório',
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: 'E-mail inválido'
+          }
         }}
+        render={({ field, fieldState }) => (
+          <TextInput
+            {...screenValues.emailInput}
+            value={field.value}
+            onChangeText={field.onChange}
+            errorMessage={fieldState.error?.message}
+            boxProps={{
+              marginBottom: 's20'
+            }}
+          />
+        )}
       />
-      <PasswordInput
-        label="Senha"
-        placeholder="Digite sua senha"
-        boxProps={{
-          marginBottom: 's10'
+      <Controller
+        control={control}
+        name="password"
+        rules={{
+          required: 'Senha obrigatória',
+          minLength: {
+            value: 8,
+            message: 'Senha deve ter no mínimo 8 caracteres'
+          }
         }}
+        render={({ field, fieldState }) => (
+          <PasswordInput
+            {...screenValues.passwordInput}
+            value={field.value}
+            onChangeText={field.onChange}
+            errorMessage={fieldState.error?.message}
+            boxProps={{
+              marginBottom: 's10'
+            }}
+          />
+        )}
       />
       <Pressable onPress={navigateToForgotPasswordScreen}>
         <Text color="primary" preset="paragraphSmall" bold marginBottom="s40">
-          Esqueci minha senha
+          {screenValues.forgotPassword.text}
         </Text>
       </Pressable>
-      <Button title="Entrar" marginBottom="s12" />
+      <Button
+        disabled={!formState.isValid}
+        onPress={handleSubmit(submitForm)}
+        title={screenValues.submitButton.title}
+        marginBottom="s12"
+      />
       <Button
         onPress={navigateToSignUpScreen}
         variant="outline"
-        title="Criar uma conta"
+        title={screenValues.signUpButtton.title}
       />
     </Screen>
   );
