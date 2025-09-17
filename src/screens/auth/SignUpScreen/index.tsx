@@ -1,3 +1,5 @@
+import { Controller, useForm } from 'react-hook-form';
+
 import { Button } from '../../../components/button';
 import { PasswordInput } from '../../../components/password-input';
 import { Screen } from '../../../components/screen';
@@ -5,8 +7,18 @@ import { Text } from '../../../components/text';
 import { TextInput } from '../../../components/text-input';
 import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
 import { resetNavigationValues, screenValues } from './constants';
+import { SignUpFormFields } from './props';
 
 export function SignUpScreen() {
+  const { control, formState, handleSubmit } = useForm<SignUpFormFields>({
+    defaultValues: {
+      username: '',
+      fullName: '',
+      email: '',
+      password: ''
+    },
+    mode: 'onChange'
+  });
   const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
 
   function submitForm() {
@@ -18,23 +30,83 @@ export function SignUpScreen() {
       <Text preset="headingLarge" marginBottom="s32">
         {screenValues.title}
       </Text>
-      <TextInput
-        boxProps={{ marginBottom: 's20' }}
-        {...screenValues.usernameInput}
+      <Controller
+        control={control}
+        name="username"
+        rules={{
+          required: 'Username obrigatório'
+        }}
+        render={({ field, fieldState }) => (
+          <TextInput
+            {...screenValues.usernameInput}
+            boxProps={{ marginBottom: 's20' }}
+            value={field.value}
+            onChangeText={field.onChange}
+            errorMessage={fieldState.error?.message}
+          />
+        )}
       />
-      <TextInput
-        boxProps={{ marginBottom: 's20' }}
-        {...screenValues.nameInput}
+      <Controller
+        control={control}
+        name="fullName"
+        rules={{
+          required: 'Nome obrigatório'
+        }}
+        render={({ field, fieldState }) => (
+          <TextInput
+            {...screenValues.nameInput}
+            boxProps={{ marginBottom: 's20' }}
+            value={field.value}
+            onChangeText={field.onChange}
+            errorMessage={fieldState.error?.message}
+          />
+        )}
       />
-      <TextInput
-        boxProps={{ marginBottom: 's20' }}
-        {...screenValues.emailInput}
+      <Controller
+        control={control}
+        name="email"
+        rules={{
+          required: 'E-mail obrigatório',
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: 'E-mail inválido'
+          }
+        }}
+        render={({ field, fieldState }) => (
+          <TextInput
+            {...screenValues.emailInput}
+            boxProps={{ marginBottom: 's20' }}
+            value={field.value}
+            onChangeText={field.onChange}
+            errorMessage={fieldState.error?.message}
+          />
+        )}
       />
-      <PasswordInput
-        boxProps={{ marginBottom: 's48' }}
-        {...screenValues.passwordInput}
+      <Controller
+        control={control}
+        name="password"
+        rules={{
+          required: 'Senha obrigatória',
+          minLength: {
+            value: 8,
+            message: 'Senha deve ter no mínimo 8 caracteres'
+          }
+        }}
+        render={({ field, fieldState }) => (
+          <PasswordInput
+            {...screenValues.passwordInput}
+            boxProps={{ marginBottom: 's48' }}
+            value={field.value}
+            onChangeText={field.onChange}
+            errorMessage={fieldState.error?.message}
+          />
+        )}
       />
-      <Button title={screenValues.submitButton.title} onPress={submitForm} />
+      <Button
+        title={screenValues.submitButton.title}
+        disabled={!formState.isValid}
+        onPress={handleSubmit(submitForm)}
+      />
     </Screen>
   );
 }

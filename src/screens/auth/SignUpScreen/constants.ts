@@ -16,19 +16,19 @@ export const screenValues = {
   title: 'Criar uma conta',
   usernameInput: {
     label: 'Seu username',
-    placeholder: '#'
+    placeholder: '@'
   },
   nameInput: {
     label: 'Nome completo',
-    placeholder: '#'
+    placeholder: 'Digite seu nome completo'
   },
   emailInput: {
     label: 'E-mail',
-    placeholder: '#'
+    placeholder: 'Digite seu e-mail'
   },
   passwordInput: {
     label: 'Senha',
-    placeholder: '#'
+    placeholder: 'Digite sua senha'
   },
   submitButton: {
     title: 'Criar uma conta'

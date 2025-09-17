@@ -6,11 +6,11 @@ import { Button } from '../../../components/button';
 import { TextInput } from '../../../components/text-input';
 import { Screen } from '../../../components/screen';
 import { PasswordInput } from '../../../components/password-input';
-import { LoginFormType, LoginScreenProps } from './props';
+import { LoginFormFields, LoginScreenProps } from './props';
 import { screenValues } from './constants';
 
 export function LoginScreen({ navigation }: LoginScreenProps) {
-  const { control, formState, handleSubmit } = useForm<LoginFormType>({
+  const { control, formState, handleSubmit } = useForm<LoginFormFields>({
     defaultValues: {
       email: '',
       password: ''
@@ -18,7 +18,7 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
     mode: 'onChange'
   });
 
-  function submitForm({ email, password }: LoginFormType) {
+  function submitForm({ email, password }: LoginFormFields) {
     Alert.alert('Teste', `email: ${email}, senha: ${password}`);
   }
 
@@ -51,12 +51,10 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
         render={({ field, fieldState }) => (
           <TextInput
             {...screenValues.emailInput}
+            boxProps={{ marginBottom: 's20' }}
             value={field.value}
             onChangeText={field.onChange}
             errorMessage={fieldState.error?.message}
-            boxProps={{
-              marginBottom: 's20'
-            }}
           />
         )}
       />
@@ -73,12 +71,10 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
         render={({ field, fieldState }) => (
           <PasswordInput
             {...screenValues.passwordInput}
+            boxProps={{ marginBottom: 's10' }}
             value={field.value}
             onChangeText={field.onChange}
             errorMessage={fieldState.error?.message}
-            boxProps={{
-              marginBottom: 's10'
-            }}
           />
         )}
       />
@@ -88,9 +84,9 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
         </Text>
       </Pressable>
       <Button
+        title={screenValues.submitButton.title}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
-        title={screenValues.submitButton.title}
         marginBottom="s12"
       />
       <Button
