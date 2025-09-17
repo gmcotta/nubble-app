@@ -1,16 +1,19 @@
-import { Alert, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '../../../components/button';
 import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
 import { FormPasswordInput } from '../../../components/form/form-password-input';
 import { FormTextInput } from '../../../components/form/form-text-input';
-import { LoginFormFields, LoginScreenProps } from './props';
+import { LoginFormSchema, LoginScreenProps } from './props';
 import { screenValues } from './constants';
+import { loginSchema } from './schema';
 
 export function LoginScreen({ navigation }: LoginScreenProps) {
-  const { control, formState, handleSubmit } = useForm<LoginFormFields>({
+  const { control, formState, handleSubmit } = useForm<LoginFormSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: ''
@@ -18,8 +21,8 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
     mode: 'onChange'
   });
 
-  function submitForm({ email, password }: LoginFormFields) {
-    Alert.alert('Teste', `email: ${email}, senha: ${password}`);
+  function submitForm(fieldValues: LoginFormSchema) {
+    console.log(fieldValues);
   }
 
   function navigateToSignUpScreen() {
@@ -41,26 +44,12 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'E-mail obrigatório',
-          pattern: {
-            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            message: 'E-mail inválido'
-          }
-        }}
         {...screenValues.emailInput}
         boxProps={{ marginBottom: 's20' }}
       />
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: 'Senha obrigatória',
-          minLength: {
-            value: 8,
-            message: 'Senha deve ter no mínimo 8 caracteres'
-          }
-        }}
         {...screenValues.passwordInput}
         boxProps={{ marginBottom: 's10' }}
       />

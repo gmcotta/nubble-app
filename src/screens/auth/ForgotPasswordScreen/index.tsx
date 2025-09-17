@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '../../../components/button';
 import { FormTextInput } from '../../../components/form/form-text-input';
@@ -6,11 +7,13 @@ import { Screen } from '../../../components/screen';
 import { Text } from '../../../components/text';
 import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
 import { resetNavigationValues, screenValues } from './constants';
-import { ForgotPasswordFormFields } from './props';
+import { ForgotPasswordFormSchema } from './props';
+import { forgotPasswordSchema } from './schema';
 
 export function ForgotPasswordScreen() {
   const { control, formState, handleSubmit } =
-    useForm<ForgotPasswordFormFields>({
+    useForm<ForgotPasswordFormSchema>({
+      resolver: zodResolver(forgotPasswordSchema),
       defaultValues: {
         email: ''
       },
@@ -18,7 +21,8 @@ export function ForgotPasswordScreen() {
     });
   const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
 
-  function submitForm() {
+  function submitForm(formValues: ForgotPasswordFormSchema) {
+    console.log(formValues);
     navigateToSuccessScreen();
   }
 
@@ -37,13 +41,6 @@ export function ForgotPasswordScreen() {
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'E-mail obrigatório',
-          pattern: {
-            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            message: 'E-mail inválido'
-          }
-        }}
         boxProps={{ marginTop: 's32' }}
         {...screenValues.emailInput}
       />
