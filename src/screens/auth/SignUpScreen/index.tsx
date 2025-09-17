@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '../../../components/button';
 import { Screen } from '../../../components/screen';
@@ -7,10 +8,12 @@ import { FormPasswordInput } from '../../../components/form/form-password-input'
 import { FormTextInput } from '../../../components/form/form-text-input';
 import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
 import { resetNavigationValues, screenValues } from './constants';
-import { SignUpFormFields } from './props';
+import { SignUpFormSchema } from './props';
+import { signUpSchema } from './schema';
 
 export function SignUpScreen() {
-  const { control, formState, handleSubmit } = useForm<SignUpFormFields>({
+  const { control, formState, handleSubmit } = useForm<SignUpFormSchema>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: '',
       fullName: '',
@@ -21,7 +24,8 @@ export function SignUpScreen() {
   });
   const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
 
-  function submitForm() {
+  function submitForm(formValues: SignUpFormSchema) {
+    console.log(formValues);
     reset();
   }
 
@@ -33,44 +37,24 @@ export function SignUpScreen() {
       <FormTextInput
         control={control}
         name="username"
-        rules={{
-          required: 'Username obrigatório'
-        }}
         {...screenValues.usernameInput}
         boxProps={{ marginBottom: 's20' }}
       />
       <FormTextInput
         control={control}
         name="fullName"
-        rules={{
-          required: 'Nome obrigatório'
-        }}
         {...screenValues.nameInput}
         boxProps={{ marginBottom: 's20' }}
       />
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'E-mail obrigatório',
-          pattern: {
-            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            message: 'E-mail inválido'
-          }
-        }}
         {...screenValues.emailInput}
         boxProps={{ marginBottom: 's20' }}
       />
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: 'Senha obrigatória',
-          minLength: {
-            value: 8,
-            message: 'Senha deve ter no mínimo 8 caracteres'
-          }
-        }}
         {...screenValues.passwordInput}
         boxProps={{ marginBottom: 's48' }}
       />

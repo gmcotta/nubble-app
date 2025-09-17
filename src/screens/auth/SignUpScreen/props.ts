@@ -1,14 +1,12 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import * as z from 'zod';
+
 import { RootStackParamList } from '../../../routes/route-props';
+import { signUpSchema } from './schema';
 
 export type SignUpScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'SignUpScreen'
 >;
 
-export type SignUpFormFields = {
-  username: string;
-  fullName: string;
-  email: string;
-  password: string;
-};
+export type SignUpFormSchema = z.infer<typeof signUpSchema>;
