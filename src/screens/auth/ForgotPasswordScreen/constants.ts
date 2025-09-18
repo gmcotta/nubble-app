@@ -1,4 +1,4 @@
-import { UseResetNavigationSuccessProps } from '../../../hooks/useResetNavigationSuccess/props';
+import { UseResetNavigationSuccessProps } from '@hooks';
 
 export const resetNavigationValues: UseResetNavigationSuccessProps = {
   originRoute: 'LoginScreen',

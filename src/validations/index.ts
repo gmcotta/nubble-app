@@ -1,4 +1,5 @@
 import * as z from 'zod';
+
 import { errorMessages } from './constants';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/gim;

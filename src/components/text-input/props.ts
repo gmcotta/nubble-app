@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import { TextInputProps as RNTextInputProps } from 'react-native';
-import { RestyleBoxProps } from '../restyle/box/props';
+
+import { RestyleBoxProps } from '@components';
 
 export interface TextInputProps extends RNTextInputProps {
   label: string;

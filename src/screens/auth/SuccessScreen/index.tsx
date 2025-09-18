@@ -1,7 +1,4 @@
-import { Button } from '../../../components/button';
-import { Icon } from '../../../components/icon';
-import { Screen } from '../../../components/screen';
-import { Text } from '../../../components/text';
+import { Button, Icon, Screen, Text } from '@components';
 import { SuccessScreenProps } from './props';
 
 export function SuccessScreen({ navigation, route }: SuccessScreenProps) {

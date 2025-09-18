@@ -1,11 +1,10 @@
 import { useRef } from 'react';
 import { Pressable, TextInput as RNTextInput } from 'react-native';
 
-import { Box } from '../restyle/box';
-import { Text } from '../text';
-import { $textInputContainer, $textInputStyle } from './styles';
-import { useRestyleTheme } from '../../hooks/useRestyleTheme';
+import { Box, Text } from '@components';
+import { useRestyleTheme } from '@hooks';
 import { TextInputProps } from './props';
+import { $textInputContainer, $textInputStyle } from './styles';
 
 export function TextInput({
   label,

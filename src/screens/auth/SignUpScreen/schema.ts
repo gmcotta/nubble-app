@@ -5,7 +5,7 @@ import {
   fullNameValidator,
   newPasswordValidator,
   usernameValidator
-} from '../../../validations';
+} from '@validations';
 
 export const signUpSchema = z.object({
   username: usernameValidator,

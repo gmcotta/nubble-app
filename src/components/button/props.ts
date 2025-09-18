@@ -1,5 +1,5 @@
-import { ThemeColors } from '../../theme/theme';
-import { TouchableOpacityBoxProps } from '../restyle/touchable-opacity-box/props';
+import { TouchableOpacityBoxProps } from '@components';
+import { ThemeColors } from '@theme';
 
 export type ButtonVariants = 'primary' | 'outline';
 

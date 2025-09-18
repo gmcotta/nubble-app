@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+
 import { UseResetNavigationSuccessProps } from './props';
 
 export function useResetNavigationSuccess({

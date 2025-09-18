@@ -1,5 +1,6 @@
 import { type TextStyle } from 'react-native';
-import { TextProps as RestyleTextProps } from '../restyle/text/props';
+
+import { RestyleTextProps } from '@components';
 
 export type TextVariants =
   | 'headingLarge'

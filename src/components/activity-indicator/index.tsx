@@ -1,7 +1,7 @@
 import { ActivityIndicator as RNActivityIndicator } from 'react-native';
 
+import { useRestyleTheme } from '@hooks';
 import { ActivityIndicatorProps } from './props';
-import { useRestyleTheme } from '../../hooks/useRestyleTheme';
 
 export function ActivityIndicator({
   color,

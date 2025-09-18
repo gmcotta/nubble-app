@@ -1,7 +1,5 @@
-import { Text } from '../text';
-import { TouchableOpacityBox } from '../restyle/touchable-opacity-box';
+import { ActivityIndicator, Text, TouchableOpacityBox } from '@components';
 import { ButtonProps } from './props';
-import { ActivityIndicator } from '../activity-indicator';
 import { buttonVariants } from './variants';
 
 export function Button({

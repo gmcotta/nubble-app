@@ -1,4 +1,4 @@
-import { ThemeColors } from '../../theme/theme';
+import { ThemeColors } from '@theme';
 import { iconRegistry } from './registry';
 
 export type IconType = typeof iconRegistry;

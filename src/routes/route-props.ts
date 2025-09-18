@@ -1,4 +1,4 @@
-import { IconProps } from '../components/icon/props';
+import { IconProps } from '@components';
 
 export type RootStackParamList = {
   LoginScreen: undefined;

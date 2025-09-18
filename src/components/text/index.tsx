@@ -1,6 +1,5 @@
-import React from 'react';
-import { Text as RestyleText } from '../restyle/text';
-import { $fontFamily, $fontSizes } from '../../styles';
+import { RestyleText } from '@components';
+import { $fontFamily, $fontSizes } from '@styles';
 import { TextProps, TextVariants } from './props';
 
 function getFontFamily(

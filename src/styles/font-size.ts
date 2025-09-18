@@ -1,5 +1,5 @@
 import { TextStyle } from 'react-native';
-import { TextVariants } from '../components/text/props';
+import { TextVariants } from '@components';
 
 export const $fontSizes: Record<TextVariants, TextStyle> = {
   headingLarge: { fontSize: 32, lineHeight: 38.4 },

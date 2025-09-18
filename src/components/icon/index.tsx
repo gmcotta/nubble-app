@@ -1,7 +1,8 @@
+import { Pressable } from 'react-native';
+
+import { useRestyleTheme } from '@hooks';
 import { IconProps } from './props';
 import { iconRegistry } from './registry';
-import { useRestyleTheme } from '../../hooks/useRestyleTheme';
-import { Pressable } from 'react-native';
 
 export function Icon({
   name,

@@ -1,4 +1,4 @@
-import { TextInputProps } from '../text-input/props';
+import { TextInputProps } from '@components';
 
 export type PasswordInputProps = Omit<
   TextInputProps,

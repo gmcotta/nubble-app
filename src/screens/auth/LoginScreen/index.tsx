@@ -2,11 +2,13 @@ import { Pressable } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Button } from '../../../components/button';
-import { Screen } from '../../../components/screen';
-import { Text } from '../../../components/text';
-import { FormPasswordInput } from '../../../components/form/form-password-input';
-import { FormTextInput } from '../../../components/form/form-text-input';
+import {
+  Button,
+  FormPasswordInput,
+  FormTextInput,
+  Screen,
+  Text
+} from '@components';
 import { LoginFormSchema, LoginScreenProps } from './props';
 import { screenValues } from './constants';
 import { loginSchema } from './schema';

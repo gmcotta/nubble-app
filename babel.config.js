@@ -12,7 +12,7 @@ module.exports = {
         "@screens": "./src/screens",
         "@styles": "./src/styles",
         "@theme": "./src/theme",
-        "@validations": "./src/theme"
+        "@validations": "./src/validations"
       }
     }]
   ]

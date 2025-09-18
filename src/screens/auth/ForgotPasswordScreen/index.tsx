@@ -1,11 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Button } from '../../../components/button';
-import { FormTextInput } from '../../../components/form/form-text-input';
-import { Screen } from '../../../components/screen';
-import { Text } from '../../../components/text';
-import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
+import { Button, FormTextInput, Screen, Text } from '@components';
+import { useResetNavigationSuccess } from '@hooks';
 import { resetNavigationValues, screenValues } from './constants';
 import { ForgotPasswordFormSchema } from './props';
 import { forgotPasswordSchema } from './schema';

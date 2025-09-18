@@ -1,4 +1,4 @@
-import { UseResetNavigationSuccessProps } from '../../../hooks/useResetNavigationSuccess/props';
+import { UseResetNavigationSuccessProps } from '@hooks';
 
 export const resetNavigationValues: UseResetNavigationSuccessProps = {
   originRoute: 'LoginScreen',
@@ -6,7 +6,7 @@ export const resetNavigationValues: UseResetNavigationSuccessProps = {
     title: `Sua conta foi criada com sucesso!`,
     description: 'Agora é só fazer login na nossa plataforma.',
     icon: {
-      name: 'messageRound',
+      name: 'checkRound',
       color: 'primary'
     }
   }

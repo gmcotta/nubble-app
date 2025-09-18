@@ -1,17 +1,15 @@
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { useAppSafeArea } from '../../hooks/useAppSafeArea';
-import { useRestyleTheme } from '../../hooks/useRestyleTheme';
-import { Icon } from '../icon';
-import { Box } from '../restyle/box';
-import { TouchableOpacityBox } from '../restyle/touchable-opacity-box';
-import { Text } from '../text';
+import { useAppSafeArea, useRestyleTheme } from '@hooks';
+import { Box, Icon, Text, TouchableOpacityBox } from '@components';
 import {
   ScrollViewContainer,
   ViewContainer
 } from './components/screen-container';
 import { ScreenProps } from './props';
+import { screenValues } from './constants';
+import { $keyboardAvoidingViewStyles } from './styles';
 
 export function Screen({
   children,
@@ -31,7 +29,7 @@ export function Screen({
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      style={{ flex: 1 }}
+      style={$keyboardAvoidingViewStyles}
     >
       <Container backgroundColor={colors.background}>
         <Box
@@ -47,7 +45,7 @@ export function Screen({
             >
               <Icon name="arrowLeft" color="primary" />
               <Text marginLeft="s8" preset="paragraphMedium" bold>
-                Voltar
+                {screenValues.backButton.title}
               </Text>
             </TouchableOpacityBox>
           ) : null}

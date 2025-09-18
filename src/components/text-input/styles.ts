@@ -1,5 +1,5 @@
-import { $fontFamily, $fontSizes } from '../../styles';
-import { RestyleBoxProps } from '../restyle/box/props';
+import { RestyleBoxProps } from '@components';
+import { $fontFamily, $fontSizes } from '@styles';
 
 export function $textInputContainer(errorMessage?: string): RestyleBoxProps {
   return {
