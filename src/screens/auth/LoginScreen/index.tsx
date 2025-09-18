@@ -1,6 +1,6 @@
-import { Pressable } from 'react-native';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { Pressable } from 'react-native';
 
 import {
   Button,
@@ -9,8 +9,8 @@ import {
   Screen,
   Text
 } from '@components';
-import { LoginFormSchema, LoginScreenProps } from './props';
 import { screenValues } from './constants';
+import { LoginFormSchema, LoginScreenProps } from './props';
 import { loginSchema } from './schema';
 
 export function LoginScreen({ navigation }: LoginScreenProps) {

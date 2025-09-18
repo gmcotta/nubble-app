@@ -1,4 +1,5 @@
 import { TextStyle } from 'react-native';
+
 import { TextVariants } from '@components';
 
 export const $fontSizes: Record<TextVariants, TextStyle> = {

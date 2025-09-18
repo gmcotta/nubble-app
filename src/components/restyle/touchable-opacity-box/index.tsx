@@ -1,4 +1,3 @@
-import { TouchableOpacity } from 'react-native';
 import {
   createRestyleComponent,
   backgroundColor,
@@ -7,6 +6,7 @@ import {
   layout,
   border
 } from '@shopify/restyle';
+import { TouchableOpacity } from 'react-native';
 
 import { Theme } from '@theme';
 import { TouchableOpacityBoxProps } from './props';

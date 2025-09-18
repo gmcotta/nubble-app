@@ -1,14 +1,14 @@
-import { KeyboardAvoidingView, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 
-import { useAppSafeArea, useRestyleTheme } from '@hooks';
 import { Box, Icon, Text, TouchableOpacityBox } from '@components';
+import { useAppSafeArea, useRestyleTheme } from '@hooks';
 import {
   ScrollViewContainer,
   ViewContainer
 } from './components/screen-container';
-import { ScreenProps } from './props';
 import { screenValues } from './constants';
+import { ScreenProps } from './props';
 import { $keyboardAvoidingViewStyles } from './styles';
 
 export function Screen({
