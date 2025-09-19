@@ -1,8 +1,3 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { AuthScreenProps } from '@routes';
 
-import { AuthStackParamList } from '@routes';
-
-export type SuccessScreenProps = NativeStackScreenProps<
-  AuthStackParamList,
-  'SuccessScreen'
->;
+export type SuccessScreenProps = AuthScreenProps<'SuccessScreen'>;

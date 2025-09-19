@@ -1,7 +1,8 @@
-import { AuthStackParamList } from './route-props';
+import { AppStackParamList } from './stacks/AppStack/props';
+import { AuthStackParamList } from './stacks/AuthStack/props';
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends AuthStackParamList {}
+    interface RootParamList extends AuthStackParamList, AppStackParamList {}
   }
 }

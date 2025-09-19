@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { IconProps } from '@components';
 
 export type AuthStackParamList = {
@@ -11,7 +12,5 @@ export type AuthStackParamList = {
   };
 };
 
-export type AppStackParamList = {
-  HomeScreen: undefined;
-  SettingsScreen: undefined;
-};
+export type AuthScreenProps<RouteName extends keyof AuthStackParamList> =
+  NativeStackScreenProps<AuthStackParamList, RouteName>;

@@ -6,7 +6,7 @@ import {
   SignUpScreen,
   SuccessScreen
 } from '@screens/auth';
-import { AuthStackParamList } from '../route-props';
+import { AuthStackParamList } from './props';
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
