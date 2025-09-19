@@ -2,15 +2,23 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import { AppBottomTabParamList } from '@routes/tabs';
 import { Box, Icon, Text, TouchableOpacityBox } from '@components';
+import { useAppSafeArea } from '@hooks';
 import { mapScreenToProps } from './mapper';
+import {
+  tabBarContainerStyles,
+  itemWrapperStyles,
+  iconTextStyles
+} from './styles';
 
 export function AppTabBar({
   state,
   descriptors,
   navigation
 }: BottomTabBarProps) {
+  const { bottom } = useAppSafeArea();
+
   return (
-    <Box flexDirection="row">
+    <Box {...tabBarContainerStyles(bottom)}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
 
@@ -40,27 +48,16 @@ export function AppTabBar({
 
         return (
           <TouchableOpacityBox
-            accessibilityRole="button"
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
+            key={route.key}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1 }}
-            activeOpacity={1}
-            alignItems="center"
-            key={route.key}
+            {...itemWrapperStyles(isFocused, options)}
           >
             <Icon
               color={isFocused ? 'primary' : 'backgroundContrast'}
               name={isFocused ? tabItem.icon.focused : tabItem.icon.unfocused}
             />
-            <Text
-              medium
-              preset="paragraphCaption"
-              color={isFocused ? 'primary' : 'backgroundContrast'}
-            >
-              {tabItem.label}
-            </Text>
+            <Text {...iconTextStyles(isFocused)}>{tabItem.label}</Text>
           </TouchableOpacityBox>
         );
       })}
