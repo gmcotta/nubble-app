@@ -18,6 +18,7 @@ import { FlashOffIcon } from './icons/flash-off';
 import { FlashOnIcon } from './icons/flash-on';
 import { HeartIcon } from './icons/heart';
 import { HeartFillIcon } from './icons/heart-fill';
+import { HomeIcon } from './icons/home';
 import { HomeFillIcon } from './icons/home-fill';
 import { MessageIcon } from './icons/message';
 import { MessageRoundIcon } from './icons/message-round';
@@ -48,6 +49,7 @@ export const iconRegistry = {
   flashOn: FlashOnIcon,
   heartFill: HeartFillIcon,
   heart: HeartIcon,
+  home: HomeIcon,
   homeFill: HomeFillIcon,
   message: MessageIcon,
   more: MoreIcon,

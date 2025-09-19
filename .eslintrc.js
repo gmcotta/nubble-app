@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: '@react-native',
-  plugins: [ 'import'],
+  plugins: ['import'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -12,20 +12,21 @@ module.exports = {
             groups: ['external', 'builtin', 'internal', 'parent', 'sibling'],
             pathGroups: [
               {
-                pattern: '@+(routes|screens|components|hooks|theme|styles|validations)',
+                pattern:
+                  '@+(components|hooks|routes|screens|styles|theme|validations)',
                 group: 'internal',
-                position: 'before',
+                position: 'before'
               },
               {
                 pattern: './',
                 group: 'internal',
-                position: 'before',
+                position: 'before'
               }
             ],
             pathGroupsExcludedImportTypes: ['react+(|-native)'],
             alphabetize: {
               order: 'asc',
-              caseInsensitive: true,
+              caseInsensitive: true
             }
           }
         ]
