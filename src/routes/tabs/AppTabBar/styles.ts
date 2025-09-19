@@ -1,5 +1,4 @@
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
-import { ViewProps } from 'react-native';
 import {
   RestyleBoxProps,
   TextProps,
@@ -7,9 +6,7 @@ import {
 } from '@components';
 import { shadowProps } from '@styles';
 
-export function tabBarContainerStyles(
-  bottom: number
-): RestyleBoxProps & { style: ViewProps } {
+export function tabBarContainerStyles(bottom: number): RestyleBoxProps {
   return {
     flexDirection: 'row',
     paddingTop: 's12',

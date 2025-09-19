@@ -1,5 +1,5 @@
-import { BoxProps } from '@shopify/restyle';
+import { ComponentProps } from 'react';
 
-import { type Theme } from '@theme';
+import { RestyleBox } from '.';
 
-export type RestyleBoxProps = BoxProps<Theme>;
+export type RestyleBoxProps = ComponentProps<typeof RestyleBox>;

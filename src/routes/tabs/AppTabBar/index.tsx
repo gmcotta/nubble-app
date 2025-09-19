@@ -1,7 +1,7 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import { AppBottomTabParamList } from '@routes/tabs';
-import { Box, Icon, Text, TouchableOpacityBox } from '@components';
+import { RestyleBox, Icon, Text, TouchableOpacityBox } from '@components';
 import { useAppSafeArea } from '@hooks';
 import { mapScreenToProps } from './mapper';
 import {
@@ -18,7 +18,7 @@ export function AppTabBar({
   const { bottom } = useAppSafeArea();
 
   return (
-    <Box {...tabBarContainerStyles(bottom)}>
+    <RestyleBox {...tabBarContainerStyles(bottom)}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
 
@@ -61,6 +61,6 @@ export function AppTabBar({
           </TouchableOpacityBox>
         );
       })}
-    </Box>
+    </RestyleBox>
   );
 }

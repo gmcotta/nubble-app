@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 
-import { Box, Icon, Text, TouchableOpacityBox } from '@components';
+import { RestyleBox, Icon, Text, TouchableOpacityBox } from '@components';
 import { useAppSafeArea, useRestyleTheme } from '@hooks';
 import {
   ScrollViewContainer,
@@ -32,7 +32,7 @@ export function Screen({
       style={$keyboardAvoidingViewStyles}
     >
       <Container backgroundColor={colors.background}>
-        <Box
+        <RestyleBox
           paddingHorizontal="s24"
           style={{ paddingTop: top, paddingBottom: bottom }}
         >
@@ -50,7 +50,7 @@ export function Screen({
             </TouchableOpacityBox>
           ) : null}
           {children}
-        </Box>
+        </RestyleBox>
       </Container>
     </KeyboardAvoidingView>
   );
