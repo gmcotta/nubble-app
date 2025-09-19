@@ -1,6 +1,6 @@
 import { IconProps } from '@components';
 
-export type RootStackParamList = {
+export type AuthStackParamList = {
   LoginScreen: undefined;
   SignUpScreen: undefined;
   ForgotPasswordScreen: undefined;
@@ -9,4 +9,9 @@ export type RootStackParamList = {
     description: string;
     icon: Pick<IconProps, 'name' | 'color'>;
   };
+};
+
+export type AppStackParamList = {
+  HomeScreen: undefined;
+  SettingsScreen: undefined;
 };

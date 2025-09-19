@@ -1,6 +1,6 @@
-import { RootStackParamList } from '@routes';
+import { AuthStackParamList } from '@routes';
 
 export interface UseResetNavigationSuccessProps {
   originRoute: keyof ReactNavigation.RootParamList;
-  successScreenParams: RootStackParamList['SuccessScreen'];
+  successScreenParams: AuthStackParamList['SuccessScreen'];
 }

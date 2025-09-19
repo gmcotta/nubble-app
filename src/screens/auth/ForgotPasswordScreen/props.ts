@@ -1,11 +1,11 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import * as z from 'zod';
 
-import { RootStackParamList } from '@routes';
+import { AuthStackParamList } from '@routes';
 import { forgotPasswordSchema } from './schema';
 
 export type ForgotPasswordScreenProps = NativeStackScreenProps<
-  RootStackParamList,
+  AuthStackParamList,
   'ForgotPasswordScreen'
 >;
 
