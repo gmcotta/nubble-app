@@ -1,3 +1,3 @@
-import { AppScreenProps } from '@routes';
+import { AppBottomTabScreenProps } from '@routes/tabs';
 
-export type HomeScreenProps = AppScreenProps<'HomeScreen'>;
+export type HomeScreenProps = AppBottomTabScreenProps<'HomeScreen'>;

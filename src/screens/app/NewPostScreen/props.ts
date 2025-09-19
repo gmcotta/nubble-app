@@ -1,3 +1,3 @@
-// import { AppScreenProps } from '@routes';
+import { AppBottomTabScreenProps } from '@routes/tabs';
 
-// export type NewPostScreenProps = AppScreenProps<'NewPostScreen'>;
+export type NewPostScreenProps = AppBottomTabScreenProps<'NewPostScreen'>;

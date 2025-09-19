@@ -1,10 +1,11 @@
-import { Screen, Text } from '@components';
-// import { FavoriteScreenProps } from './props';
+import { Button, Screen, Text } from '@components';
+import { FavoriteScreenProps } from './props';
 
-export function FavoriteScreen() {
+export function FavoriteScreen({ navigation }: FavoriteScreenProps) {
   return (
-    <Screen>
+    <Screen canGoBack>
       <Text preset="headingSmall">Favorite Screen</Text>
+      <Button title="Home" onPress={() => navigation.navigate('HomeScreen')} />
     </Screen>
   );
 }

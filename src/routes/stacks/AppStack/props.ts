@@ -1,7 +1,10 @@
+import { NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
+import { AppBottomTabParamList } from '@routes/tabs';
+
 export type AppStackParamList = {
-  AppTabNavigator: undefined;
+  AppTabNavigator: NavigatorScreenParams<AppBottomTabParamList>;
   SettingsScreen: undefined;
 };
 

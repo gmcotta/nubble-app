@@ -3,9 +3,16 @@ import { SettingsScreenProps } from './props';
 
 export function SettingsScreen({ navigation }: SettingsScreenProps) {
   return (
-    <Screen>
+    <Screen canGoBack>
       <Text preset="headingLarge">Configurações</Text>
-      <Button title="Home" onPress={() => navigation.navigate('HomeScreen')} />
+      <Button
+        title="New post screen"
+        onPress={() =>
+          navigation.navigate('AppTabNavigator', {
+            screen: 'NewPostScreen'
+          })
+        }
+      />
     </Screen>
   );
 }

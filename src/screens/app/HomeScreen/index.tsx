@@ -9,6 +9,11 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
         title="Configurações"
         onPress={() => navigation.navigate('SettingsScreen')}
       />
+      <Button
+        title="Favoritos"
+        onPress={() => navigation.navigate('FavoriteScreen')}
+        marginTop="s10"
+      />
     </Screen>
   );
 }
