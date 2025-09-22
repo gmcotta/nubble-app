@@ -18,6 +18,9 @@ export * from './icon/registry';
 export * from './password-input';
 export * from './password-input/props';
 
+export * from './post-item';
+export * from './post-item/props';
+
 export * from './restyle/box';
 export * from './restyle/box/props';
 
