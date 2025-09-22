@@ -1,11 +1,15 @@
-export const $scrollViewStyle = (backgroundColor: string) => {
+import { ScrollViewProps, ViewProps } from 'react-native';
+
+export const scrollViewStyles = (
+  backgroundColor: string
+): ScrollViewProps['style'] => {
   return {
     backgroundColor,
     flex: 1
   };
 };
 
-export const $viewStyle = (backgroundColor: string) => {
+export const viewStyles = (backgroundColor: string): ViewProps['style'] => {
   return {
     backgroundColor,
     flex: 1

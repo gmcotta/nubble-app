@@ -1,7 +1,7 @@
 import { ScrollView, View } from 'react-native';
 
 import { BaseViewProps } from './props';
-import { $scrollViewStyle, $viewStyle } from './styles';
+import * as S from './styles';
 
 export function ScrollViewContainer({
   children,
@@ -10,7 +10,7 @@ export function ScrollViewContainer({
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
-      style={$scrollViewStyle(backgroundColor)}
+      style={S.scrollViewStyles(backgroundColor)}
     >
       {children}
     </ScrollView>
@@ -18,5 +18,5 @@ export function ScrollViewContainer({
 }
 
 export function ViewContainer({ children, backgroundColor }: BaseViewProps) {
-  return <View style={$viewStyle(backgroundColor)}>{children}</View>;
+  return <View style={S.viewStyles(backgroundColor)}>{children}</View>;
 }

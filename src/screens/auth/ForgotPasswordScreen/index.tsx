@@ -6,6 +6,7 @@ import { useResetNavigationSuccess } from '@hooks';
 import { resetNavigationValues, screenValues } from './constants';
 import { ForgotPasswordFormSchema } from './props';
 import { forgotPasswordSchema } from './schema';
+import * as S from './styles';
 
 export function ForgotPasswordScreen() {
   const { control, formState, handleSubmit } =
@@ -29,23 +30,19 @@ export function ForgotPasswordScreen() {
 
   return (
     <Screen canGoBack>
-      <Text preset="headingLarge" marginTop="s24">
-        {screenValues.title}
-      </Text>
-      <Text preset="paragraphLarge" marginTop="s16">
-        {screenValues.description}
-      </Text>
+      <Text {...S.titleStyles}>{screenValues.title}</Text>
+      <Text {...S.descriptionStyles}>{screenValues.description}</Text>
       <FormTextInput
         control={control}
         name="email"
-        boxProps={{ marginTop: 's32' }}
+        boxProps={S.textInputStyles}
         {...screenValues.emailInput}
       />
       <Button
         title={screenValues.submitButton.title}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
-        marginTop="s48"
+        {...S.buttonStyles}
       />
     </Screen>
   );

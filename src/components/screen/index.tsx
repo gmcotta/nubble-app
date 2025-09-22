@@ -9,7 +9,7 @@ import {
 } from './components/screen-container';
 import { screenValues } from './constants';
 import { ScreenProps } from './props';
-import { $keyboardAvoidingViewStyles } from './styles';
+import * as S from './styles';
 
 export function Screen({
   children,
@@ -31,7 +31,7 @@ export function Screen({
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      style={$keyboardAvoidingViewStyles}
+      style={S.keyboardAvoidingViewStyles}
     >
       <Container backgroundColor={colors.background}>
         <Box
@@ -40,14 +40,9 @@ export function Screen({
           {...boxProps}
         >
           {canGoBack ? (
-            <TouchableOpacityBox
-              marginBottom="s24"
-              onPress={handleGoBack}
-              flexDirection="row"
-              alignItems="center"
-            >
+            <TouchableOpacityBox onPress={handleGoBack} {...S.backButtonStyles}>
               <Icon name="arrowLeft" color="primary" />
-              <Text marginLeft="s8" preset="paragraphMedium" bold>
+              <Text preset="paragraphMedium" {...S.backButtonTextStyles}>
                 {screenValues.backButton.title}
               </Text>
             </TouchableOpacityBox>

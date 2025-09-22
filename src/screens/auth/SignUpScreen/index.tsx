@@ -12,6 +12,7 @@ import { useResetNavigationSuccess } from '@hooks';
 import { resetNavigationValues, screenValues } from './constants';
 import { SignUpFormSchema } from './props';
 import { signUpSchema } from './schema';
+import * as S from './styles';
 
 export function SignUpScreen() {
   const { control, formState, handleSubmit } = useForm<SignUpFormSchema>({
@@ -33,32 +34,30 @@ export function SignUpScreen() {
 
   return (
     <Screen canGoBack scrollable>
-      <Text preset="headingLarge" marginBottom="s32">
-        {screenValues.title}
-      </Text>
+      <Text {...S.titleStyles}>{screenValues.title}</Text>
       <FormTextInput
         control={control}
         name="username"
         {...screenValues.usernameInput}
-        boxProps={{ marginBottom: 's20' }}
+        boxProps={S.usernameInputStyles}
       />
       <FormTextInput
         control={control}
         name="fullName"
         {...screenValues.nameInput}
-        boxProps={{ marginBottom: 's20' }}
+        boxProps={S.fullNameInputStyles}
       />
       <FormTextInput
         control={control}
         name="email"
         {...screenValues.emailInput}
-        boxProps={{ marginBottom: 's20' }}
+        boxProps={S.emailInputStyles}
       />
       <FormPasswordInput
         control={control}
         name="password"
         {...screenValues.passwordInput}
-        boxProps={{ marginBottom: 's48' }}
+        boxProps={S.passwordInputStyles}
       />
       <Button
         title={screenValues.submitButton.title}

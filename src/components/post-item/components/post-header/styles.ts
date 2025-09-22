@@ -9,7 +9,7 @@ export const profileBoxStyles: RestyleBoxProps = {
   paddingHorizontal: 's24'
 };
 
-export const profileImageStyles: ImageProps = {
+export const profileImageStyles: ImageProps['style'] = {
   width: 32,
   height: 32,
   borderRadius: 14

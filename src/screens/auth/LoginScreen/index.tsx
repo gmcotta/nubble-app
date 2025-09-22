@@ -12,6 +12,7 @@ import {
 import { screenValues } from './constants';
 import { LoginFormSchema, LoginScreenProps } from './props';
 import { loginSchema } from './schema';
+import * as S from './styles';
 
 export function LoginScreen({ navigation }: LoginScreenProps) {
   const { control, formState, handleSubmit } = useForm<LoginFormSchema>({
@@ -37,26 +38,22 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
 
   return (
     <Screen>
-      <Text preset="headingLarge" marginBottom="s8">
-        {screenValues.title}
-      </Text>
-      <Text preset="paragraphLarge" marginBottom="s40">
-        {screenValues.description}
-      </Text>
+      <Text {...S.titleStyles}>{screenValues.title}</Text>
+      <Text {...S.descriptionStyles}>{screenValues.description}</Text>
       <FormTextInput
         control={control}
         name="email"
+        boxProps={S.textInputStyles}
         {...screenValues.emailInput}
-        boxProps={{ marginBottom: 's20' }}
       />
       <FormPasswordInput
         control={control}
         name="password"
+        boxProps={S.passwordInputStyles}
         {...screenValues.passwordInput}
-        boxProps={{ marginBottom: 's10' }}
       />
       <Pressable onPress={navigateToForgotPasswordScreen}>
-        <Text color="primary" preset="paragraphSmall" bold marginBottom="s40">
+        <Text {...S.forgotPasswordTextStyles}>
           {screenValues.forgotPassword.text}
         </Text>
       </Pressable>
@@ -64,12 +61,12 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
         title={screenValues.submitButton.title}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
-        marginBottom="s12"
+        {...S.loginButtonStyles}
       />
       <Button
         onPress={navigateToSignUpScreen}
-        variant="outline"
         title={screenValues.signUpButtton.title}
+        {...S.signUpButtonStyles}
       />
     </Screen>
   );
