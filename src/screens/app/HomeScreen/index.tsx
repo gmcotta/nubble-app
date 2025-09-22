@@ -1,19 +1,24 @@
-import { Button, Screen, Text } from '@components';
-import { HomeScreenProps } from './props';
+import { useEffect, useState } from 'react';
 
-export function HomeScreen({ navigation }: HomeScreenProps) {
+import { Screen, Text } from '@components';
+import { Post, postService } from '@domain';
+// import { HomeScreenProps } from './props';
+
+export function HomeScreen() {
+  const [postList, setPostList] = useState<Post[]>([]);
+
+  useEffect(() => {
+    postService.getList().then(list => {
+      console.log(list);
+      setPostList(list);
+    });
+  }, []);
+
   return (
     <Screen canGoBack>
-      <Text preset="headingLarge">Home</Text>
-      <Button
-        title="Configurações"
-        onPress={() => navigation.navigate('SettingsScreen')}
-      />
-      <Button
-        title="Favoritos"
-        onPress={() => navigation.navigate('FavoriteScreen')}
-        marginTop="s10"
-      />
+      {postList.map(post => (
+        <Text key={post.id}>{post.text}</Text>
+      ))}
     </Screen>
   );
 }
