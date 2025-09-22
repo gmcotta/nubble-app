@@ -1,5 +1,5 @@
 import { Box } from '@components';
-import { PostActions, PostHeader, PostImage } from './components';
+import { PostActions, PostBottom, PostHeader, PostImage } from './components';
 import { PostItemProps } from './props';
 import * as S from './styles';
 
@@ -12,6 +12,11 @@ export function PostItem({ post }: PostItemProps) {
         commentCount={post.commentCount}
         favoriteCount={post.favoriteCount}
         reactionCount={post.reactionCount}
+      />
+      <PostBottom
+        author={post.author}
+        text={post.text}
+        commentCount={post.commentCount}
       />
     </Box>
   );

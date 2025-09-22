@@ -6,8 +6,7 @@ import {
 
 export const itemContainerStyles: TouchableOpacityBoxProps = {
   flexDirection: 'row',
-  alignItems: 'center',
-  paddingHorizontal: 's24'
+  alignItems: 'center'
 };
 
 export const itemTextStyles: TextProps = {
@@ -18,5 +17,6 @@ export const itemTextStyles: TextProps = {
 export const postActionsContainerStyles: RestyleBoxProps = {
   flexDirection: 'row',
   marginTop: 's16',
-  gap: 's24'
+  gap: 's24',
+  paddingHorizontal: 's24'
 };
