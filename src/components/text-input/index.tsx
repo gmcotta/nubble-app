@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Pressable, TextInput as RNTextInput } from 'react-native';
 
-import { RestyleBox, Text } from '@components';
+import { Box, Text } from '@components';
 import { useRestyleTheme } from '@hooks';
 import { TextInputProps } from './props';
 import { $textInputContainer, $textInputStyle } from './styles';
@@ -21,12 +21,12 @@ export function TextInput({
   };
 
   return (
-    <RestyleBox {...boxProps}>
+    <Box {...boxProps}>
       <Pressable onPress={focusInput}>
         <Text marginBottom="s4" preset="paragraphMedium">
           {label}
         </Text>
-        <RestyleBox {...$textInputContainer(errorMessage)}>
+        <Box {...$textInputContainer(errorMessage)}>
           <RNTextInput
             ref={textInputRef}
             placeholderTextColor={colors.gray2}
@@ -34,16 +34,14 @@ export function TextInput({
             style={$textInputStyle}
             {...textInputProps}
           />
-          {rightComponent ? (
-            <RestyleBox marginLeft="s16">{rightComponent}</RestyleBox>
-          ) : null}
-        </RestyleBox>
+          {rightComponent ? <Box marginLeft="s16">{rightComponent}</Box> : null}
+        </Box>
         {errorMessage ? (
           <Text preset="paragraphSmall" color="error" bold>
             {errorMessage}
           </Text>
         ) : null}
       </Pressable>
-    </RestyleBox>
+    </Box>
   );
 }
