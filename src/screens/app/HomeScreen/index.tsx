@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { Screen, Text } from '@components';
+import { FlatList, Image, ListRenderItemInfo } from 'react-native';
+import { Box, Screen, Text } from '@components';
 import { Post, postService } from '@domain';
+import { postImageStyles, profileImageStyles } from './styles';
 // import { HomeScreenProps } from './props';
 
 export function HomeScreen() {
@@ -14,11 +16,28 @@ export function HomeScreen() {
     });
   }, []);
 
+  function renderItem({ item }: ListRenderItemInfo<Post>) {
+    return (
+      <Box marginBottom="s24">
+        <Box flexDirection="row">
+          <Image
+            source={{ uri: item.author.profileURL }}
+            style={profileImageStyles}
+          />
+          <Text>{item.author.name}</Text>
+        </Box>
+        <Image source={{ uri: item.imageURL }} style={postImageStyles} />
+      </Box>
+    );
+  }
+
   return (
-    <Screen canGoBack>
-      {postList.map(post => (
-        <Text key={post.id}>{post.text}</Text>
-      ))}
+    <Screen>
+      <FlatList
+        data={postList}
+        keyExtractor={item => item.id}
+        renderItem={renderItem}
+      />
     </Screen>
   );
 }
