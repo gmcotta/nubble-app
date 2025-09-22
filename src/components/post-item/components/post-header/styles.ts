@@ -5,7 +5,8 @@ import { RestyleBoxProps, TextProps } from '@components';
 export const profileBoxStyles: RestyleBoxProps = {
   flexDirection: 'row',
   alignItems: 'center',
-  marginBottom: 's16'
+  marginBottom: 's16',
+  paddingHorizontal: 's24'
 };
 
 export const profileImageStyles: ImageProps = {

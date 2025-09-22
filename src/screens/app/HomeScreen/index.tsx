@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-
 import { FlatList, ListRenderItemInfo } from 'react-native';
+
 import { Screen, PostItem } from '@components';
 import { Post, postService } from '@domain';
 import { HomeScreenProps } from './props';
+import * as S from './styles';
 
 export function HomeScreen({}: HomeScreenProps) {
   const [postList, setPostList] = useState<Post[]>([]);
@@ -20,7 +21,7 @@ export function HomeScreen({}: HomeScreenProps) {
   }
 
   return (
-    <Screen>
+    <Screen style={S.screenStyles}>
       <FlatList
         data={postList}
         keyExtractor={item => item.id}

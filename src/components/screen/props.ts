@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 
-export interface ScreenProps {
+import { RestyleBoxProps } from '@components';
+
+export interface ScreenProps extends RestyleBoxProps {
   children: ReactNode;
   canGoBack?: boolean;
   scrollable?: boolean;

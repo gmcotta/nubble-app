@@ -6,7 +6,8 @@ import {
 
 export const itemContainerStyles: TouchableOpacityBoxProps = {
   flexDirection: 'row',
-  alignItems: 'center'
+  alignItems: 'center',
+  paddingHorizontal: 's24'
 };
 
 export const itemTextStyles: TextProps = {
