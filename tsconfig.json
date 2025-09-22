@@ -6,6 +6,8 @@
     "baseUrl": "./",
     "paths": {
       "*": ["src/*"],
+      "@branding": ["src/branding"],
+      "@branding/*": ["src/branding/*"],
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
       "@domain": ["src/domain"],

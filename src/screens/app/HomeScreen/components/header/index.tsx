@@ -1,3 +1,4 @@
+import { SimpleLogo } from '@branding';
 import { Box, Icon } from '@components';
 import { useAppSafeArea } from '@hooks';
 import * as S from './styles';
@@ -7,7 +8,7 @@ export function HomeHeader() {
 
   return (
     <Box {...S.headerContainerStyles(top)}>
-      <Box width={70} height={16} backgroundColor="carrotSecondary" />
+      <SimpleLogo width={70} />
       <Box {...S.iconContainerStyles}>
         <Icon name="search" />
         <Icon name="bell" />
