@@ -27,8 +27,7 @@ export function SignUpScreen() {
   });
   const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
 
-  function submitForm(formValues: SignUpFormSchema) {
-    console.log(formValues);
+  function submitForm(/* formValues: SignUpFormSchema */) {
     reset();
   }
 

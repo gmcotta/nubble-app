@@ -12,7 +12,6 @@ export function HomeScreen({}: HomeScreenProps) {
 
   useEffect(() => {
     postService.getList().then(list => {
-      console.log(list);
       setPostList(list);
     });
   }, []);

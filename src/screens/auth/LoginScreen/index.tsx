@@ -24,9 +24,7 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
     mode: 'onChange'
   });
 
-  function submitForm(fieldValues: LoginFormSchema) {
-    console.log(fieldValues);
-  }
+  function submitForm(/* fieldValues: LoginFormSchema */) {}
 
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');

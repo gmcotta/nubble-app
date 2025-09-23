@@ -19,8 +19,7 @@ export function ForgotPasswordScreen() {
     });
   const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
 
-  function submitForm(formValues: ForgotPasswordFormSchema) {
-    console.log(formValues);
+  function submitForm(/* formValues: ForgotPasswordFormSchema */) {
     navigateToSuccessScreen();
   }
 
