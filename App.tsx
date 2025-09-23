@@ -1,3 +1,7 @@
+if (__DEV__) {
+  require('./reactotronConfig');
+}
+
 import { ThemeProvider } from '@shopify/restyle';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 

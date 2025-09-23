@@ -2927,6 +2927,7 @@ __metadata:
     react-native-screens: "npm:^4.16.0"
     react-native-svg: "npm:^15.13.0"
     react-test-renderer: "npm:19.1.0"
+    reactotron-react-native: "npm:^5.1.17"
     typescript: "npm:5.5.2"
     zod: "npm:^4.1.9"
   languageName: unknown
@@ -7531,6 +7532,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mitt@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "mitt@npm:3.0.1"
+  checksum: 10c0/3ab4fdecf3be8c5255536faa07064d05caa3dd332bd318ff02e04621f7b3069ca1de9106cfe8e7ced675abfc2bec2ce4c4ef321c4a1bb1fb29df8ae090741913
+  languageName: node
+  linkType: hard
+
 "mkdirp@npm:^1.0.4":
   version: 1.0.4
   resolution: "mkdirp@npm:1.0.4"
@@ -8434,6 +8442,34 @@ __metadata:
   version: 19.1.0
   resolution: "react@npm:19.1.0"
   checksum: 10c0/530fb9a62237d54137a13d2cfb67a7db6a2156faed43eecc423f4713d9b20c6f2728b026b45e28fcd72e8eadb9e9ed4b089e99f5e295d2f0ad3134251bdd3698
+  languageName: node
+  linkType: hard
+
+"reactotron-core-client@npm:2.9.8":
+  version: 2.9.8
+  resolution: "reactotron-core-client@npm:2.9.8"
+  dependencies:
+    reactotron-core-contract: "npm:0.3.1"
+  checksum: 10c0/3bb3c2107dd723116183e90f9aea8070b8afc0a6d0317e497f85a8c29dc52c5f69a67ed461139f5af6563946218bae12710bd1843167059ce0c679d67b9973b1
+  languageName: node
+  linkType: hard
+
+"reactotron-core-contract@npm:0.3.1":
+  version: 0.3.1
+  resolution: "reactotron-core-contract@npm:0.3.1"
+  checksum: 10c0/4738448fddb8bb02225cd9ac5cb4e9a6cc3ca9cddd7d9c0169e46994f4b9f946d9013976aefe0ddddbd1184e01aa041970c5e3d5f00b2f9d2ce7c6d6899650a5
+  languageName: node
+  linkType: hard
+
+"reactotron-react-native@npm:^5.1.17":
+  version: 5.1.17
+  resolution: "reactotron-react-native@npm:5.1.17"
+  dependencies:
+    mitt: "npm:^3.0.1"
+    reactotron-core-client: "npm:2.9.8"
+  peerDependencies:
+    react-native: ">=0.40.0"
+  checksum: 10c0/7a79efb6cc0773917a515fcf178f39ae40563f14ff13da81a93cd33e73c49117f6e3188592c271fb56ee522dc4c84ef58db5ce716da7994eeac2d5d5a0c826ed
   languageName: node
   linkType: hard
 
