@@ -24,6 +24,8 @@
       "@styles/*": ["src/styles/*"],
       "@theme": ["src/theme"],
       "@theme/*": ["src/theme/*"],
+      "@types": ["src/types"],
+      "@types/*": ["src/types/*"],
       "@validations": ["src/validations"],
       "@validations/*": ["src/validations/*"]
     }

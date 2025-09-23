@@ -8,14 +8,21 @@ export function usePostList() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [hasNextPage, setHasNextPage] = useState(false);
 
   async function fetchInitialData() {
     setLoading(true);
     try {
       setError(false);
-      const list = await postService.getList(1);
-      setPostList(list);
-      setPage(2);
+      const { meta, data } = await postService.getList(1);
+      setPostList(data);
+
+      if (meta.hasNextPage) {
+        setHasNextPage(true);
+        setPage(2);
+      } else {
+        setHasNextPage(false);
+      }
     } catch (e) {
       setError(true);
     } finally {
@@ -27,9 +34,13 @@ export function usePostList() {
     setLoading(true);
     try {
       setError(false);
-      const list = await postService.getList(page);
-      setPostList(old => [...old, ...list]);
-      setPage(old => old + 1);
+      const { meta, data } = await postService.getList(page);
+      setPostList(old => [...old, ...data]);
+      if (meta.hasNextPage) {
+        setPage(old => old + 1);
+      } else {
+        setHasNextPage(false);
+      }
     } catch (e) {
       setError(true);
     } finally {
@@ -38,7 +49,7 @@ export function usePostList() {
   }
 
   function fetchNextPage() {
-    if (loading) return;
+    if (loading || !hasNextPage) return;
     fetchData();
   }
 
