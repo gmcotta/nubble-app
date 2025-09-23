@@ -1,3 +1,5 @@
+import { useScrollToTop } from '@react-navigation/native';
+import { useRef } from 'react';
 import { FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
 
 import { Screen, PostItem } from '@components';
@@ -11,11 +13,14 @@ function renderItem({ item }: ListRenderItemInfo<Post>) {
 }
 
 export function HomeScreen({}: HomeScreenProps) {
+  const flatListRef = useRef<FlatList<Post>>(null);
+  useScrollToTop(flatListRef);
   const { postList, loading, error, fetchNextPage, refresh } = usePostList();
 
   return (
     <Screen style={S.screenStyles}>
       <FlatList
+        ref={flatListRef}
         data={postList}
         keyExtractor={item => item.id}
         renderItem={renderItem}
@@ -25,7 +30,11 @@ export function HomeScreen({}: HomeScreenProps) {
         onEndReached={fetchNextPage}
         onEndReachedThreshold={0.1}
         refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={refresh} />
+          <RefreshControl
+            refreshing={loading}
+            onRefresh={refresh}
+            progressViewOffset={100}
+          />
         }
         refreshing={loading}
       />
