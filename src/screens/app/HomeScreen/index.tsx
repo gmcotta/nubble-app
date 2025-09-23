@@ -1,4 +1,4 @@
-import { FlatList, ListRenderItemInfo } from 'react-native';
+import { FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
 
 import { Screen, PostItem } from '@components';
 import { Post, usePostList } from '@domain';
@@ -11,7 +11,7 @@ function renderItem({ item }: ListRenderItemInfo<Post>) {
 }
 
 export function HomeScreen({}: HomeScreenProps) {
-  const { postList, loading, error, fetchNextPage } = usePostList();
+  const { postList, loading, error, fetchNextPage, refresh } = usePostList();
 
   return (
     <Screen style={S.screenStyles}>
@@ -24,6 +24,10 @@ export function HomeScreen({}: HomeScreenProps) {
         ListEmptyComponent={<HomeEmpty loading={loading} error={error} />}
         onEndReached={fetchNextPage}
         onEndReachedThreshold={0.1}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refresh} />
+        }
+        refreshing={loading}
       />
     </Screen>
   );
