@@ -11,7 +11,7 @@ function renderItem({ item }: ListRenderItemInfo<Post>) {
 }
 
 export function HomeScreen({}: HomeScreenProps) {
-  const { postList, loading, error } = usePostList();
+  const { postList, loading, error, fetchNextPage } = usePostList();
 
   return (
     <Screen style={S.screenStyles}>
@@ -19,9 +19,11 @@ export function HomeScreen({}: HomeScreenProps) {
         data={postList}
         keyExtractor={item => item.id}
         renderItem={renderItem}
+        contentContainerStyle={S.flatListContentStyles(postList.length)}
         ListHeaderComponent={<HomeHeader />}
         ListEmptyComponent={<HomeEmpty loading={loading} error={error} />}
-        contentContainerStyle={S.flatListContentStyles(postList.length)}
+        onEndReached={fetchNextPage}
+        onEndReachedThreshold={0.1}
       />
     </Screen>
   );

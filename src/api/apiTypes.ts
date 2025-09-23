@@ -18,3 +18,11 @@ export interface PageAPI<Data> {
   meta: PaginationMetaDataAPI;
   data: Data[];
 }
+
+/**
+ * @description Interface que define as opções de paginação
+ */
+export interface PaginationParams {
+  page?: number;
+  per_page?: number;
+}
