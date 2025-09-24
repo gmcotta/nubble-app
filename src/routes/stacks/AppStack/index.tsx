@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppTabNavigator } from '@routes/tabs';
-import { SettingsScreen } from '@screens/app';
+import { SettingsScreen, PostCommentScreen } from '@screens/app';
 import { AppStackParamList } from './props';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
@@ -14,6 +14,7 @@ export function AppStack() {
     >
       <Stack.Screen name="AppTabNavigator" component={AppTabNavigator} />
       <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+      <Stack.Screen name="PostCommentScreen" component={PostCommentScreen} />
     </Stack.Navigator>
   );
 }
