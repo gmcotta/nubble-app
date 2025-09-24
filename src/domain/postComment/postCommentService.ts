@@ -21,6 +21,6 @@ async function getList(
   return { meta, data };
 }
 
-export const postService = {
+export const postCommentService = {
   getList
 };

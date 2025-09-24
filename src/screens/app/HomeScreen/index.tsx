@@ -15,7 +15,13 @@ function renderItem({ item }: ListRenderItemInfo<Post>) {
 export function HomeScreen({}: HomeScreenProps) {
   const flatListRef = useRef<FlatList<Post>>(null);
   useScrollToTop(flatListRef);
-  const { postList, loading, error, fetchNextPage, refresh } = usePostList();
+  const {
+    data: postList,
+    loading,
+    error,
+    fetchNextPage,
+    refresh
+  } = usePostList();
 
   return (
     <Screen style={S.screenStyles}>
