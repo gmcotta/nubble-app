@@ -28,7 +28,7 @@ export function HomeScreen({}: HomeScreenProps) {
       <FlatList
         ref={flatListRef}
         data={postList}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         contentContainerStyle={S.flatListContentStyles(postList.length)}
         ListHeaderComponent={<HomeHeader />}

@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
+    "typeCheck": "tsc --noEmit",
     "test": "jest",
     "prepare": "husky"
   },
