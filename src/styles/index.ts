@@ -1,3 +1,3 @@
-export * from './font-family';
-export * from './font-size';
-export * from './shadow-effect';
+export * from './fontFamily';
+export * from './fontSize';
+export * from './shadowEffect';

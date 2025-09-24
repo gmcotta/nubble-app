@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react';
 
-import { RestyleText } from './';
+import { RestyleText } from '.';
 
 export type RestyleTextProps = ComponentProps<typeof RestyleText>;

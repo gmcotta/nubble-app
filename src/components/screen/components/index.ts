@@ -1,2 +1,2 @@
-export * from './screen-container';
-export * from './screen-header';
+export * from './ScreenContainer';
+export * from './ScreenHeader';

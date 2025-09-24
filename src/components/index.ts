@@ -1,40 +1,40 @@
-export * from './activity-indicator';
-export * from './activity-indicator/props';
+export * from './ActivityIndicator';
+export * from './ActivityIndicator/props';
 
-export * from './button';
-export * from './button/props';
-export * from './button/variants';
+export * from './Button';
+export * from './Button/props';
+export * from './Button/variants';
 
-export * from './form/form-password-input';
-export * from './form/form-password-input/props';
+export * from './Form/FormPasswordInput';
+export * from './Form/FormPasswordInput/props';
 
-export * from './form/form-text-input';
-export * from './form/form-text-input/props';
+export * from './Form/FormTextInput';
+export * from './Form/FormTextInput/props';
 
-export * from './icon';
-export * from './icon/props';
-export * from './icon/registry';
+export * from './Icon';
+export * from './Icon/props';
+export * from './Icon/registry';
 
-export * from './password-input';
-export * from './password-input/props';
+export * from './PasswordInput';
+export * from './PasswordInput/props';
 
-export * from './post-item';
-export * from './post-item/props';
+export * from './PostItem';
+export * from './PostItem/props';
 
-export * from './restyle/box';
-export * from './restyle/box/props';
+export * from './Restyle/Box';
+export * from './Restyle/Box/props';
 
-export * from './restyle/text';
-export * from './restyle/text/props';
+export * from './Restyle/Text';
+export * from './Restyle/Text/props';
 
-export * from './restyle/touchable-opacity-box';
-export * from './restyle/touchable-opacity-box/props';
+export * from './Restyle/TouchableOpacityBox';
+export * from './Restyle/TouchableOpacityBox/props';
 
-export * from './screen';
-export * from './screen/props';
+export * from './Screen';
+export * from './Screen/props';
 
-export * from './text';
-export * from './text/props';
+export * from './Text';
+export * from './Text/props';
 
-export * from './text-input';
-export * from './text-input/props';
+export * from './TextInput';
+export * from './TextInput/props';
