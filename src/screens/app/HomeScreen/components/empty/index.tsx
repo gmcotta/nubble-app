@@ -1,5 +1,5 @@
 import { ActivityIndicator, Box, Text } from '@components';
-import { screenValues } from './constants';
+import * as C from './constants';
 import { HomeEmptyProps } from './props';
 import * as S from './styles';
 
@@ -15,14 +15,14 @@ export function HomeEmpty({ loading, error }: HomeEmptyProps) {
   if (error) {
     return (
       <Box {...S.boxStyles}>
-        <Text>{screenValues.errorText}</Text>
+        <Text>{C.SCREEN_VALUES.ERROR_TEXT}</Text>
       </Box>
     );
   }
 
   return (
     <Box {...S.boxStyles}>
-      <Text>{screenValues.emptyText}</Text>
+      <Text>{C.SCREEN_VALUES.EMPTY_TEXT}</Text>
     </Box>
   );
 }

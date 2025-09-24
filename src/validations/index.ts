@@ -1,24 +1,24 @@
 import * as z from 'zod';
 
-import { errorMessages } from './constants';
+import * as C from './constants';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/gim;
 
 export const usernameValidator = z
   .string()
-  .regex(usernameRegex, errorMessages.username.invalid);
+  .regex(usernameRegex, C.ERROR_MESSAGES.USERNAME.INVALID);
 
 export const fullNameValidator = z
   .string()
-  .min(5, errorMessages.fullName.short)
-  .max(80, errorMessages.fullName.long);
+  .min(5, C.ERROR_MESSAGES.FULL_NAME.SHORT)
+  .max(80, C.ERROR_MESSAGES.FULL_NAME.LONG);
 
-export const emailValidator = z.email(errorMessages.email.invalid);
+export const emailValidator = z.email(C.ERROR_MESSAGES.EMAIL.INVALID);
 
 export const newPasswordValidator = z
   .string()
-  .min(8, errorMessages.password.short);
+  .min(8, C.ERROR_MESSAGES.PASSWORD.SHORT);
 
 export const passwordValidator = z
   .string()
-  .min(1, errorMessages.password.required);
+  .min(1, C.ERROR_MESSAGES.PASSWORD.REQUIRED);

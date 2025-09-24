@@ -4,9 +4,11 @@ import { useRestyleTheme } from '@hooks';
 import { IconProps } from './props';
 import { iconRegistry } from './registry';
 
+const ICON_SIZE = 20;
+
 export function Icon({
   name,
-  size = 20,
+  size = ICON_SIZE,
   color = 'backgroundContrast',
   notificationColor = 'carrotSecondary',
   onPress

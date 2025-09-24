@@ -1,4 +1,5 @@
 import { Button, Icon, Screen, Text } from '@components';
+import * as C from './constants';
 import { SuccessScreenProps } from './props';
 import * as S from './styles';
 
@@ -11,12 +12,12 @@ export function SuccessScreen({ navigation, route }: SuccessScreenProps) {
 
   return (
     <Screen>
-      <Icon size={48} {...params.icon} />
+      <Icon size={C.ICON_SIZE} {...params.icon} />
       <Text {...S.titleStyles}>{params.title}</Text>
       <Text {...S.descriptionStyles}>{params.description}</Text>
       <Button
         onPress={mavigateToBeginning}
-        title="Voltar ao início"
+        title={C.SCREEN_VALUES.BACK_BUTTON.TITLE}
         {...S.backButtonStyles}
       />
     </Screen>

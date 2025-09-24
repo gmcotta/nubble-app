@@ -1,12 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
+
 import { Box, Text, TouchableOpacityBox } from '@components';
+import * as C from './constants';
 import { PostBottomProps } from './props';
 import * as S from './styles';
 
 function getCommentText(commentCount: number): string {
   return commentCount > 1
-    ? `ver ${commentCount} comentários`
-    : 'ver comentário';
+    ? C.SCREEN_VALUES.SEE_COMMENTS(commentCount)
+    : C.SCREEN_VALUES.SEE_COMMENT;
 }
 
 export function PostBottom({

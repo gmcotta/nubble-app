@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import { Button, FormTextInput, Screen, Text } from '@components';
 import { useResetNavigationSuccess } from '@hooks';
-import { resetNavigationValues, screenValues } from './constants';
+import * as C from './constants';
 import { ForgotPasswordFormSchema } from './props';
 import { forgotPasswordSchema } from './schema';
 import * as S from './styles';
@@ -17,7 +17,17 @@ export function ForgotPasswordScreen() {
       },
       mode: 'onChange'
     });
-  const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
+  const { reset } = useResetNavigationSuccess({
+    originRoute: 'LoginScreen',
+    successScreenParams: {
+      title: C.SCREEN_VALUES.SUCCESS_SCREEN_TITLE,
+      description: C.SCREEN_VALUES.SUCCESS_SCREEN_DESCRIPTION,
+      icon: {
+        name: 'messageRound',
+        color: 'primary'
+      }
+    }
+  });
 
   function submitForm(/* formValues: ForgotPasswordFormSchema */) {
     navigateToSuccessScreen();
@@ -29,16 +39,16 @@ export function ForgotPasswordScreen() {
 
   return (
     <Screen canGoBack>
-      <Text {...S.titleStyles}>{screenValues.title}</Text>
-      <Text {...S.descriptionStyles}>{screenValues.description}</Text>
+      <Text {...S.titleStyles}>{C.SCREEN_VALUES.TITLE}</Text>
+      <Text {...S.descriptionStyles}>{C.SCREEN_VALUES.DESCRIPTION}</Text>
       <FormTextInput
         control={control}
         name="email"
         boxProps={S.textInputStyles}
-        {...screenValues.emailInput}
+        {...C.SCREEN_VALUES.EMAIL_INPUT}
       />
       <Button
-        title={screenValues.submitButton.title}
+        title={C.SCREEN_VALUES.SUBMIT_BUTTON.TITLE}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
         {...S.buttonStyles}

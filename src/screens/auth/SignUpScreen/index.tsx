@@ -9,7 +9,7 @@ import {
   Text
 } from '@components';
 import { useResetNavigationSuccess } from '@hooks';
-import { resetNavigationValues, screenValues } from './constants';
+import * as C from './constants';
 import { SignUpFormSchema } from './props';
 import { signUpSchema } from './schema';
 import * as S from './styles';
@@ -25,7 +25,17 @@ export function SignUpScreen() {
     },
     mode: 'onChange'
   });
-  const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
+  const { reset } = useResetNavigationSuccess({
+    originRoute: 'LoginScreen',
+    successScreenParams: {
+      title: C.SCREEN_VALUES.SUCCESS_SCREEN_TITLE,
+      description: C.SCREEN_VALUES.SUCCESS_SCREEN_DESCRIPTION,
+      icon: {
+        name: 'checkRound',
+        color: 'primary'
+      }
+    }
+  });
 
   function submitForm(/* formValues: SignUpFormSchema */) {
     reset();
@@ -33,33 +43,33 @@ export function SignUpScreen() {
 
   return (
     <Screen canGoBack scrollable>
-      <Text {...S.titleStyles}>{screenValues.title}</Text>
+      <Text {...S.titleStyles}>{C.SCREEN_VALUES.TITLE}</Text>
       <FormTextInput
         control={control}
         name="username"
-        {...screenValues.usernameInput}
+        {...C.SCREEN_VALUES.USERNAME_INPUT}
         boxProps={S.usernameInputStyles}
       />
       <FormTextInput
         control={control}
         name="fullName"
-        {...screenValues.nameInput}
+        {...C.SCREEN_VALUES.NAME_INPUT}
         boxProps={S.fullNameInputStyles}
       />
       <FormTextInput
         control={control}
         name="email"
-        {...screenValues.emailInput}
+        {...C.SCREEN_VALUES.EMAIL_INPUT}
         boxProps={S.emailInputStyles}
       />
       <FormPasswordInput
         control={control}
         name="password"
-        {...screenValues.passwordInput}
+        {...C.SCREEN_VALUES.PASSWORD_INPUT}
         boxProps={S.passwordInputStyles}
       />
       <Button
-        title={screenValues.submitButton.title}
+        title={C.SCREEN_VALUES.SUBMIT_BUTTON.TITLE}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
       />

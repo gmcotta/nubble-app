@@ -17,7 +17,7 @@ export function ScreenHeader({ title }: Pick<ScreenProps, 'title'>) {
         <Icon size={C.ICON_SIZE} name="arrowLeft" color="primary" />
         {!title ? (
           <Text {...S.backButtonTextStyles}>
-            {C.SCREEN_VALUES.backButton.title}
+            {C.SCREEN_VALUES.BACK_BUTTON.TITLE}
           </Text>
         ) : null}
       </TouchableOpacityBox>

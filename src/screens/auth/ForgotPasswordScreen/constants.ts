@@ -1,27 +1,15 @@
-import { UseResetNavigationSuccessProps } from '@hooks';
-
-export const resetNavigationValues: UseResetNavigationSuccessProps = {
-  originRoute: 'LoginScreen',
-  successScreenParams: {
-    title: `Enviamos as\ninstruções para seu\ne-mail`,
-    description:
-      'Clique no link enviado no seu e-mail para recuperar sua senha.',
-    icon: {
-      name: 'messageRound',
-      color: 'primary'
-    }
-  }
-};
-
-export const screenValues = {
-  title: 'Esqueci minha senha',
-  description:
+export const SCREEN_VALUES = {
+  TITLE: 'Esqueci minha senha',
+  DESCRIPTION:
     'Digite seu e-mail e enviaremos as instruções para redefinição de senha.',
-  emailInput: {
+  EMAIL_INPUT: {
     label: 'E-mail',
     placeholder: 'Digite seu e-mail'
   },
-  submitButton: {
-    title: 'Recuperar senha'
-  }
+  SUBMIT_BUTTON: {
+    TITLE: 'Recuperar senha'
+  },
+  SUCCESS_SCREEN_TITLE: 'Enviamos as\ninstruções para seu\ne-mail',
+  SUCCESS_SCREEN_DESCRIPTION:
+    'Clique no link enviado no seu e-mail para recuperar sua senha.'
 };

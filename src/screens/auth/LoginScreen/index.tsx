@@ -9,7 +9,7 @@ import {
   Screen,
   Text
 } from '@components';
-import { screenValues } from './constants';
+import * as C from './constants';
 import { LoginFormSchema, LoginScreenProps } from './props';
 import { loginSchema } from './schema';
 import * as S from './styles';
@@ -36,34 +36,34 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
 
   return (
     <Screen>
-      <Text {...S.titleStyles}>{screenValues.title}</Text>
-      <Text {...S.descriptionStyles}>{screenValues.description}</Text>
+      <Text {...S.titleStyles}>{C.SCREEN_VALUES.TITLE}</Text>
+      <Text {...S.descriptionStyles}>{C.SCREEN_VALUES.DESCRIPTION}</Text>
       <FormTextInput
         control={control}
         name="email"
         boxProps={S.textInputStyles}
-        {...screenValues.emailInput}
+        {...C.SCREEN_VALUES.EMAIL_INPUT}
       />
       <FormPasswordInput
         control={control}
         name="password"
         boxProps={S.passwordInputStyles}
-        {...screenValues.passwordInput}
+        {...C.SCREEN_VALUES.PASSWORD_INPUT}
       />
       <Pressable onPress={navigateToForgotPasswordScreen}>
         <Text {...S.forgotPasswordTextStyles}>
-          {screenValues.forgotPassword.text}
+          {C.SCREEN_VALUES.FORGOT_PASSWORD.text}
         </Text>
       </Pressable>
       <Button
-        title={screenValues.submitButton.title}
+        title={C.SCREEN_VALUES.SUBMIT_BUTTON.TITLE}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
         {...S.loginButtonStyles}
       />
       <Button
         onPress={navigateToSignUpScreen}
-        title={screenValues.signUpButtton.title}
+        title={C.SCREEN_VALUES.SIGNUP_BUTTON.TITLE}
         {...S.signUpButtonStyles}
       />
     </Screen>

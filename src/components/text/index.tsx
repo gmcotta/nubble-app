@@ -1,5 +1,5 @@
 import { RestyleText } from '@components';
-import { $fontFamily, $fontSizes } from '@styles';
+import { fontFamilyValues, fontSizesValues } from '@styles';
 import { TextProps, TextVariants } from './props';
 
 function getFontFamily(
@@ -15,32 +15,32 @@ function getFontFamily(
     preset === 'headingMedium' ||
     preset === 'headingSmall'
   ) {
-    return italic ? $fontFamily.blackItalic : $fontFamily.black;
+    return italic ? fontFamilyValues.blackItalic : fontFamilyValues.black;
   }
 
   if (preset === 'paragraphLarge') {
-    return italic ? $fontFamily.mediumItalic : $fontFamily.medium;
+    return italic ? fontFamilyValues.mediumItalic : fontFamilyValues.medium;
   }
 
   if (black) {
-    return italic ? $fontFamily.blackItalic : $fontFamily.black;
+    return italic ? fontFamilyValues.blackItalic : fontFamilyValues.black;
   }
 
   if (bold) {
-    return italic ? $fontFamily.boldItalic : $fontFamily.bold;
+    return italic ? fontFamilyValues.boldItalic : fontFamilyValues.bold;
   }
 
   if (medium) {
-    return italic ? $fontFamily.mediumItalic : $fontFamily.medium;
+    return italic ? fontFamilyValues.mediumItalic : fontFamilyValues.medium;
   }
 
   if (light) {
-    return italic ? $fontFamily.lightItalic : $fontFamily.light;
+    return italic ? fontFamilyValues.lightItalic : fontFamilyValues.light;
   }
 
-  if (italic) return $fontFamily.italic;
+  if (italic) return fontFamilyValues.italic;
 
-  return $fontFamily.regular;
+  return fontFamilyValues.regular;
 }
 
 export function Text({
@@ -54,7 +54,7 @@ export function Text({
   italic,
   ...restyleTextProps
 }: TextProps) {
-  const presetStyle = $fontSizes[preset];
+  const presetStyle = fontSizesValues[preset];
   const fontFamily = getFontFamily(preset, black, bold, medium, light, italic);
 
   return (

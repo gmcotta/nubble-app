@@ -1,4 +1,4 @@
-export const $fontFamily = {
+export const fontFamilyValues = {
   regular: 'Satoshi-Regular',
   black: 'Satoshi-Black',
   blackItalic: 'Satoshi-BlackItalic',
