@@ -1,21 +1,26 @@
 import { useState } from 'react';
-
 import { Keyboard } from 'react-native';
+
 import { TextMessage } from '@components';
 import { useCreatePostComment } from '@domain';
 import { PostCommentTextMessageProps } from './props';
 
 export function PostCommentTextMessage({
-  postId
+  postId,
+  onSuccessAction
 }: PostCommentTextMessageProps) {
   const [message, setMessage] = useState('');
 
-  const { createPostComment } = useCreatePostComment(postId);
+  const { createPostComment } = useCreatePostComment(postId, {
+    onSuccess: () => {
+      onSuccessAction();
+      setMessage('');
+      Keyboard.dismiss();
+    }
+  });
 
   async function handleSendComment() {
     await createPostComment(message);
-    setMessage('');
-    Keyboard.dismiss();
   }
 
   return (

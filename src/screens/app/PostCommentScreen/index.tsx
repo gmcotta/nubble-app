@@ -17,13 +17,14 @@ function renderItem({ item }: ListRenderItemInfo<PostComment>) {
 
 export function PostCommentScreen({ route }: PostCommentScreenProps) {
   const postId = route.params.postId;
-  const { data, fetchNextPage, hasNextPage } = usePostCommentList(postId);
+  const { data, fetchNextPage, hasNextPage, refresh } =
+    usePostCommentList(postId);
 
   const { bottom } = useAppSafeArea();
 
   return (
     <Screen canGoBack title="Comentários" flex={1}>
-      <Box flex={1} justifyContent="space-between">
+      <Box {...S.containerStyles}>
         <FlatList
           data={data}
           renderItem={renderItem}
@@ -36,7 +37,7 @@ export function PostCommentScreen({ route }: PostCommentScreenProps) {
           contentContainerStyle={S.flatListContentStyles(bottom)}
           showsVerticalScrollIndicator={false}
         />
-        <PostCommentTextMessage postId={postId} />
+        <PostCommentTextMessage postId={postId} onSuccessAction={refresh} />
       </Box>
     </Screen>
   );
