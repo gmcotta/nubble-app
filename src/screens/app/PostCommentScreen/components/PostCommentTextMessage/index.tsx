@@ -3,6 +3,7 @@ import { Keyboard } from 'react-native';
 
 import { TextMessage } from '@components';
 import { useCreatePostComment } from '@domain';
+import * as C from './constants';
 import { PostCommentTextMessageProps } from './props';
 
 export function PostCommentTextMessage({
@@ -16,11 +17,12 @@ export function PostCommentTextMessage({
       onSuccessAction();
       setMessage('');
       Keyboard.dismiss();
-    }
+    },
+    errorMessage: C.SCREEN_VALUES.CREATE_COMMENT.ERROR_MESSAGE
   });
 
   async function handleSendComment() {
-    await createPostComment(message);
+    await createPostComment({ message });
   }
 
   return (
@@ -28,7 +30,7 @@ export function PostCommentTextMessage({
       onPressSend={handleSendComment}
       value={message}
       onChangeText={setMessage}
-      placeholder="Escreva um comentário"
+      placeholder={C.SCREEN_VALUES.INPUT.PLACEHOLDER}
     />
   );
 }
