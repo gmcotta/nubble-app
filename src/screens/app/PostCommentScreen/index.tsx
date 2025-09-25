@@ -1,10 +1,13 @@
-import { useState } from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 
-import { Box, Screen, TextMessage } from '@components';
+import { Box, Screen } from '@components';
 import { PostComment, usePostCommentList } from '@domain';
 import { useAppSafeArea } from '@hooks';
-import { PostCommentItem, PostCommentBottom } from './components';
+import {
+  PostCommentItem,
+  PostCommentBottom,
+  PostCommentTextMessage
+} from './components';
 import { PostCommentScreenProps } from './props';
 import * as S from './styles';
 
@@ -13,8 +16,6 @@ function renderItem({ item }: ListRenderItemInfo<PostComment>) {
 }
 
 export function PostCommentScreen({ route }: PostCommentScreenProps) {
-  const [message, setMessage] = useState('');
-
   const postId = route.params.postId;
   const { data, fetchNextPage, hasNextPage } = usePostCommentList(postId);
 
@@ -35,12 +36,7 @@ export function PostCommentScreen({ route }: PostCommentScreenProps) {
           contentContainerStyle={S.flatListContentStyles(bottom)}
           showsVerticalScrollIndicator={false}
         />
-        <TextMessage
-          onPressSend={() => {}}
-          value={message}
-          onChangeText={setMessage}
-          placeholder="Escreva um comentário"
-        />
+        <PostCommentTextMessage postId={postId} />
       </Box>
     </Screen>
   );
