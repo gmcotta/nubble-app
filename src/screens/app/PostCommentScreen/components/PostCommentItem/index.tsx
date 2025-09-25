@@ -9,7 +9,7 @@ export function PostCommentItem({ postComment }: { postComment: PostComment }) {
       <Box {...S.rightContainerStyles}>
         <Text {...S.usernameStyles}>{postComment.author.userName}</Text>
         <Text {...S.commentTextStyles}>
-          {postComment.message} - {postComment.createdAt}
+          {postComment.message} - {postComment.relativeCreatedAt}
         </Text>
       </Box>
     </Box>

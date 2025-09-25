@@ -1,10 +1,13 @@
+import { dateUtils } from '@utils';
 import { PostComment, PostCommentAPI } from './postCommentTypes';
 
 function toCommentPost(postCommentAPI: PostCommentAPI): PostComment {
+  const createdAt = postCommentAPI.created_at;
   return {
     id: postCommentAPI.id,
     message: postCommentAPI.message,
-    createdAt: postCommentAPI.created_at,
+    createdAt: createdAt,
+    relativeCreatedAt: dateUtils.formatRelative(createdAt),
     author: {
       id: postCommentAPI.user_id,
       profileURL: postCommentAPI.user.profile_url,

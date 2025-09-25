@@ -7,7 +7,8 @@ export const containerStyles: RestyleBoxProps = {
 };
 
 export const rightContainerStyles: RestyleBoxProps = {
-  marginLeft: 's12'
+  marginLeft: 's12',
+  flex: 1
 };
 
 export const usernameStyles: TextProps = {
