@@ -13,6 +13,7 @@ module.exports = {
           '@components': './src/components',
           '@domain': './src/domain',
           '@hooks': './src/hooks',
+          '@infra': './src/infra',
           '@routes': './src/routes',
           '@screens': './src/screens',
           '@styles': './src/styles',

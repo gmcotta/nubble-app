@@ -16,6 +16,8 @@
       "@domain/*": ["src/domain/*"],
       "@hooks": ["src/hooks"],
       "@hooks/*": ["src/hooks/*"],
+      "@infra": ["src/infra"],
+      "@infra/*": ["src/infra/*"],
       "@routes": ["src/routes"],
       "@routes/*": ["src/routes/*"],
       "@screens": ["src/screens"],

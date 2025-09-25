@@ -1,4 +1,4 @@
-import { usePaginatedList } from 'domain/hooks/usePaginatedList';
+import { usePaginatedList } from '@infra';
 import { postCommentService } from '../postCommentService';
 import { PostComment } from '../postCommentTypes';
 
