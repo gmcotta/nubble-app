@@ -33,8 +33,20 @@ async function remove(postCommentId: number): Promise<string> {
   return response.message;
 }
 
+function canRemove(
+  postComment: PostComment,
+  userId: number,
+  postAuthorId: number
+) {
+  if (postComment.author.id === userId) return true;
+  if (userId === postAuthorId) return true;
+
+  return false;
+}
+
 export const postCommentService = {
   getList,
   create,
-  remove
+  remove,
+  canRemove
 };

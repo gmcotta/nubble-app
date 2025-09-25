@@ -21,7 +21,8 @@ export function PostBottom({
 
   function navigateToPostCommentScreen() {
     navigation.navigate('PostCommentScreen', {
-      postId
+      postId,
+      postAuthorId: author.id
     });
   }
 

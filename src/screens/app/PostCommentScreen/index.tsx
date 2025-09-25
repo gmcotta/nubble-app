@@ -1,22 +1,29 @@
-import { FlatList, ListRenderItemInfo } from 'react-native';
+import { FlatList } from 'react-native';
 
 import { Box, Screen } from '@components';
-import { PostComment, usePostCommentList } from '@domain';
+import { usePostCommentList } from '@domain';
 import { useAppSafeArea } from '@hooks';
 import {
   PostCommentItem,
   PostCommentBottom,
   PostCommentTextMessage
 } from './components';
-import { PostCommentScreenProps } from './props';
+import { PostCommentScreenProps, RenderItemProps } from './props';
 import * as S from './styles';
 
-function renderItem({ item }: ListRenderItemInfo<PostComment>) {
-  return <PostCommentItem postComment={item} />;
+function renderItem({ info, postAuthorId, onSuccess }: RenderItemProps) {
+  return (
+    <PostCommentItem
+      postComment={info.item}
+      userId={1}
+      postAuthorId={postAuthorId}
+      onSuccess={onSuccess}
+    />
+  );
 }
 
 export function PostCommentScreen({ route }: PostCommentScreenProps) {
-  const postId = route.params.postId;
+  const { postId, postAuthorId } = route.params;
   const { data, fetchNextPage, hasNextPage, refresh } =
     usePostCommentList(postId);
 
@@ -27,7 +34,9 @@ export function PostCommentScreen({ route }: PostCommentScreenProps) {
       <Box {...S.containerStyles}>
         <FlatList
           data={data}
-          renderItem={renderItem}
+          renderItem={info =>
+            renderItem({ info, postAuthorId, onSuccess: refresh })
+          }
           ListFooterComponent={
             <PostCommentBottom
               fetchNextPage={fetchNextPage}
