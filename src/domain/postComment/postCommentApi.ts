@@ -1,5 +1,5 @@
 import { api, PageAPI, PaginationParams } from '@api';
-import { PostCommentAPI } from './postCommentTypes';
+import { PostCommentAPI, PostCommentDeleteAPI } from './postCommentTypes';
 
 async function getList(
   postId: number,
@@ -30,7 +30,15 @@ async function create(
   return response.data;
 }
 
+async function remove(post_comment_id: number): Promise<PostCommentDeleteAPI> {
+  const response = await api.delete<PostCommentDeleteAPI>(
+    `/user/post_comment/${post_comment_id}`
+  );
+  return response.data;
+}
+
 export const postCommentApi = {
   getList,
-  create
+  create,
+  remove
 };

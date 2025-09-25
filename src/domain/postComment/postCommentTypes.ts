@@ -30,3 +30,7 @@ export interface PostCommentAPI {
   };
   meta: unknown; //{};
 }
+
+export interface PostCommentDeleteAPI {
+  message: string;
+}
