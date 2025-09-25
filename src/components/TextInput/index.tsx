@@ -3,6 +3,7 @@ import { Pressable, TextInput as RNTextInput } from 'react-native';
 
 import { Box, Text } from '@components';
 import { useRestyleTheme } from '@hooks';
+import { textInputStyles } from '@styles';
 import { TextInputProps } from './props';
 import * as S from './styles';
 
@@ -29,7 +30,7 @@ export function TextInput({
             ref={textInputRef}
             placeholderTextColor={colors.gray2}
             autoCapitalize="none"
-            style={S.textInputStyles}
+            style={textInputStyles}
             {...textInputProps}
           />
           {rightComponent ? (

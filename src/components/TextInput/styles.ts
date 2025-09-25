@@ -1,7 +1,4 @@
-import { TextInputProps } from 'react-native';
-
 import { RestyleBoxProps, TextProps } from '@components';
-import { fontFamilyValues, fontSizesValues } from '@styles';
 
 export const labelStyles: TextProps = {
   preset: 'paragraphMedium',
@@ -18,13 +15,6 @@ export function inputContainerStyles(errorMessage?: string): RestyleBoxProps {
     alignItems: 'center'
   };
 }
-
-export const textInputStyles: TextInputProps['style'] = {
-  padding: 0,
-  fontFamily: fontFamilyValues.regular,
-  flex: 1,
-  ...fontSizesValues.paragraphMedium
-};
 
 export const rightComponentContainerStyles: RestyleBoxProps = {
   marginLeft: 's16'

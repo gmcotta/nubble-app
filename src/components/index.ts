@@ -41,3 +41,6 @@ export * from './Text/props';
 
 export * from './TextInput';
 export * from './TextInput/props';
+
+export * from './TextMessage';
+export * from './TextMessage/props';
