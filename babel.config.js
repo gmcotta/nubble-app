@@ -18,6 +18,7 @@ module.exports = {
           '@styles': './src/styles',
           '@theme': './src/theme',
           '@types': './src/types',
+          '@utils': './src/utils',
           '@validations': './src/validations'
         }
       }
