@@ -1,6 +1,4 @@
-import { Image } from 'react-native';
-
-import { Box, Text } from '@components';
+import { Box, ProfileAvatar, Text } from '@components';
 import { PostHeaderProps } from './props';
 import * as S from './styles';
 
@@ -9,7 +7,7 @@ export function PostHeader({ author }: PostHeaderProps) {
 
   return (
     <Box {...S.profileBoxStyles}>
-      <Image source={{ uri: profileURL }} style={S.profileImageStyles} />
+      <ProfileAvatar profileURL={profileURL} />
       <Text {...S.profileTextStyles}>{userName}</Text>
     </Box>
   );

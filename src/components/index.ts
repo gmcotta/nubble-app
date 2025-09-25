@@ -21,6 +21,9 @@ export * from './PasswordInput/props';
 export * from './PostItem';
 export * from './PostItem/props';
 
+export * from './ProfileAvatar';
+export * from './ProfileAvatar/props';
+
 export * from './Restyle/Box';
 export * from './Restyle/Box/props';
 

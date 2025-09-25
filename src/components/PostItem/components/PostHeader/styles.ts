@@ -1,5 +1,3 @@
-import { ImageProps } from 'react-native';
-
 import { RestyleBoxProps, TextProps } from '@components';
 
 export const profileBoxStyles: RestyleBoxProps = {
@@ -7,12 +5,6 @@ export const profileBoxStyles: RestyleBoxProps = {
   alignItems: 'center',
   marginBottom: 's16',
   paddingHorizontal: 's24'
-};
-
-export const profileImageStyles: ImageProps['style'] = {
-  width: 32,
-  height: 32,
-  borderRadius: 14
 };
 
 export const profileTextStyles: TextProps = {
