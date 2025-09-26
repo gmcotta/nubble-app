@@ -13,7 +13,7 @@ module.exports = {
             pathGroups: [
               {
                 pattern:
-                  '@+(api|branding|components|domain|hooks|infra|routes|screens|styles|theme|types|utils|validations)',
+                  '@+(api|branding|components|domain|hooks|infra|routes|screens|services|styles|theme|types|utils|validations)',
                 group: 'internal',
                 position: 'before'
               },

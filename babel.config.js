@@ -16,6 +16,7 @@ module.exports = {
           '@infra': './src/infra',
           '@routes': './src/routes',
           '@screens': './src/screens',
+          '@services': './src/services',
           '@styles': './src/styles',
           '@theme': './src/theme',
           '@types': './src/types',
