@@ -21,7 +21,10 @@ export function PostCommentItem({
     onSuccess: () => {
       onSuccess();
       showToast({
-        message: 'Comentário removido'
+        message: 'Comentário removido',
+        position: 'bottom',
+        type: 'error',
+        duration: 3000
       });
     },
     errorMessage: 'Erro ao remover comentário'

@@ -1,26 +1,23 @@
 import { useEffect } from 'react';
-import { Box, Icon, Text } from '@components';
+
 import { useToast, useToastActions } from '@services';
-import * as S from './styles';
+import { ToastContent } from './components/Content';
+import * as C from './constants';
 
 export function Toast() {
   const toast = useToast();
+
   const { hideToast } = useToastActions();
 
   useEffect(() => {
     if (toast) {
       setTimeout(() => {
         hideToast();
-      }, toast.duration ?? 3000);
+      }, toast.duration ?? C.TOAST_DEFAULT_DURATION_MS);
     }
   }, [toast, hideToast]);
 
   if (!toast) return null;
 
-  return (
-    <Box {...S.toastContainerStyles}>
-      <Icon name="checkRound" {...S.iconStyles} />
-      <Text {...S.toastTextStyles}>{toast.message}</Text>
-    </Box>
-  );
+  return <ToastContent toast={toast} />;
 }
