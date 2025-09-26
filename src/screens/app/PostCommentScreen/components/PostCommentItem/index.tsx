@@ -1,6 +1,6 @@
-import { Alert } from 'react-native';
+import { Alert, Pressable } from 'react-native';
 
-import { Box, ProfileAvatar, Text, TouchableOpacityBox } from '@components';
+import { Box, ProfileAvatar, Text } from '@components';
 import { PostComment, postCommentService, useRemovePostComment } from '@domain';
 import { useToastActions } from '@services';
 import * as S from './styles';
@@ -37,7 +37,7 @@ export function PostCommentItem({
   );
 
   function handleShowRemoveCommentAlert() {
-    Alert.alert('Deseja remover esse comentário?', '', [
+    Alert.alert('Deseja remover esse comentário?', 'Pressione remover', [
       {
         text: 'Remover',
         onPress: () => {
@@ -52,10 +52,7 @@ export function PostCommentItem({
   }
 
   return (
-    <TouchableOpacityBox
-      disabled={!canRemove}
-      onLongPress={handleShowRemoveCommentAlert}
-    >
+    <Pressable disabled={!canRemove} onLongPress={handleShowRemoveCommentAlert}>
       <Box {...S.containerStyles}>
         <ProfileAvatar profileURL={postComment.author.profileURL} />
         <Box {...S.rightContainerStyles}>
@@ -65,6 +62,6 @@ export function PostCommentItem({
           </Text>
         </Box>
       </Box>
-    </TouchableOpacityBox>
+    </Pressable>
   );
 }

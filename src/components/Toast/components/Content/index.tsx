@@ -4,11 +4,10 @@ import { mapTypeToIcon } from './mappers';
 import * as S from './styles';
 
 export function ToastContent({ toast }: { toast: ToastProps }) {
-  const position = toast?.position ?? 'top';
   const type = toast?.type ?? 'success';
 
   return (
-    <Box {...S.toastContainerStyles(position)}>
+    <Box {...S.toastContainerStyles}>
       <Icon {...mapTypeToIcon[type]} {...S.iconStyles} />
       <Text {...S.toastTextStyles}>{toast.message}</Text>
     </Box>

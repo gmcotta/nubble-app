@@ -1,23 +1,39 @@
 import { useEffect } from 'react';
+import { Animated } from 'react-native';
 
 import { useToast, useToastActions } from '@services';
-import { ToastContent } from './components/Content';
+import { useAnimation } from './animation';
+import { ToastContent } from './components';
 import * as C from './constants';
+import * as S from './styles';
 
 export function Toast() {
   const toast = useToast();
-
   const { hideToast } = useToastActions();
+  const { fadeAnimation } = useAnimation();
+
+  const position = toast?.position ?? 'top';
 
   useEffect(() => {
     if (toast) {
+      fadeAnimation.startIn();
+
       setTimeout(() => {
-        hideToast();
+        fadeAnimation.startOut(hideToast);
       }, toast.duration ?? C.TOAST_DEFAULT_DURATION_MS);
     }
-  }, [toast, hideToast]);
+  }, [toast, hideToast, fadeAnimation]);
 
   if (!toast) return null;
 
-  return <ToastContent toast={toast} />;
+  return (
+    <Animated.View
+      {...S.animatedViewStyles({
+        fadeAnimationValue: fadeAnimation.value,
+        position
+      })}
+    >
+      <ToastContent toast={toast} />
+    </Animated.View>
+  );
 }
