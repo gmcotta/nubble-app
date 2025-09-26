@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { Box, Icon, Text } from '@components';
-import { useToast } from '@services';
+import { useToast, useToastActions } from '@services';
 import * as S from './styles';
 
 export function Toast() {
-  const { toast, hideToast } = useToast();
+  const toast = useToast();
+  const { hideToast } = useToastActions();
 
   useEffect(() => {
     if (toast) {
