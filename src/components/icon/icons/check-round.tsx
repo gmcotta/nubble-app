@@ -2,10 +2,13 @@ import { Svg, Path, Circle } from 'react-native-svg';
 
 import { BaseIconProps } from '../props';
 
-export function CheckRoundIcon({ size = 48, color }: BaseIconProps) {
+export function CheckRoundIcon({
+  size = 48,
+  color = 'greenSuccess'
+}: BaseIconProps) {
   return (
-    <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none">
-      <Circle cx={size / 2} cy={size / 2} r={size / 2} fill={color} />
+    <Svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+      <Circle cx="24" cy="24" r="24" fill={color} />
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

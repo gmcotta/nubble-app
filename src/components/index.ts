@@ -44,3 +44,5 @@ export * from './TextInput/props';
 
 export * from './TextMessage';
 export * from './TextMessage/props';
+
+export * from './Toast';
