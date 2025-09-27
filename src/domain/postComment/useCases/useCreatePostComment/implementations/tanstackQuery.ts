@@ -28,7 +28,7 @@ export function useTanstackQueryImpl(
   });
 
   return {
-    createPostComment: message => mutation.mutate(message),
+    createPostComment: variables => mutation.mutate(variables),
     isError: mutation.isError,
     isLoading: mutation.isPending
   };

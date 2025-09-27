@@ -11,9 +11,15 @@ import {
 import { PostCommentScreenProps, RenderItemProps } from './props';
 import * as S from './styles';
 
-function renderItem({ info, postAuthorId, onSuccess }: RenderItemProps) {
+function renderItem({
+  postId,
+  info,
+  postAuthorId,
+  onSuccess
+}: RenderItemProps) {
   return (
     <PostCommentItem
+      postId={postId}
       postComment={info.item}
       userId={1}
       postAuthorId={postAuthorId}
@@ -35,7 +41,7 @@ export function PostCommentScreen({ route }: PostCommentScreenProps) {
         <FlatList
           data={data}
           renderItem={info =>
-            renderItem({ info, postAuthorId, onSuccess: refresh })
+            renderItem({ postId, info, postAuthorId, onSuccess: refresh })
           }
           ListFooterComponent={
             <PostCommentBottom

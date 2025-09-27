@@ -9,8 +9,10 @@ export function PostCommentItem({
   postComment,
   userId,
   postAuthorId,
+  postId,
   onSuccess
 }: {
+  postId: number;
   postComment: PostComment;
   userId: number;
   postAuthorId: number;
@@ -18,16 +20,19 @@ export function PostCommentItem({
 }) {
   const { showToast } = useToastActions();
   const { removePostComment } = useRemovePostComment({
-    onSuccess: () => {
-      onSuccess();
-      showToast({
-        message: 'Comentário removido',
-        position: 'bottom',
-        type: 'error',
-        duration: 3000
-      });
-    },
-    errorMessage: 'Erro ao remover comentário'
+    postId,
+    options: {
+      onSuccess: () => {
+        onSuccess();
+        showToast({
+          message: 'Comentário removido',
+          position: 'bottom',
+          type: 'success',
+          duration: 3000
+        });
+      },
+      errorMessage: 'Erro ao remover comentário'
+    }
   });
 
   const canRemove = postCommentService.canRemove(
