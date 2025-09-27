@@ -20,8 +20,8 @@ export function HomeScreen({}: HomeScreenProps) {
 
   const {
     data: postList,
-    loading,
-    error,
+    isLoading,
+    isError,
     fetchNextPage,
     refresh
   } = usePostList();
@@ -35,17 +35,17 @@ export function HomeScreen({}: HomeScreenProps) {
         renderItem={renderItem}
         contentContainerStyle={S.flatListContentStyles(postList.length)}
         ListHeaderComponent={<HomeHeader />}
-        ListEmptyComponent={<HomeEmpty loading={loading} error={error} />}
+        ListEmptyComponent={<HomeEmpty loading={isLoading} error={isError} />}
         onEndReached={fetchNextPage}
         onEndReachedThreshold={0.1}
         refreshControl={
           <RefreshControl
-            refreshing={loading}
+            refreshing={isLoading}
             onRefresh={refresh}
             progressViewOffset={100}
           />
         }
-        refreshing={loading}
+        refreshing={isLoading}
       />
     </Screen>
   );

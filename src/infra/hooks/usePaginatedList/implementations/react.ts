@@ -1,21 +1,22 @@
 import { useEffect, useState } from 'react';
 
 import { Page } from '@types';
+import { UsePaginatedListResult } from '../props';
 
-export function usePaginatedList<Data>(
+export function useReactImpl<Data>(
   getList: (page: number) => Promise<Page<Data>>
-) {
+): UsePaginatedListResult<Data> {
   const [currentData, setCurrentData] = useState<Data[]>([]);
 
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(false);
 
   async function fetchInitialData() {
-    setLoading(true);
+    setIsLoading(true);
     try {
-      setError(false);
+      setIsError(false);
       const { meta, data } = await getList(1);
       setCurrentData(data);
 
@@ -26,16 +27,16 @@ export function usePaginatedList<Data>(
         setHasNextPage(false);
       }
     } catch (e) {
-      setError(true);
+      setIsError(true);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }
 
   async function fetchData() {
-    setLoading(true);
+    setIsLoading(true);
     try {
-      setError(false);
+      setIsError(false);
       const { meta, data } = await getList(page);
       setCurrentData(old => [...old, ...data]);
       if (meta.hasNextPage) {
@@ -44,14 +45,14 @@ export function usePaginatedList<Data>(
         setHasNextPage(false);
       }
     } catch (e) {
-      setError(true);
+      setIsError(true);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }
 
   function fetchNextPage() {
-    if (loading || !hasNextPage) return;
+    if (isLoading || !hasNextPage) return;
     fetchData();
   }
 
@@ -62,8 +63,8 @@ export function usePaginatedList<Data>(
 
   return {
     data: currentData,
-    loading,
-    error,
+    isLoading,
+    isError,
     hasNextPage,
     refresh: fetchInitialData,
     fetchNextPage

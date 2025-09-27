@@ -10,13 +10,13 @@ import { MyProfileScreenProps } from './props';
 
 export function MyProfileScreen({ route }: MyProfileScreenProps) {
   const { userId } = route.params;
-  const { user, loading, error } = useGetUserById(userId);
+  const { user, isLoading, isError } = useGetUserById(userId);
 
   return (
     <Screen>
       <Box>
-        {loading ? <ActivityIndicator /> : null}
-        {error ? <Text>Erro ao carregar perfil</Text> : null}
+        {isLoading ? <ActivityIndicator /> : null}
+        {isError ? <Text>Erro ao carregar perfil</Text> : null}
       </Box>
       {user ? (
         <Box alignItems="center">

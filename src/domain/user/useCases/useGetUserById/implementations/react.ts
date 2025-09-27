@@ -4,19 +4,19 @@ import { userService, User } from '@domain';
 
 export function useReactImpl(userId: number) {
   const [user, setUser] = useState<User | undefined>(undefined);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getUserById = useCallback(async () => {
     try {
-      setLoading(true);
-      setError(false);
+      setIsLoading(true);
+      setIsError(false);
       const serviceResponse = await userService.getById(userId);
       setUser(serviceResponse);
     } catch (err) {
-      setError(true);
+      setIsError(true);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }, [userId]);
 
@@ -25,5 +25,5 @@ export function useReactImpl(userId: number) {
     getUserById();
   }, [getUserById]);
 
-  return { user, loading, error };
+  return { user, isLoading, isError };
 }

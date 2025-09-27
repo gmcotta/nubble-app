@@ -12,13 +12,14 @@ import { ProfileScreenProps } from './props';
 
 export function ProfileScreen({ route }: ProfileScreenProps) {
   const { userId } = route.params;
-  const { user, loading, error, isFetching, refetch } = useGetUserById(userId);
+  const { user, isLoading, isError, isFetching, refetch } =
+    useGetUserById(userId);
 
   return (
     <Screen canGoBack flex={1}>
       <Box>
-        {loading ? <ActivityIndicator /> : null}
-        {error ? <Text>Erro ao carregar perfil</Text> : null}
+        {isLoading ? <ActivityIndicator /> : null}
+        {isError ? <Text>Erro ao carregar perfil</Text> : null}
       </Box>
       {user ? (
         <ScrollView

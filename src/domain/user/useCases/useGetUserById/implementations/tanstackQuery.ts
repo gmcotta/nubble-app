@@ -12,8 +12,8 @@ export function useTanstackQueryImpl(userId: number) {
 
   return {
     user: query.data,
-    error: query.isError,
-    loading: query.isLoading,
+    isError: query.isError,
+    isLoading: query.isLoading,
     refetch: query.refetch,
     isFetching: query.isFetching
   };
