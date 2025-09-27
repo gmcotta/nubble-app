@@ -1,6 +1,6 @@
-import { RestyleBoxProps, TextProps } from '@components';
+import { TextProps, TouchableOpacityBoxProps } from '@components';
 
-export const profileBoxStyles: RestyleBoxProps = {
+export const profileBoxStyles: TouchableOpacityBoxProps = {
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: 's16',

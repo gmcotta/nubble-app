@@ -3,7 +3,7 @@ import { userService } from '../userService';
 import { User } from '../userTypes';
 
 export function useGetUserById(userId: number) {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -21,6 +21,7 @@ export function useGetUserById(userId: number) {
   }, [userId]);
 
   useEffect(() => {
+    setUser(null);
     getUserById();
   }, [getUserById]);
 

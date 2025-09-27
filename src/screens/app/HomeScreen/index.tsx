@@ -15,6 +15,7 @@ function renderItem({ item }: ListRenderItemInfo<Post>) {
 export function HomeScreen({}: HomeScreenProps) {
   const flatListRef = useRef<FlatList<Post>>(null);
   useScrollToTop(flatListRef);
+
   const {
     data: postList,
     loading,

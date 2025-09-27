@@ -8,7 +8,9 @@ export type AppBottomTabParamList = {
   HomeScreen: undefined;
   NewPostScreen: undefined;
   FavoriteScreen: undefined;
-  MyProfileScreen: undefined;
+  MyProfileScreen: {
+    userId: number;
+  };
 };
 
 export type AppBottomTabScreenProps<

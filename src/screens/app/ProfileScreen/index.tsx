@@ -6,14 +6,14 @@ import {
   Text
 } from '@components';
 import { useGetUserById } from '@domain';
-import { MyProfileScreenProps } from './props';
+import { ProfileScreenProps } from './props';
 
-export function MyProfileScreen({ route }: MyProfileScreenProps) {
+export function ProfileScreen({ route }: ProfileScreenProps) {
   const { userId } = route.params;
   const { user, loading, error } = useGetUserById(userId);
 
   return (
-    <Screen>
+    <Screen canGoBack>
       <Box>
         {loading ? <ActivityIndicator /> : null}
         {error ? <Text>Erro ao carregar perfil</Text> : null}

@@ -10,6 +10,9 @@ export type AppStackParamList = {
     postId: number;
     postAuthorId: number;
   };
+  ProfileScreen: {
+    userId: number;
+  };
 };
 
 export type AppScreenProps<RouteName extends keyof AppStackParamList> =

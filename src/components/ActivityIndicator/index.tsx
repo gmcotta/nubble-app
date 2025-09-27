@@ -5,7 +5,7 @@ import { useRestyleTheme } from '@hooks';
 import { ActivityIndicatorProps } from './props';
 
 export function ActivityIndicator({
-  color,
+  color = 'primary',
   ...activityIndicatorProps
 }: ActivityIndicatorProps) {
   const { colors } = useRestyleTheme();
