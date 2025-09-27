@@ -4,6 +4,7 @@ import { FlatList, ListRenderItemInfo, RefreshControl } from 'react-native';
 
 import { Screen, PostItem } from '@components';
 import { Post, usePostList } from '@domain';
+import { useAppSafeArea } from '@hooks';
 import { HomeEmpty, HomeHeader } from './components';
 import { HomeScreenProps } from './props';
 import * as S from './styles';
@@ -15,6 +16,7 @@ function renderItem({ item }: ListRenderItemInfo<Post>) {
 export function HomeScreen({}: HomeScreenProps) {
   const flatListRef = useRef<FlatList<Post>>(null);
   useScrollToTop(flatListRef);
+  const { top } = useAppSafeArea();
 
   const {
     data: postList,
@@ -25,7 +27,7 @@ export function HomeScreen({}: HomeScreenProps) {
   } = usePostList();
 
   return (
-    <Screen style={S.screenStyles}>
+    <Screen style={[S.screenStyles(top)]}>
       <FlatList
         ref={flatListRef}
         data={postList}

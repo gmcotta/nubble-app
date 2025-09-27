@@ -8,9 +8,11 @@ export function flatListContentStyles(length: number): StyleProp<ViewStyle> {
   };
 }
 
-export const screenStyles: ScreenProps['style'] = {
-  paddingHorizontal: 0,
-  paddingBottom: 0,
-  paddingTop: 0,
-  flex: 1
-};
+export function screenStyles(top: number): ScreenProps['style'] {
+  return {
+    paddingHorizontal: 0,
+    paddingBottom: 0,
+    paddingTop: top,
+    flex: 1
+  };
+}
