@@ -6,14 +6,14 @@ export function useRemovePostComment(options?: MutationOptions<string>) {
   const mutationFn = ({ postCommentId }: MutationVariables) =>
     postCommentService.remove(postCommentId);
 
-  const { loading, error, mutate } = useMutation<MutationVariables, string>(
+  const { isLoading, isError, mutate } = useMutation<MutationVariables, string>(
     mutationFn,
     options
   );
 
   return {
-    loading,
-    error,
-    removePostComment: mutate
+    removePostComment: mutate,
+    isLoading,
+    isError
   };
 }

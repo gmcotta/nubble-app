@@ -8,6 +8,6 @@ export function usePostCommentList(postId: number) {
   }
 
   return usePaginatedList<PostComment>(getList, {
-    queryKey: [QueryKeys.PostCommentList]
+    queryKey: [QueryKeys.PostCommentList, postId]
   });
 }

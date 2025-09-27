@@ -6,13 +6,13 @@ export function useMutation<TVariables, TData>(
   mutationFn: (variables: TVariables) => Promise<TData>,
   options?: MutationOptions<TData>
 ) {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   async function mutate(variables: TVariables) {
     try {
-      setLoading(true);
-      setError(false);
+      setIsLoading(true);
+      setIsError(false);
 
       const data = await mutationFn(variables);
 
@@ -24,13 +24,13 @@ export function useMutation<TVariables, TData>(
         options.onError(options.errorMessage ?? '');
       }
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }
 
   return {
-    loading,
-    error,
+    isLoading,
+    isError,
     mutate
   };
 }
