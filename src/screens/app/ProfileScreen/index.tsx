@@ -1,4 +1,5 @@
 import { RefreshControl, ScrollView } from 'react-native';
+
 import {
   ActivityIndicator,
   Box,
@@ -22,7 +23,10 @@ export function ProfileScreen({ route }: ProfileScreenProps) {
       {user ? (
         <ScrollView
           refreshControl={
-            <RefreshControl refreshing={isFetching} onRefresh={refetch} />
+            <RefreshControl
+              refreshing={isFetching ?? false}
+              onRefresh={refetch}
+            />
           }
         >
           <Box alignItems="center">

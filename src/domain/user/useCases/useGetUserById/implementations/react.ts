@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { userService } from '../../userService';
-import { User } from '../../userTypes';
+import { userService, User } from '@domain';
 
 export function useReactImpl(userId: number) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | undefined>(undefined);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +21,7 @@ export function useReactImpl(userId: number) {
   }, [userId]);
 
   useEffect(() => {
-    setUser(null);
+    setUser(undefined);
     getUserById();
   }, [getUserById]);
 
