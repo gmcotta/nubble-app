@@ -5,15 +5,14 @@ if (__DEV__) {
 }
 
 import { ThemeProvider } from '@shopify/restyle';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Toast } from '@components';
 import { Router } from '@routes';
 // import { ToastProvider } from '@services';
 import { theme } from '@theme';
-
-const queryClient = new QueryClient();
+import { queryClient } from './queryClient';
 
 function App() {
   return (

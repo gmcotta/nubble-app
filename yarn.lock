@@ -3056,6 +3056,7 @@ __metadata:
     react-native-svg: "npm:^15.13.0"
     react-test-renderer: "npm:19.1.0"
     reactotron-react-native: "npm:^5.1.17"
+    reactotron-react-query: "npm:^2.0.2"
     typescript: "npm:5.5.2"
     zod: "npm:^4.1.9"
     zustand: "npm:^5.0.8"
@@ -8677,6 +8678,16 @@ __metadata:
   peerDependencies:
     react-native: ">=0.40.0"
   checksum: 10c0/7a79efb6cc0773917a515fcf178f39ae40563f14ff13da81a93cd33e73c49117f6e3188592c271fb56ee522dc4c84ef58db5ce716da7994eeac2d5d5a0c826ed
+  languageName: node
+  linkType: hard
+
+"reactotron-react-query@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "reactotron-react-query@npm:2.0.2"
+  peerDependencies:
+    "@tanstack/react-query": ^5.80.10
+    reactotron-core-client: ^2.9.7
+  checksum: 10c0/8a69e449cb7efa9ac55f171260f92bde90a67e1db2279f1cda43533b53f415d091ed95dd63e676c9c11893cbd82e409a54289e5a8269daf232314a5445a87e65
   languageName: node
   linkType: hard
 
