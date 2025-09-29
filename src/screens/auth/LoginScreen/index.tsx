@@ -9,6 +9,8 @@ import {
   Screen,
   Text
 } from '@components';
+import { useAuthSignIn } from '@domain';
+import { useToastActions } from '@services';
 import * as C from './constants';
 import { LoginFormSchema, LoginScreenProps } from './props';
 import { loginSchema } from './schema';
@@ -23,8 +25,19 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
     },
     mode: 'onChange'
   });
+  const { showToast } = useToastActions();
+  const { signIn, isLoading } = useAuthSignIn({
+    onError: message => {
+      showToast({
+        type: 'error',
+        message
+      });
+    }
+  });
 
-  function submitForm(/* fieldValues: LoginFormSchema */) {}
+  function submitForm(fieldValues: LoginFormSchema) {
+    signIn(fieldValues);
+  }
 
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');
@@ -56,6 +69,7 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
         </Text>
       </Pressable>
       <Button
+        loading={isLoading}
         title={C.SCREEN_VALUES.SUBMIT_BUTTON.TITLE}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}

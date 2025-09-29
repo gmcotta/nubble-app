@@ -4,11 +4,9 @@ import { AuthCredentials, authService } from '@domain';
 import { MutationOptions } from '@infra';
 import { MutationVariables } from '../props';
 
-export function useTanstackQueryImpl({
-  options
-}: {
-  options?: MutationOptions<AuthCredentials>;
-}) {
+export function useTanstackQueryImpl(
+  options?: MutationOptions<AuthCredentials>
+) {
   const mutation = useMutation<AuthCredentials, Error, MutationVariables>({
     mutationFn: ({ email, password }) => authService.signIn(email, password),
     onError: error => {
