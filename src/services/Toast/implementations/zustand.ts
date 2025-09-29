@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { ToastService } from './props';
+import { ToastService } from '../props';
 
 export const useToastStore = create<ToastService>(set => ({
   toast: null,

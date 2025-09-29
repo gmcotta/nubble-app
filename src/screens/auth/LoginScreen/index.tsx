@@ -10,7 +10,7 @@ import {
   Text
 } from '@components';
 import { useAuthSignIn } from '@domain';
-import { useToastActions } from '@services';
+import { useToastActionsService } from '@services';
 import * as C from './constants';
 import { LoginFormSchema, LoginScreenProps } from './props';
 import { loginSchema } from './schema';
@@ -25,7 +25,7 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
     },
     mode: 'onChange'
   });
-  const { showToast } = useToastActions();
+  const { showToast } = useToastActionsService();
   const { signIn, isLoading } = useAuthSignIn({
     onError: message => {
       showToast({

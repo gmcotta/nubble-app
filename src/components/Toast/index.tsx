@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { Animated } from 'react-native';
 
-import { useToast, useToastActions } from '@services';
+import { useToastService, useToastActionsService } from '@services';
 import { useAnimation } from './animation';
 import { ToastContent } from './components';
 import * as C from './constants';
 import * as S from './styles';
 
 export function Toast() {
-  const toast = useToast();
-  const { hideToast } = useToastActions();
+  const toast = useToastService();
+  const { hideToast } = useToastActionsService();
   const { fadeAnimation } = useAnimation();
 
   const position = toast?.position ?? 'top';

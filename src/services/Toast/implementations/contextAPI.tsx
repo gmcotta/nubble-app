@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
-import { ToastProps, ToastService } from './props';
+import { ToastProps, ToastService } from '../props';
 
 const ToastContext = createContext<ToastService>({
   toast: null,
@@ -25,11 +25,20 @@ export function ToastProvider({ children }: PropsWithChildren) {
   );
 }
 
-export function useToastContext(): ToastService {
+function useToastContext(): ToastService {
   const context = useContext(ToastContext);
   if (!context) {
-    throw new Error('Toast must be used withina a ToastProvider');
+    throw new Error('Toast must be used within a ToastProvider');
   }
 
   return context;
+}
+
+export function useToastContextAPI(): ToastService['toast'] {
+  return useToastContext().toast;
+}
+
+export function useToastActionsContextAPI(): Omit<ToastService, 'toast'> {
+  const { showToast, hideToast } = useToastContext();
+  return { showToast, hideToast };
 }

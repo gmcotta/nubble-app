@@ -2,7 +2,7 @@ import { Alert, Pressable } from 'react-native';
 
 import { Box, ProfileAvatar, Text } from '@components';
 import { PostComment, postCommentService, useRemovePostComment } from '@domain';
-import { useToastActions } from '@services';
+import { useToastActionsService } from '@services';
 import * as S from './styles';
 
 export function PostCommentItem({
@@ -18,7 +18,7 @@ export function PostCommentItem({
   postAuthorId: number;
   onSuccess: () => void;
 }) {
-  const { showToast } = useToastActions();
+  const { showToast } = useToastActionsService();
   const { removePostComment } = useRemovePostComment({
     postId,
     options: {
