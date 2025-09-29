@@ -28,6 +28,7 @@ import { ProfileIcon } from './icons/profile';
 import { ProfileFillIcon } from './icons/profile-fill';
 import { SearchIcon } from './icons/search';
 import { SendIcon } from './icons/send';
+import { SettingsIcon } from './icons/settings';
 import { TrashIcon } from './icons/trash';
 
 export const iconRegistry = {
@@ -58,6 +59,7 @@ export const iconRegistry = {
   profile: ProfileIcon,
   search: SearchIcon,
   send: SendIcon,
+  settings: SettingsIcon,
   trash: TrashIcon,
   // Maiores
   checkRound: CheckRoundIcon,

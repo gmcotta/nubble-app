@@ -1,20 +1,29 @@
 import {
-  ActivityIndicator,
-  Box,
-  ProfileAvatar,
+  Icon,
+  // ActivityIndicator,
+  // Box,
+  // ProfileAvatar,
   Screen,
-  Text
+  TouchableOpacityBox
+  // Text
 } from '@components';
-import { useGetUserById } from '@domain';
+// import { useGetUserById } from '@domain';
 import { MyProfileScreenProps } from './props';
 
-export function MyProfileScreen({ route }: MyProfileScreenProps) {
-  const { userId } = route.params;
-  const { user, isLoading, isError } = useGetUserById(userId);
+export function MyProfileScreen({
+  /*route,*/ navigation
+}: MyProfileScreenProps) {
+  // const { userId } = route.params;
+  // const { user, isLoading, isError } = useGetUserById(userId);
 
   return (
     <Screen>
-      <Box>
+      <TouchableOpacityBox
+        onPress={() => navigation.navigate('SettingsScreen')}
+      >
+        <Icon name="settings" />
+      </TouchableOpacityBox>
+      {/* <Box>
         {isLoading ? <ActivityIndicator /> : null}
         {isError ? <Text>Erro ao carregar perfil</Text> : null}
       </Box>
@@ -32,7 +41,7 @@ export function MyProfileScreen({ route }: MyProfileScreenProps) {
             @{user.username}
           </Text>
         </Box>
-      ) : null}
+      ) : null} */}
     </Screen>
   );
 }

@@ -6,5 +6,5 @@ export const useZustandImpl = create<AuthCredentialsService>(set => ({
   authCredentials: null,
   isLoading: false,
   saveCredentials: async authCredentials => set({ authCredentials }),
-  remove: () => set({ authCredentials: null })
+  removeCredentials: () => set({ authCredentials: null })
 }));
