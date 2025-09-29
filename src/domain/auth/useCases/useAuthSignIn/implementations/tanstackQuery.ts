@@ -9,6 +9,7 @@ export function useTanstackQueryImpl(
 ) {
   const mutation = useMutation<AuthCredentials, Error, MutationVariables>({
     mutationFn: ({ email, password }) => authService.signIn(email, password),
+    onSuccess: ({ token }) => authService.updateToken(token),
     onError: error => {
       if (options?.onError) {
         options.onError(error.message);
