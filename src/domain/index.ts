@@ -1,3 +1,7 @@
+export * from './auth/authTypes';
+export * from './auth/authService';
+export * from './auth/useCases';
+
 export * from './post/postTypes';
 export * from './post/postService';
 export * from './post/useCases';
