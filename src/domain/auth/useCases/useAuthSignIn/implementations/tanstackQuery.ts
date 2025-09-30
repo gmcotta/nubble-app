@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { useAuthCredentialsService } from 'services';
 import { AuthCredentials, authService } from '@domain';
 import { MutationOptions } from '@infra';
+import { useAuthCredentialsService } from '@services';
 import { MutationVariables } from '../props';
 
 export function useTanstackQueryImpl(
@@ -11,10 +11,7 @@ export function useTanstackQueryImpl(
   const { saveCredentials } = useAuthCredentialsService();
   const mutation = useMutation<AuthCredentials, Error, MutationVariables>({
     mutationFn: ({ email, password }) => authService.signIn(email, password),
-    onSuccess: authCredentials => {
-      authService.updateToken(authCredentials.token);
-      saveCredentials(authCredentials);
-    },
+    onSuccess: saveCredentials,
     onError: error => {
       if (options?.onError) {
         options.onError(error.message);

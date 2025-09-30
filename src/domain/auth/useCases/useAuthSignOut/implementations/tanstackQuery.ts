@@ -7,11 +7,9 @@ import { UseAuthSignOutResult } from '../props';
 export function useTanstackQueryImpl(): UseAuthSignOutResult {
   const { removeCredentials } = useAuthCredentialsService();
   const mutation = useMutation({
-    mutationFn: () => authService.signOut(),
+    mutationFn: authService.signOut,
     retry: false,
-    onSuccess: () => {
-      removeCredentials();
-    }
+    onSuccess: removeCredentials
   });
 
   return {
