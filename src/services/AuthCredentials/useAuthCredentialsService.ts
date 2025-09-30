@@ -1,6 +1,6 @@
 import { AuthCredentialsService } from './authCredentialsTypes';
-import { useZustandImpl } from './imlplementations/zustand';
+import { useContextAPIImpl } from './implementations';
 
 export function useAuthCredentialsService(): AuthCredentialsService {
-  return useZustandImpl();
+  return useContextAPIImpl();
 }
