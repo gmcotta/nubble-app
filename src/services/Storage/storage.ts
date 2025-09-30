@@ -1,4 +1,7 @@
-import { asyncStorageImpl } from './implementations/asyncStorage';
 import { Storage } from './storageTypes';
 
-export const storage: Storage = asyncStorageImpl;
+export let storage: Storage;
+
+export function initializeStorage(storageImpl: Storage) {
+  storage = storageImpl;
+}
