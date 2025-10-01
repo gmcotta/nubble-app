@@ -33,3 +33,8 @@ export interface AuthCredentials {
   token: string;
   user: User;
 }
+
+export interface FieldIsAvailableAPI {
+  message: string;
+  isAvailable: boolean;
+}
