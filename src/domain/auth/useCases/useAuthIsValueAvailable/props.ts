@@ -4,6 +4,6 @@ export interface UseAuthIsValueAvailableParams {
 }
 
 export interface UseAuthIsValueAvailableReturn {
-  isAvailable: boolean;
+  isUnavailable: boolean;
   isFetching: boolean;
 }

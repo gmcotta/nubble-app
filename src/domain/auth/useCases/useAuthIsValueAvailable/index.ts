@@ -2,7 +2,7 @@ import { useTanstackQueryImpl } from './implementations';
 import {
   UseAuthIsValueAvailableParams,
   UseAuthIsValueAvailableReturn
-} from './params';
+} from './props';
 
 export function useAuthIsValueAvailable(
   params: UseAuthIsValueAvailableParams

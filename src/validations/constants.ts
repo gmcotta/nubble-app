@@ -1,7 +1,8 @@
 export const ERROR_MESSAGES = {
   USERNAME: {
     INVALID: 'Username inválido',
-    SHORT: 'Username muito curto'
+    SHORT: 'Username muito curto',
+    UNAVAILABLE: 'Username indisponível'
   },
   FULL_NAME: {
     SHORT: 'Nome muito curto',

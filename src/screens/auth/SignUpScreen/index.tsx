@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ERROR_MESSAGES } from '@validations/constants';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -49,6 +50,12 @@ export function SignUpScreen() {
 
   const { reset } = useResetNavigationSuccess(resetProps);
 
+  const { signUp, isLoading } = useAuthSignUp({
+    onSuccess: () => {
+      reset();
+    }
+  });
+
   const username = watch('username');
   const usernameState = getFieldState('username');
   const isUsernameValid = !usernameState.invalid && usernameState.isDirty;
@@ -57,25 +64,28 @@ export function SignUpScreen() {
     enabled: isUsernameValid
   });
 
-  const { signUp, isLoading } = useAuthSignUp({
-    onSuccess: () => {
-      reset();
-    }
-  });
-
   function submitForm(formValues: SignUpFormSchema) {
     signUp(formValues);
   }
 
+  const isSubmitButtonDisabled =
+    !formState.isValid ||
+    usernameQuery.isFetching ||
+    usernameQuery.isUnavailable;
+
   return (
     <Screen canGoBack scrollable>
       <Text {...S.titleStyles}>{C.SCREEN_VALUES.TITLE}</Text>
-      <Text>{String(usernameQuery.isFetching)}</Text>
       <FormTextInput
         control={control}
         name="username"
         {...C.SCREEN_VALUES.USERNAME_INPUT}
         boxProps={S.usernameInputStyles}
+        errorMessage={
+          usernameQuery.isUnavailable
+            ? ERROR_MESSAGES.USERNAME.UNAVAILABLE
+            : undefined
+        }
         rightComponent={
           usernameQuery.isFetching ? (
             <ActivityIndicator size="small" />
@@ -109,7 +119,7 @@ export function SignUpScreen() {
       <Button
         loading={isLoading}
         title={C.SCREEN_VALUES.SUBMIT_BUTTON.TITLE}
-        disabled={!formState.isValid || usernameQuery.isFetching}
+        disabled={isSubmitButtonDisabled}
         onPress={handleSubmit(submitForm)}
       />
     </Screen>

@@ -6,7 +6,7 @@ import { QueryKeys } from '@infra';
 import {
   UseAuthIsValueAvailableParams,
   UseAuthIsValueAvailableReturn
-} from '../params';
+} from '../props';
 
 export function useTanstackQueryImpl({
   username,
@@ -24,7 +24,7 @@ export function useTanstackQueryImpl({
   const isDebouncing = debouncedUsername !== username;
 
   return {
-    isAvailable: !!data,
+    isUnavailable: data === false,
     isFetching: isFetching || isDebouncing
   };
 }
