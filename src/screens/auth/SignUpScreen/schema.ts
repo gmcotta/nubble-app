@@ -2,14 +2,15 @@ import * as z from 'zod';
 
 import {
   emailValidator,
-  fullNameValidator,
+  nameValidator,
   newPasswordValidator,
   usernameValidator
 } from '@validations';
 
 export const signUpSchema = z.object({
   username: usernameValidator,
-  fullName: fullNameValidator,
+  firstName: nameValidator,
+  lastName: nameValidator,
   email: emailValidator,
   password: newPasswordValidator
 });

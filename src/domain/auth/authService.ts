@@ -1,5 +1,5 @@
 import { api } from '@api';
-import { AuthCredentials } from '@domain';
+import { AuthCredentials, AuthSignUpData } from '@domain';
 import { authAdapter } from './authAdapter';
 import { authApi } from './authApi';
 
@@ -24,6 +24,10 @@ async function signOut() {
   }
 }
 
+async function signUp(data: AuthSignUpData) {
+  await authApi.signUp(data);
+}
+
 function updateToken(token: string) {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
@@ -35,6 +39,7 @@ function removeToken() {
 export const authService = {
   signIn,
   signOut,
+  signUp,
   updateToken,
   removeToken
 };

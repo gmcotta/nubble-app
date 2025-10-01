@@ -4,9 +4,13 @@ export const SCREEN_VALUES = {
     label: 'Seu username',
     placeholder: '@'
   },
-  NAME_INPUT: {
-    label: 'Nome completo',
-    placeholder: 'Digite seu nome completo'
+  FIRST_NAME_INPUT: {
+    label: 'Nome',
+    placeholder: 'Digite seu nome'
+  },
+  LAST_NAME_INPUT: {
+    label: 'Sobrenome',
+    placeholder: 'Digite seu sobrenome'
   },
   EMAIL_INPUT: {
     label: 'E-mail',

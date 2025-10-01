@@ -9,6 +9,22 @@ export interface AuthSignInAPI {
   user: UserAPI;
 }
 
+export interface AuthSignUpDataAPI {
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface AuthSignUpData {
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
+}
+
 export interface AuthSignOutAPI {
   message: string;
 }

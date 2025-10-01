@@ -8,6 +8,7 @@ import {
   Screen,
   Text
 } from '@components';
+import { useAuthSignUp } from '@domain';
 import { useResetNavigationSuccess } from '@hooks';
 import * as C from './constants';
 import { SignUpFormSchema } from './props';
@@ -19,7 +20,8 @@ export function SignUpScreen() {
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: '',
-      fullName: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: ''
     },
@@ -37,8 +39,14 @@ export function SignUpScreen() {
     }
   });
 
-  function submitForm(/* formValues: SignUpFormSchema */) {
-    reset();
+  const { signUp, isLoading } = useAuthSignUp({
+    onSuccess: () => {
+      reset();
+    }
+  });
+
+  function submitForm(formValues: SignUpFormSchema) {
+    signUp(formValues);
   }
 
   return (
@@ -52,9 +60,15 @@ export function SignUpScreen() {
       />
       <FormTextInput
         control={control}
-        name="fullName"
-        {...C.SCREEN_VALUES.NAME_INPUT}
-        boxProps={S.fullNameInputStyles}
+        name="firstName"
+        {...C.SCREEN_VALUES.FIRST_NAME_INPUT}
+        boxProps={S.nameInputStyles}
+      />
+      <FormTextInput
+        control={control}
+        name="lastName"
+        {...C.SCREEN_VALUES.LAST_NAME_INPUT}
+        boxProps={S.nameInputStyles}
       />
       <FormTextInput
         control={control}
@@ -69,6 +83,7 @@ export function SignUpScreen() {
         boxProps={S.passwordInputStyles}
       />
       <Button
+        loading={isLoading}
         title={C.SCREEN_VALUES.SUBMIT_BUTTON.TITLE}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}

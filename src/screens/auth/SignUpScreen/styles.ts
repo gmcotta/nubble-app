@@ -9,7 +9,7 @@ export const usernameInputStyles: TextInputProps['boxProps'] = {
   marginBottom: 's20'
 };
 
-export const fullNameInputStyles: TextInputProps['boxProps'] = {
+export const nameInputStyles: TextInputProps['boxProps'] = {
   marginBottom: 's20'
 };
 
