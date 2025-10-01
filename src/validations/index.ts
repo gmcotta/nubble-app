@@ -3,10 +3,11 @@ import * as z from 'zod';
 import { stringUtils } from '@utils';
 import * as C from './constants';
 
-const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/gim;
+const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{5,29}$/gim;
 
 export const usernameValidator = z
   .string()
+  .min(5, C.ERROR_MESSAGES.USERNAME.SHORT)
   .regex(usernameRegex, C.ERROR_MESSAGES.USERNAME.INVALID);
 
 export const nameValidator = z

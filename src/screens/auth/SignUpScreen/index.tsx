@@ -31,25 +31,31 @@ const resetProps: UseResetNavigationSuccessProps = {
   }
 };
 
+const defaultValues = {
+  username: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: ''
+};
+
 export function SignUpScreen() {
-  const { control, formState, handleSubmit, watch } = useForm<SignUpFormSchema>(
-    {
+  const { control, formState, handleSubmit, watch, getFieldState } =
+    useForm<SignUpFormSchema>({
       resolver: zodResolver(signUpSchema),
-      defaultValues: {
-        username: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: ''
-      },
+      defaultValues,
       mode: 'onChange'
-    }
-  );
+    });
 
   const { reset } = useResetNavigationSuccess(resetProps);
 
   const username = watch('username');
-  const usernameQuery = useAuthIsValueAvailable({ username });
+  const usernameState = getFieldState('username');
+  const isUsernameValid = !usernameState.invalid && usernameState.isDirty;
+  const usernameQuery = useAuthIsValueAvailable({
+    username,
+    enabled: isUsernameValid
+  });
 
   const { signUp, isLoading } = useAuthSignUp({
     onSuccess: () => {
@@ -103,7 +109,7 @@ export function SignUpScreen() {
       <Button
         loading={isLoading}
         title={C.SCREEN_VALUES.SUBMIT_BUTTON.TITLE}
-        disabled={!formState.isValid}
+        disabled={!formState.isValid || usernameQuery.isFetching}
         onPress={handleSubmit(submitForm)}
       />
     </Screen>

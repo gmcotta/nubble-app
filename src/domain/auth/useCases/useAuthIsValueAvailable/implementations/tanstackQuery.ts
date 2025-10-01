@@ -9,18 +9,22 @@ import {
 } from '../params';
 
 export function useTanstackQueryImpl({
-  username
+  username,
+  enabled
 }: UseAuthIsValueAvailableParams): UseAuthIsValueAvailableReturn {
   const debouncedUsername = useDebounce(username, 1500);
   const { data, isFetching } = useQuery({
     queryKey: [QueryKeys.isUsernameAvailable, debouncedUsername],
     queryFn: () => authService.isUsernameAvailable(debouncedUsername),
     retry: false,
-    staleTime: 20000
+    staleTime: 20000,
+    enabled: enabled && debouncedUsername.length > 0
   });
+
+  const isDebouncing = debouncedUsername !== username;
 
   return {
     isAvailable: !!data,
-    isFetching
+    isFetching: isFetching || isDebouncing
   };
 }
