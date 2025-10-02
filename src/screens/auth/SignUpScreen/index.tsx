@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ERROR_MESSAGES } from '@validations/constants';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -10,35 +9,18 @@ import {
   Screen,
   Text
 } from '@components';
-import { useAuthIsValueAvailable, useAuthSignUp } from '@domain';
 import {
-  useResetNavigationSuccess,
-  UseResetNavigationSuccessProps
-} from '@hooks';
+  useAuthIsUsernameAvailable,
+  useAuthIsEmailAvailable,
+  useAuthSignUp
+} from '@domain';
+import { useResetNavigationSuccess } from '@hooks';
+import { ERROR_MESSAGES } from '@validations';
 import * as C from './constants';
+import { useGetValueQuery } from './hooks';
 import { SignUpFormSchema } from './props';
-import { signUpSchema } from './schema';
+import { defaultValues, signUpSchema } from './schema';
 import * as S from './styles';
-
-const resetProps: UseResetNavigationSuccessProps = {
-  originRoute: 'LoginScreen',
-  successScreenParams: {
-    title: C.SCREEN_VALUES.SUCCESS_SCREEN_TITLE,
-    description: C.SCREEN_VALUES.SUCCESS_SCREEN_DESCRIPTION,
-    icon: {
-      name: 'checkRound',
-      color: 'primary'
-    }
-  }
-};
-
-const defaultValues = {
-  username: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: ''
-};
 
 export function SignUpScreen() {
   const { control, formState, handleSubmit, watch, getFieldState } =
@@ -48,7 +30,7 @@ export function SignUpScreen() {
       mode: 'onChange'
     });
 
-  const { reset } = useResetNavigationSuccess(resetProps);
+  const { reset } = useResetNavigationSuccess(C.RESET_PROPS);
 
   const { signUp, isLoading } = useAuthSignUp({
     onSuccess: () => {
@@ -56,12 +38,20 @@ export function SignUpScreen() {
     }
   });
 
-  const username = watch('username');
-  const usernameState = getFieldState('username');
-  const isUsernameValid = !usernameState.invalid && usernameState.isDirty;
-  const usernameQuery = useAuthIsValueAvailable({
-    username,
-    enabled: isUsernameValid
+  const usernameQuery = useGetValueQuery({
+    fieldName: 'username',
+    watch,
+    getFieldState,
+    queryHook: useAuthIsUsernameAvailable,
+    errorMessage: ERROR_MESSAGES.USERNAME.UNAVAILABLE
+  });
+
+  const emailQuery = useGetValueQuery({
+    fieldName: 'email',
+    watch,
+    getFieldState,
+    queryHook: useAuthIsEmailAvailable,
+    errorMessage: ERROR_MESSAGES.EMAIL.UNAVAILABLE
   });
 
   function submitForm(formValues: SignUpFormSchema) {
@@ -69,9 +59,7 @@ export function SignUpScreen() {
   }
 
   const isSubmitButtonDisabled =
-    !formState.isValid ||
-    usernameQuery.isFetching ||
-    usernameQuery.isUnavailable;
+    !formState.isValid || usernameQuery.isNotReady || emailQuery.isNotReady;
 
   return (
     <Screen canGoBack scrollable>
@@ -81,11 +69,7 @@ export function SignUpScreen() {
         name="username"
         {...C.SCREEN_VALUES.USERNAME_INPUT}
         boxProps={S.usernameInputStyles}
-        errorMessage={
-          usernameQuery.isUnavailable
-            ? ERROR_MESSAGES.USERNAME.UNAVAILABLE
-            : undefined
-        }
+        errorMessage={usernameQuery.errorMessage}
         rightComponent={
           usernameQuery.isFetching ? (
             <ActivityIndicator size="small" />
@@ -109,6 +93,10 @@ export function SignUpScreen() {
         name="email"
         {...C.SCREEN_VALUES.EMAIL_INPUT}
         boxProps={S.emailInputStyles}
+        errorMessage={emailQuery.errorMessage}
+        rightComponent={
+          emailQuery.isFetching ? <ActivityIndicator size="small" /> : undefined
+        }
       />
       <FormPasswordInput
         control={control}

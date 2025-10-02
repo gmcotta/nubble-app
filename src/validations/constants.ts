@@ -9,7 +9,8 @@ export const ERROR_MESSAGES = {
     LONG: 'Nome muito longo'
   },
   EMAIL: {
-    INVALID: 'E-mail inválido'
+    INVALID: 'E-mail inválido',
+    UNAVAILABLE: 'E-mail indisponível'
   },
   PASSWORD: {
     REQUIRED: 'Senha obrigatória',

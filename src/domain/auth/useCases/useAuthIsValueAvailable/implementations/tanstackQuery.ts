@@ -1,27 +1,28 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { authService } from '@domain';
 import { useDebounce } from '@hooks';
-import { QueryKeys } from '@infra';
 import {
   UseAuthIsValueAvailableParams,
   UseAuthIsValueAvailableReturn
 } from '../props';
 
 export function useTanstackQueryImpl({
-  username,
-  enabled
+  value,
+  enabled,
+  queryFn,
+  queryKey
 }: UseAuthIsValueAvailableParams): UseAuthIsValueAvailableReturn {
-  const debouncedUsername = useDebounce(username, 1500);
+  const debouncedValue = useDebounce(value, 1500);
+
   const { data, isFetching } = useQuery({
-    queryKey: [QueryKeys.isUsernameAvailable, debouncedUsername],
-    queryFn: () => authService.isUsernameAvailable(debouncedUsername),
+    queryKey: [queryKey, debouncedValue],
+    queryFn: () => queryFn(debouncedValue),
     retry: false,
     staleTime: 20000,
-    enabled: enabled && debouncedUsername.length > 0
+    enabled: enabled && debouncedValue.length > 0
   });
 
-  const isDebouncing = debouncedUsername !== username;
+  const isDebouncing = debouncedValue !== value;
 
   return {
     isUnavailable: data === false,

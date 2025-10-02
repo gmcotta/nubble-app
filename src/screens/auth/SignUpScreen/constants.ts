@@ -1,3 +1,17 @@
+import { UseResetNavigationSuccessProps } from '@hooks';
+
+export const RESET_PROPS: UseResetNavigationSuccessProps = {
+  originRoute: 'LoginScreen',
+  successScreenParams: {
+    title: 'Sua conta foi criada com sucesso!',
+    description: 'Agora é só fazer login na nossa plataforma.',
+    icon: {
+      name: 'checkRound',
+      color: 'primary'
+    }
+  }
+};
+
 export const SCREEN_VALUES = {
   TITLE: 'Criar uma conta',
   USERNAME_INPUT: {
@@ -22,7 +36,5 @@ export const SCREEN_VALUES = {
   },
   SUBMIT_BUTTON: {
     TITLE: 'Criar uma conta'
-  },
-  SUCCESS_SCREEN_TITLE: 'Sua conta foi criada com sucesso!',
-  SUCCESS_SCREEN_DESCRIPTION: 'Agora é só fazer login na nossa plataforma.'
+  }
 };

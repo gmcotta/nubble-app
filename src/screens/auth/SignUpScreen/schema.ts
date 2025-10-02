@@ -14,3 +14,11 @@ export const signUpSchema = z.object({
   email: emailValidator,
   password: newPasswordValidator
 });
+
+export const defaultValues = {
+  username: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: ''
+};
