@@ -46,6 +46,11 @@ async function isEmailAvailable(email: string): Promise<boolean> {
   return isAvailable;
 }
 
+async function forgotPassword(email: string): Promise<string> {
+  const response = await authApi.forgotPassword({ email });
+  return response.message;
+}
+
 export const authService = {
   signIn,
   signOut,
@@ -53,5 +58,6 @@ export const authService = {
   updateToken,
   removeToken,
   isUsernameAvailable,
-  isEmailAvailable
+  isEmailAvailable,
+  forgotPassword
 };

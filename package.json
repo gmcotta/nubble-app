@@ -9,7 +9,9 @@
     "start": "react-native start",
     "typeCheck": "tsc --noEmit",
     "test": "jest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "adb:reverse:api": "adb reverse tcp:3333 tcp:3333",
+    "adb:input:text": "adb shell input text"
   },
   "dependencies": {
     "@babel/plugin-transform-export-namespace-from": "^7.27.1",

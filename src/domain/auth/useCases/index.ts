@@ -1,3 +1,5 @@
+export * from './useAuthForgotPassword';
+
 export * from './useAuthIsValueAvailable';
 export type {
   UseAuthIsValueAvailableReturn,

@@ -5,3 +5,7 @@ import { emailValidator } from '@validations';
 export const forgotPasswordSchema = z.object({
   email: emailValidator
 });
+
+export const defaultValues = {
+  email: ''
+};
