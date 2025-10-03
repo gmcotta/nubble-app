@@ -34,6 +34,7 @@
       "@utils/*": ["src/utils/*"],
       "@validations": ["src/validations"],
       "@validations/*": ["src/validations/*"]
-    }
+    },
+    "types": ["node", "jest"]
   } 
 }

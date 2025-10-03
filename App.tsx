@@ -8,7 +8,7 @@ import { AuthCredentialsProvider } from '@services';
 import { theme } from '@theme';
 import { queryClient } from './queryClient';
 
-if (__DEV__) {
+if (__DEV__ && process.env.JEST_WORKER_ID === undefined) {
   require('./reactotronConfig');
 }
 

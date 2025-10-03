@@ -1,4 +1,4 @@
-import { AuthCredentials } from 'domain';
+import { AuthCredentials } from '@domain';
 
 export interface AuthCredentialsService {
   authCredentials: AuthCredentials | null;
