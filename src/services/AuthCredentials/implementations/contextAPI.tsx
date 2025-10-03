@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import {
   createContext,
   PropsWithChildren,
@@ -6,6 +7,7 @@ import {
   useState
 } from 'react';
 
+import { api } from '@api';
 import { AuthCredentials, authService } from '@domain';
 import { AuthCredentialsService } from '@services';
 import { authCredentialsStorage } from '../authCredentialsStorage';
@@ -25,6 +27,37 @@ export function AuthCredentialsProvider({ children }: PropsWithChildren) {
   useEffect(() => {
     fetchInitialAuthCredentials();
   }, []);
+
+  useEffect(() => {
+    const interceptor = api.interceptors.response.use(
+      response => response,
+      async (responseError: AxiosError) => {
+        if (responseError.response?.status === 401) {
+          if (!authCredentials?.refreshToken) {
+            removeCredentials();
+            return Promise.reject(responseError);
+          }
+
+          const newAuthCredentials =
+            await authService.authenticateByRefreshToken(
+              authCredentials.refreshToken
+            );
+          saveCredentials(newAuthCredentials);
+          const failedRequest = responseError.config;
+          if (!failedRequest) {
+            return Promise.reject(responseError);
+          }
+          failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`;
+
+          return api(failedRequest);
+        }
+      }
+    );
+
+    return () => {
+      api.interceptors.response.eject(interceptor);
+    };
+  }, [authCredentials?.refreshToken]);
 
   async function fetchInitialAuthCredentials() {
     try {
