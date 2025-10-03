@@ -1,4 +1,4 @@
-import { AxiosError } from 'axios';
+import { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import {
   createContext,
   PropsWithChildren,
@@ -7,6 +7,7 @@ import {
   useState
 } from 'react';
 
+import { authApi } from 'domain/auth/authApi';
 import { api } from '@api';
 import { AuthCredentials, authService } from '@domain';
 import { AuthCredentialsService } from '@services';
@@ -33,20 +34,29 @@ export function AuthCredentialsProvider({ children }: PropsWithChildren) {
       response => response,
       async (responseError: AxiosError) => {
         if (responseError.response?.status === 401) {
-          if (!authCredentials?.refreshToken) {
+          const failedRequest = responseError.config as
+            | InternalAxiosRequestConfig<any> & { sent: boolean };
+
+          const hasNotRefreshToken = !authCredentials?.refreshToken;
+          const isRefreshTokenRequest =
+            authApi.isRefreshTokenRequest(failedRequest);
+          if (
+            hasNotRefreshToken ||
+            isRefreshTokenRequest ||
+            failedRequest.sent
+          ) {
             removeCredentials();
             return Promise.reject(responseError);
           }
+
+          failedRequest.sent = true;
 
           const newAuthCredentials =
             await authService.authenticateByRefreshToken(
               authCredentials.refreshToken
             );
           saveCredentials(newAuthCredentials);
-          const failedRequest = responseError.config;
-          if (!failedRequest) {
-            return Promise.reject(responseError);
-          }
+
           failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`;
 
           return api(failedRequest);

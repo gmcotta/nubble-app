@@ -1,3 +1,5 @@
+import { AxiosRequestConfig } from 'axios';
+
 import { api } from '@api';
 import { UserAPI } from '@domain';
 import {
@@ -7,6 +9,8 @@ import {
   FieldIsAvailableAPI,
   ForgotPasswordAPI
 } from './authTypes';
+
+const REFRESH_TOKEN_URL = '/auth/refresh-token';
 
 async function signIn(
   email: string,
@@ -32,10 +36,15 @@ async function signUp(data: AuthSignUpDataAPI): Promise<UserAPI> {
 async function authenticateByRefreshToken(
   token: string
 ): Promise<AuthCredentialsAPI> {
-  const response = await api.post<AuthCredentialsAPI>('/auth/refresh-token', {
+  const response = await api.post<AuthCredentialsAPI>(REFRESH_TOKEN_URL, {
     refreshToken: token
   });
   return response.data;
+}
+
+function isRefreshTokenRequest(request: AxiosRequestConfig) {
+  const { url } = request;
+  return url === REFRESH_TOKEN_URL;
 }
 
 async function isUsernameAvailable(params: {
@@ -66,5 +75,6 @@ export const authApi = {
   isUsernameAvailable,
   isEmailAvailable,
   forgotPassword,
-  authenticateByRefreshToken
+  authenticateByRefreshToken,
+  isRefreshTokenRequest
 };
