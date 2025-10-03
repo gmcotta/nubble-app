@@ -1,9 +1,11 @@
 import { User, UserAPI } from '@domain';
 
-export interface AuthSignInAPI {
+export interface AuthCredentialsAPI {
   auth: {
     type: string;
     token: string;
+    refreshToken: string;
+    expires_at: string;
   };
 
   user: UserAPI;
@@ -32,6 +34,8 @@ export interface AuthSignOutAPI {
 export interface AuthCredentials {
   token: string;
   user: User;
+  refreshToken: string;
+  expires_at: string;
 }
 
 export interface FieldIsAvailableAPI {
