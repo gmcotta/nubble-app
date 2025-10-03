@@ -1,5 +1,6 @@
 export * from './auth/authTypes';
 export * from './auth/authService';
+export * from './auth/authApi';
 export * from './auth/useCases';
 
 export * from './post/postTypes';

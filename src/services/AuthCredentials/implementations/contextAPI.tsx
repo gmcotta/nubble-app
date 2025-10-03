@@ -1,4 +1,3 @@
-import { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import {
   createContext,
   PropsWithChildren,
@@ -7,8 +6,7 @@ import {
   useState
 } from 'react';
 
-import { authApi } from 'domain/auth/authApi';
-import { api } from '@api';
+import { registerAuthCredentialsInterceptor } from '@api';
 import { AuthCredentials, authService } from '@domain';
 import { AuthCredentialsService } from '@services';
 import { authCredentialsStorage } from '../authCredentialsStorage';
@@ -30,44 +28,51 @@ export function AuthCredentialsProvider({ children }: PropsWithChildren) {
   }, []);
 
   useEffect(() => {
-    const interceptor = api.interceptors.response.use(
-      response => response,
-      async (responseError: AxiosError) => {
-        if (responseError.response?.status === 401) {
-          const failedRequest = responseError.config as
-            | InternalAxiosRequestConfig<any> & { sent: boolean };
+    // const interceptor = api.interceptors.response.use(
+    //   response => response,
+    //   async (responseError: AxiosError) => {
+    //     if (responseError.response?.status === 401) {
+    //       const failedRequest = responseError.config as
+    //         | InternalAxiosRequestConfig<any> & { sent: boolean };
 
-          const hasNotRefreshToken = !authCredentials?.refreshToken;
-          const isRefreshTokenRequest =
-            authApi.isRefreshTokenRequest(failedRequest);
-          if (
-            hasNotRefreshToken ||
-            isRefreshTokenRequest ||
-            failedRequest.sent
-          ) {
-            removeCredentials();
-            return Promise.reject(responseError);
-          }
+    //       const hasNotRefreshToken = !authCredentials?.refreshToken;
+    //       const isRefreshTokenRequest =
+    //         authApi.isRefreshTokenRequest(failedRequest);
+    //       if (
+    //         hasNotRefreshToken ||
+    //         isRefreshTokenRequest ||
+    //         failedRequest.sent
+    //       ) {
+    //         removeCredentials();
+    //         return Promise.reject(responseError);
+    //       }
 
-          failedRequest.sent = true;
+    //       failedRequest.sent = true;
 
-          const newAuthCredentials =
-            await authService.authenticateByRefreshToken(
-              authCredentials.refreshToken
-            );
-          saveCredentials(newAuthCredentials);
+    //       const newAuthCredentials =
+    //         await authService.authenticateByRefreshToken(
+    //           authCredentials.refreshToken
+    //         );
+    //       saveCredentials(newAuthCredentials);
 
-          failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`;
+    //       failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`;
 
-          return api(failedRequest);
-        }
-      }
-    );
+    //       return api(failedRequest);
+    //     }
+    //   }
+    // );
 
-    return () => {
-      api.interceptors.response.eject(interceptor);
-    };
-  }, [authCredentials?.refreshToken]);
+    // return () => {
+    //   api.interceptors.response.eject(interceptor);
+    // };
+
+    const interceptor = registerAuthCredentialsInterceptor({
+      authCredentials,
+      removeCredentials,
+      saveCredentials
+    });
+    return interceptor;
+  }, [authCredentials]);
 
   async function fetchInitialAuthCredentials() {
     try {
