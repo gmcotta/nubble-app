@@ -9,7 +9,7 @@ import {
 } from './authTypes';
 
 async function signIn(email: string, password: string): Promise<AuthSignInAPI> {
-  const response = await api.post('/login', {
+  const response = await api.post('/auth/login', {
     email,
     password
   });
@@ -17,33 +17,33 @@ async function signIn(email: string, password: string): Promise<AuthSignInAPI> {
 }
 
 async function signOut(): Promise<AuthSignOutAPI> {
-  const response = await api.get('/profile/logout');
+  const response = await api.get('/auth/profile/logout');
   return response.data;
 }
 
 async function signUp(data: AuthSignUpDataAPI): Promise<UserAPI> {
-  const response = await api.post<UserAPI>('/register', data);
+  const response = await api.post<UserAPI>('/auth/register', data);
   return response.data;
 }
 
 async function isUsernameAvailable(params: {
   username: string;
 }): Promise<FieldIsAvailableAPI> {
-  const response = await api.get('/validate-username', { params });
+  const response = await api.get('/auth/validate-username', { params });
   return response.data;
 }
 
 async function isEmailAvailable(params: {
   email: string;
 }): Promise<FieldIsAvailableAPI> {
-  const response = await api.get('/validate-email', { params });
+  const response = await api.get('/auth/validate-email', { params });
   return response.data;
 }
 
 async function forgotPassword(params: {
   email: string;
 }): Promise<ForgotPasswordAPI> {
-  const response = await api.post('/forgot-password', params);
+  const response = await api.post('/auth/forgot-password', params);
   return response.data;
 }
 
