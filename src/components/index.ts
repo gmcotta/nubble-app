@@ -1,7 +1,7 @@
-export * from './ActivityIndicator';
+export * from './ActivityIndicator/ActivityIndicator';
 export * from './ActivityIndicator/props';
 
-export * from './Button';
+export * from './Button/Button';
 export * from './Button/props';
 export * from './Button/variants';
 

@@ -16,12 +16,17 @@ export function Button({
 
   return (
     <TouchableOpacityBox
+      testID="button-container"
+      disabled={disabled || loading}
       {...S.buttonContainerStyles}
       {...activeVariant[activeModifier].container}
       {...touchableOpacityBoxProps}
     >
       {loading ? (
-        <ActivityIndicator color={activeVariant[activeModifier].content} />
+        <ActivityIndicator
+          testID="button-activity-indicator"
+          color={activeVariant[activeModifier].content}
+        />
       ) : (
         <Text {...S.buttonTextStyles(color)}>{title}</Text>
       )}
