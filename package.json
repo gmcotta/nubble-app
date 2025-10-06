@@ -8,7 +8,9 @@
     "lint": "eslint .",
     "start": "react-native start",
     "typeCheck": "tsc --noEmit",
-    "test": "jest",
+    "test": "jest --verbose",
+    "test:coverage": "yarn test --coverage",
+    "test:watch": "yarn test --watch",
     "prepare": "husky",
     "adb:reverse:api": "adb reverse tcp:3333 tcp:3333",
     "adb:input:text": "adb shell input text"

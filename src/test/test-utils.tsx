@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '@shopify/restyle';
 import { render, RenderOptions } from '@testing-library/react-native';
 import { PropsWithChildren, ReactElement } from 'react';
@@ -5,7 +6,11 @@ import { PropsWithChildren, ReactElement } from 'react';
 import { theme } from '@theme';
 
 const AllProviders = ({ children }: PropsWithChildren) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>{children}</NavigationContainer>
+    </ThemeProvider>
+  );
 };
 
 function customRender<T>(
