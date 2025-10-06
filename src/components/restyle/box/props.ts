@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react';
 
-import { Box } from '.';
+import { Box } from './RestyleBox';
 
 export type RestyleBoxProps = ComponentProps<typeof Box>;
