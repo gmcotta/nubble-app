@@ -5,7 +5,7 @@ import { PropsWithChildren, ReactElement } from 'react';
 
 import { theme } from '@theme';
 
-const AllProviders = ({ children }: PropsWithChildren) => {
+export const AllProviders = ({ children }: PropsWithChildren) => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>{children}</NavigationContainer>
