@@ -3,11 +3,11 @@ import { useMutation } from '@tanstack/react-query';
 import { AuthCredentials, authService } from '@domain';
 import { MutationOptions } from '@infra';
 import { useAuthCredentialsService } from '@services';
-import { MutationVariables } from '../props';
+import { MutationVariables, UseAuthSignInResult } from '../props';
 
 export function useTanstackQueryImpl(
   options?: MutationOptions<AuthCredentials>
-) {
+): UseAuthSignInResult {
   const { saveCredentials } = useAuthCredentialsService();
   const mutation = useMutation<AuthCredentials, Error, MutationVariables>({
     mutationFn: ({ email, password }) => authService.signIn(email, password),
@@ -22,6 +22,8 @@ export function useTanstackQueryImpl(
 
   return {
     isLoading: mutation.isPending,
-    signIn: (variables: MutationVariables) => mutation.mutate(variables)
+    signIn: (variables: MutationVariables) => mutation.mutate(variables),
+    isSuccess: mutation.isSuccess,
+    isError: mutation.isError
   };
 }

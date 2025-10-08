@@ -2,9 +2,9 @@ module.exports = {
   preset: 'react-native',
   coveragePathIgnorePatterns: ['/node_modules/'],
   collectCoverageFrom: [
-    'src/{components,hooks,utils}/**/*.{js,jsx,ts,tsx}',
+    'src/{components,domain,hooks,utils}/**/*.{js,jsx,ts,tsx}',
     '!src/components/Icon/icons/*.{ts,tsx}',
-    '!src/{components,hooks,utils}/**/props.{ts,tsx}',
+    '!src/{components,domain,hooks,utils}/**/props.{ts,tsx}',
     '!src/{components,hooks,utils}/**/index.ts'
   ],
   transformIgnorePatterns: [
