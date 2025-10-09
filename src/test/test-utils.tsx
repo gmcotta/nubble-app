@@ -1,6 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '@shopify/restyle';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+  QueryClientConfig
+} from '@tanstack/react-query';
 import {
   render,
   renderHook,
@@ -11,19 +15,33 @@ import { PropsWithChildren, ReactElement } from 'react';
 
 import { theme } from '@theme';
 
-const wrapperAllProviders = () => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-        gcTime: Infinity
-      },
-      mutations: {
-        retry: false,
-        gcTime: Infinity
-      }
+const queryClientConfig: QueryClientConfig = {
+  defaultOptions: {
+    queries: {
+      retry: false,
+      gcTime: Infinity
+    },
+    mutations: {
+      retry: false,
+      gcTime: Infinity
     }
-  });
+  }
+};
+
+const AllProvidersWrapper = () => {
+  const queryClient = new QueryClient(queryClientConfig);
+
+  return ({ children }: PropsWithChildren) => (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>{children}</NavigationContainer>
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
+};
+
+const ScreenProvidersWrapper = () => {
+  const queryClient = new QueryClient(queryClientConfig);
 
   return ({ children }: PropsWithChildren) => (
     <QueryClientProvider client={queryClient}>
@@ -38,7 +56,14 @@ function customRender<T>(
   component: ReactElement<T>,
   options?: Omit<RenderOptions, 'wrapper'>
 ) {
-  return render(component, { wrapper: wrapperAllProviders(), ...options });
+  return render(component, { wrapper: AllProvidersWrapper(), ...options });
+}
+
+function customRenderScreen<T>(
+  component: ReactElement<T>,
+  options?: Omit<RenderOptions, 'wrapper'>
+) {
+  return render(component, { wrapper: ScreenProvidersWrapper(), ...options });
 }
 
 function customRenderHook<Result, Props>(
@@ -46,10 +71,14 @@ function customRenderHook<Result, Props>(
   options?: Omit<RenderHookOptions<Props>, 'wrapper'>
 ) {
   return renderHook(renderCallback, {
-    wrapper: wrapperAllProviders(),
+    wrapper: AllProvidersWrapper(),
     ...options
   });
 }
 
 export * from '@testing-library/react-native';
-export { customRender as render, customRenderHook as renderHook };
+export {
+  customRender as render,
+  customRenderHook as renderHook,
+  customRenderScreen
+};

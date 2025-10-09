@@ -1,3 +1,3 @@
-export * from './PostCommentBottom';
-export * from './PostCommentItem';
-export * from './PostCommentTextMessage';
+export * from './PostCommentBottom/PostCommentBottom';
+export * from './PostCommentItem/PostCommentItem';
+export * from './PostCommentTextMessage/PostCommentTextMessage';

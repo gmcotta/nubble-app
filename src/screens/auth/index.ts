@@ -1,4 +1,4 @@
 export * from './ForgotPasswordScreen';
-export * from './LoginScreen';
-export * from './SignUpScreen';
-export * from './SuccessScreen';
+export * from './LoginScreen/LoginScreen';
+export * from './SignUpScreen/SignUpScreen';
+export * from './SuccessScreen/SuccessScreen';

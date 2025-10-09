@@ -5,7 +5,7 @@ import { useToastActionsService } from 'services';
 import { Button, FormTextInput, Screen, Text } from '@components';
 import { useAuthForgotPassword } from '@domain';
 import { useResetNavigationSuccess } from '@hooks';
-import * as C from './constants';
+import * as C from './ForgotPasswordScreen';
 import { ForgotPasswordFormSchema } from './props';
 import { forgotPasswordSchema, defaultValues } from './schema';
 import * as S from './styles';

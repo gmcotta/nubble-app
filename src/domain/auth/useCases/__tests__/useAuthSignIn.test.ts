@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from 'test-utils';
 import { authService } from '@domain';
-import { useAuthSignIn } from '../useAuthSignIn';
+import { useAuthSignIn } from '../useAuthSignIn/useAuthSignIn';
 import { mockedAuthCredentials } from './mocks';
 
 const mockedSaveCredentials = jest.fn();

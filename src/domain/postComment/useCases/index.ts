@@ -1,3 +1,3 @@
-export * from './useCreatePostComment';
+export * from './useCreatePostComment/useCreatePostComment';
 export * from './usePostComment';
-export * from './useRemovePostComment';
+export * from './useRemovePostComment/useRemovePostComment';
