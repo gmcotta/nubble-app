@@ -1,4 +1,4 @@
-import { AllProviders, renderHook, waitFor } from 'test-utils';
+import { renderHook, waitFor } from 'test-utils';
 import { authService } from '@domain';
 import { useAuthSignIn } from '../useAuthSignIn';
 import { mockedAuthCredentials } from './mocks';
@@ -21,9 +21,7 @@ describe('useAuthSignIn', () => {
       .spyOn(authService, 'signIn')
       .mockResolvedValueOnce(mockedAuthCredentials);
 
-    const { result } = renderHook(() => useAuthSignIn(), {
-      wrapper: AllProviders
-    });
+    const { result } = renderHook(() => useAuthSignIn());
 
     result.current.signIn({
       email: 'mariajulia@coffstack.com',
@@ -41,11 +39,8 @@ describe('useAuthSignIn', () => {
       .mockRejectedValueOnce(new Error('Invalid user or password'));
     const mockedOnError = jest.fn();
 
-    const { result } = renderHook(
-      () => useAuthSignIn({ onError: mockedOnError }),
-      {
-        wrapper: AllProviders
-      }
+    const { result } = renderHook(() =>
+      useAuthSignIn({ onError: mockedOnError })
     );
 
     result.current.signIn({
