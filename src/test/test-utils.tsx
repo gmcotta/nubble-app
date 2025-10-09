@@ -80,5 +80,5 @@ export * from '@testing-library/react-native';
 export {
   customRender as render,
   customRenderHook as renderHook,
-  customRenderScreen
+  customRenderScreen as renderScreen
 };

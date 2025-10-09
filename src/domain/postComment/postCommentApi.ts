@@ -1,12 +1,14 @@
 import { api, PageAPI, PaginationParams } from '@api';
 import { PostCommentAPI, PostCommentDeleteAPI } from './postCommentTypes';
 
+export const POST_COMMENT_ENDPOINT = '/user/post_comment';
+
 async function getList(
   postId: number,
   pageParams: PaginationParams
 ): Promise<PageAPI<PostCommentAPI>> {
   const response = await api.get<PageAPI<PostCommentAPI>>(
-    '/user/post_comment',
+    POST_COMMENT_ENDPOINT,
     {
       params: {
         post_id: postId,
@@ -22,7 +24,7 @@ async function create(
   post_id: number,
   message: string
 ): Promise<PostCommentAPI> {
-  const response = await api.post<PostCommentAPI>('/user/post_comment', {
+  const response = await api.post<PostCommentAPI>(POST_COMMENT_ENDPOINT, {
     post_id,
     message
   });
@@ -32,7 +34,7 @@ async function create(
 
 async function remove(post_comment_id: number): Promise<PostCommentDeleteAPI> {
   const response = await api.delete<PostCommentDeleteAPI>(
-    `/user/post_comment/${post_comment_id}`
+    `${POST_COMMENT_ENDPOINT}/${post_comment_id}`
   );
   return response.data;
 }

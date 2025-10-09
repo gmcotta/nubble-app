@@ -17,7 +17,10 @@ const config: Config = {
   ],
   moduleDirectories: ['node_modules', './src/test'],
   modulePathIgnorePatterns: ['.*/mocks/.*'],
-  setupFiles: ['<rootDir>/src/test/jestSetup.ts']
+  setupFiles: ['<rootDir>/src/test/jestSetup.ts'],
+  testEnvironmentOptions: {
+    customExportConditions: ['']
+  }
 };
 
 export default config;
