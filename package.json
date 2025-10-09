@@ -67,6 +67,7 @@
     "reactotron-react-native": "^5.1.17",
     "reactotron-react-native-mmkv": "^0.2.9",
     "reactotron-react-query": "^2.0.2",
+    "ts-node": "^10.9.2",
     "typescript": "5.5.2"
   },
   "lint-staged": {

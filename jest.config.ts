@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from 'jest';
+
+const config: Config = {
   preset: 'react-native',
   coveragePathIgnorePatterns: ['/node_modules/'],
   collectCoverageFrom: [
@@ -9,9 +11,11 @@ module.exports = {
     '!src/components/**/{constants,mappers,styles,variants}.ts'
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!(@react-navigation|react-native|@react-native|react-clone-referenced-element|@unimodules|unimodules|expo(nent)?|@expo(nent)?/.*|react-native-svg)/)'
+    'node_modules/(?!(@react-navigation|react-native?|@react-native|react-clone-referenced-element|@unimodules|unimodules|expo(nent)?|@expo(nent)?/.*|react-native-svg)?|react-native-safe-area-context/)'
   ],
   moduleDirectories: ['node_modules', './src/test'],
   modulePathIgnorePatterns: ['.*/mocks/.*'],
   setupFiles: ['<rootDir>/src/test/jestSetup.ts']
 };
+
+export default config;
