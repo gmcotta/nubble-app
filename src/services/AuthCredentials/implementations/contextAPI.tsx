@@ -13,6 +13,7 @@ import { authCredentialsStorage } from '../authCredentialsStorage';
 
 const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,
+  userId: null,
   isLoading: true,
   saveCredentials: async () => {},
   removeCredentials: async () => {}
@@ -28,44 +29,6 @@ export function AuthCredentialsProvider({ children }: PropsWithChildren) {
   }, []);
 
   useEffect(() => {
-    // const interceptor = api.interceptors.response.use(
-    //   response => response,
-    //   async (responseError: AxiosError) => {
-    //     if (responseError.response?.status === 401) {
-    //       const failedRequest = responseError.config as
-    //         | InternalAxiosRequestConfig<any> & { sent: boolean };
-
-    //       const hasNotRefreshToken = !authCredentials?.refreshToken;
-    //       const isRefreshTokenRequest =
-    //         authApi.isRefreshTokenRequest(failedRequest);
-    //       if (
-    //         hasNotRefreshToken ||
-    //         isRefreshTokenRequest ||
-    //         failedRequest.sent
-    //       ) {
-    //         removeCredentials();
-    //         return Promise.reject(responseError);
-    //       }
-
-    //       failedRequest.sent = true;
-
-    //       const newAuthCredentials =
-    //         await authService.authenticateByRefreshToken(
-    //           authCredentials.refreshToken
-    //         );
-    //       saveCredentials(newAuthCredentials);
-
-    //       failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`;
-
-    //       return api(failedRequest);
-    //     }
-    //   }
-    // );
-
-    // return () => {
-    //   api.interceptors.response.eject(interceptor);
-    // };
-
     const interceptor = registerAuthCredentialsInterceptor({
       authCredentials,
       removeCredentials,
@@ -101,9 +64,17 @@ export function AuthCredentialsProvider({ children }: PropsWithChildren) {
     setAuthCredentials(null);
   }
 
+  const userId = authCredentials?.user.id ?? null;
+
   return (
     <AuthCredentialsContext.Provider
-      value={{ authCredentials, isLoading, saveCredentials, removeCredentials }}
+      value={{
+        authCredentials,
+        userId,
+        isLoading,
+        saveCredentials,
+        removeCredentials
+      }}
     >
       {children}
     </AuthCredentialsContext.Provider>

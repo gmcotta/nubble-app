@@ -35,7 +35,7 @@ async function remove(postCommentId: number): Promise<string> {
 
 function canRemove(
   postComment: PostComment,
-  userId: number,
+  userId: number | null,
   postAuthorId: number
 ) {
   if (postComment.author.id === userId) return true;

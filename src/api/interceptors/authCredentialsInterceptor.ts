@@ -8,7 +8,7 @@ export function registerAuthCredentialsInterceptor({
   authCredentials,
   removeCredentials,
   saveCredentials
-}: Omit<AuthCredentialsService, 'isLoading'>) {
+}: Omit<AuthCredentialsService, 'isLoading' | 'userId'>) {
   const interceptor = api.interceptors.response.use(
     response => response,
     async (responseError: AxiosError) => {

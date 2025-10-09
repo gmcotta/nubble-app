@@ -6,6 +6,7 @@ import { AppScreenProps } from '@routes';
 export type PostCommentScreenProps = AppScreenProps<'PostCommentScreen'>;
 
 export interface RenderItemProps {
+  userId: number | null;
   postId: number;
   info: ListRenderItemInfo<PostComment>;
   postAuthorId: number;

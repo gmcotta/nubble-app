@@ -14,7 +14,7 @@ export function PostCommentItem({
 }: {
   postId: number;
   postComment: PostComment;
-  userId: number;
+  userId: number | null;
   postAuthorId: number;
   onSuccess: () => void;
 }) {

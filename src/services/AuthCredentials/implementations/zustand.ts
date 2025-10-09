@@ -7,6 +7,7 @@ import { AuthCredentialsService } from '../authCredentialsTypes';
 export const useZustandImpl = create<AuthCredentialsService>()(
   persist(
     set => ({
+      userId: null,
       authCredentials: null,
       isLoading: false,
       saveCredentials: async authCredentials => set({ authCredentials }),

@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import { Box, Screen } from '@components';
 import { usePostCommentList } from '@domain';
 import { useAppSafeArea } from '@hooks';
+import { useAuthCredentialsService } from '@services';
 import {
   PostCommentItem,
   PostCommentBottom,
@@ -12,6 +13,7 @@ import { PostCommentScreenProps, RenderItemProps } from './props';
 import * as S from './styles';
 
 function renderItem({
+  userId,
   postId,
   info,
   postAuthorId,
@@ -21,7 +23,7 @@ function renderItem({
     <PostCommentItem
       postId={postId}
       postComment={info.item}
-      userId={1}
+      userId={userId}
       postAuthorId={postAuthorId}
       onSuccess={onSuccess}
     />
@@ -32,6 +34,7 @@ export function PostCommentScreen({ route }: PostCommentScreenProps) {
   const { postId, postAuthorId } = route.params;
   const { data, fetchNextPage, hasNextPage, refresh } =
     usePostCommentList(postId);
+  const { userId } = useAuthCredentialsService();
 
   const { bottom } = useAppSafeArea();
 
@@ -41,7 +44,13 @@ export function PostCommentScreen({ route }: PostCommentScreenProps) {
         <FlatList
           data={data}
           renderItem={info =>
-            renderItem({ postId, info, postAuthorId, onSuccess: refresh })
+            renderItem({
+              userId,
+              postId,
+              info,
+              postAuthorId,
+              onSuccess: refresh
+            })
           }
           ListFooterComponent={
             <PostCommentBottom
