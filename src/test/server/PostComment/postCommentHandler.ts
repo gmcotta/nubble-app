@@ -4,16 +4,37 @@ import { PostCommentAPI, POST_COMMENT_ENDPOINT } from '@domain';
 
 import { mockedData } from './mocks';
 
-export const postCommentHandlers = [
-  // TODO: verficar depois a tipagem
-  http.get<never, never, PageAPI<PostCommentAPI>>(
-    `${BASE_URL}${POST_COMMENT_ENDPOINT}`,
-    async () => {
-      const response = mockedData.mockedPostCommentResponse;
+const POST_COMMENT_URL = `${BASE_URL}${POST_COMMENT_ENDPOINT}`;
+let inMemoryResponse = { ...mockedData.mockedPostCommentResponse };
 
-      return HttpResponse.json(response, {
+export const postCommentHandlers = [
+  http.get<never, never, PageAPI<PostCommentAPI>>(
+    POST_COMMENT_URL,
+    async () => {
+      return HttpResponse.json(inMemoryResponse, {
         status: 200
       });
+    }
+  ),
+  http.post<never, { post_id: number; message: string }>(
+    POST_COMMENT_URL,
+    async ({ request }) => {
+      const body = await request.json();
+
+      const newPostCommentAPI: PostCommentAPI = {
+        ...mockedData.postCommentAPI,
+        id: 2,
+        post_id: body.post_id,
+        message: body.message
+      };
+
+      inMemoryResponse.data = [newPostCommentAPI, ...inMemoryResponse.data];
+      inMemoryResponse.meta = {
+        ...inMemoryResponse.meta,
+        total: inMemoryResponse.meta.total + 1
+      };
+
+      return HttpResponse.json(newPostCommentAPI, { status: 201 });
     }
   )
 ];

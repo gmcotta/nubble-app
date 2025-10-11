@@ -57,7 +57,11 @@ export function PostCommentItem({
   }
 
   return (
-    <Pressable disabled={!canRemove} onLongPress={handleShowRemoveCommentAlert}>
+    <Pressable
+      testID="post-comment-item"
+      disabled={!canRemove}
+      onLongPress={handleShowRemoveCommentAlert}
+    >
       <Box {...S.containerStyles}>
         <ProfileAvatar profileURL={postComment.author.profileURL} />
         <Box {...S.rightContainerStyles}>
