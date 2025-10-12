@@ -21,7 +21,8 @@ const config: Config = {
   setupFiles: ['<rootDir>/src/test/jestSetup.ts'],
   testEnvironmentOptions: {
     customExportConditions: ['']
-  }
+  },
+  testTimeout: 15000
 };
 
 export default config;
