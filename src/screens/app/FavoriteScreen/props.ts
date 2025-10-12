@@ -1,3 +1,3 @@
-import { AppBottomTabScreenProps } from '@routes/tabs';
+import { AppBottomTabScreenProps } from '@routes';
 
 export type FavoriteScreenProps = AppBottomTabScreenProps<'FavoriteScreen'>;

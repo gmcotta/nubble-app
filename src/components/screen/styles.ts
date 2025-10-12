@@ -1,4 +1,4 @@
-import { RestyleBoxProps } from 'components/Restyle/Box/props';
+import { RestyleBoxProps } from '@components';
 
 export const keyboardAvoidingViewStyles = {
   flex: 1

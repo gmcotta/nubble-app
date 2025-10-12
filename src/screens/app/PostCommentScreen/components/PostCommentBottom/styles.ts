@@ -1,4 +1,4 @@
-import { TextProps } from 'components';
+import { TextProps } from '@components';
 
 export const buttonTextProps: TextProps = {
   bold: true,

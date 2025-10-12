@@ -1,5 +1,5 @@
-import { AppBottomTabParamList } from '@routes/tabs';
 import { IconProps } from '@components';
+import { AppBottomTabParamList } from '@routes';
 
 export type MapperProps = Record<
   keyof AppBottomTabParamList,

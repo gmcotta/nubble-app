@@ -5,7 +5,7 @@ import {
   LoginScreen,
   SignUpScreen,
   SuccessScreen
-} from '@screens/auth';
+} from '@screens';
 import { AuthStackParamList } from './props';
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();

@@ -2,7 +2,7 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { AppStackParamList } from '@routes/stacks';
+import { AppStackParamList } from '@routes';
 
 export type AppBottomTabParamList = {
   HomeScreen: undefined;

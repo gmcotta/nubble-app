@@ -1,5 +1,5 @@
 import { add, Duration, formatISO, sub } from 'date-fns';
-import { dateUtils } from 'utils/dateUtils';
+import { dateUtils } from '@utils';
 
 const MOCK_DATE_NOW_VALUE = 1759515409 * 1000;
 

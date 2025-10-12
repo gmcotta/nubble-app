@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { AppTabNavigator } from '@routes/tabs';
-import { SettingsScreen, PostCommentScreen, ProfileScreen } from '@screens/app';
+import { AppTabNavigator } from '@routes';
+import { SettingsScreen, PostCommentScreen, ProfileScreen } from '@screens';
 import { AppStackParamList } from './props';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();

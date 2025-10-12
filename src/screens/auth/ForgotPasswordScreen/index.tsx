@@ -1,10 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { useToastActionsService } from 'services';
 import { Button, FormTextInput, Screen, Text } from '@components';
 import { useAuthForgotPassword } from '@domain';
 import { useResetNavigationSuccess } from '@hooks';
+import { useToastActionsService } from '@services';
 import * as C from './ForgotPasswordScreen';
 import { ForgotPasswordFormSchema } from './props';
 import { forgotPasswordSchema, defaultValues } from './schema';

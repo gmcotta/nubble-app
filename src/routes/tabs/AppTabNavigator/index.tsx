@@ -8,7 +8,7 @@ import {
   NewPostScreen,
   FavoriteScreen,
   MyProfileScreen
-} from '@screens/app';
+} from '@screens';
 import { AppTabBar } from '../AppTabBar';
 import { AppBottomTabParamList } from './props';
 

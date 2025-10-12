@@ -1,4 +1,4 @@
-import { QueryKeys } from 'infra';
+import { QueryKeys } from '@infra';
 
 export interface UseAuthIsValueAvailableParams {
   value: string;

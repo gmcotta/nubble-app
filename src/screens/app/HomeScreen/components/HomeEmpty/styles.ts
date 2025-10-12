@@ -1,4 +1,4 @@
-import { RestyleBoxProps } from 'components';
+import { RestyleBoxProps } from '@components';
 
 export const boxStyles: RestyleBoxProps = {
   flex: 1,

@@ -1,4 +1,4 @@
-import { RestyleBoxProps } from 'components';
+import { RestyleBoxProps } from '@components';
 
 export const headerContainerStyles: RestyleBoxProps = {
   flexDirection: 'row',

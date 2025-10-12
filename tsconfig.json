@@ -5,39 +5,23 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "*": ["src/*"],
       "@api": ["src/api"],
-      "@api/*": ["src/api/*"],
       "@branding": ["src/branding"],
-      "@branding/*": ["src/branding/*"],
       "@components": ["src/components"],
-      "@components/*": ["src/components/*"],
       "@domain": ["src/domain"],
-      "@domain/*": ["src/domain/*"],
       "@hooks": ["src/hooks"],
-      "@hooks/*": ["src/hooks/*"],
       "@infra": ["src/infra"],
-      "@infra/*": ["src/infra/*"],
       "@routes": ["src/routes"],
-      "@routes/*": ["src/routes/*"],
       "@screens": ["src/screens"],
-      "@screens/*": ["src/screens/*"],
       "@services": ["src/services"],
-      "@services/*": ["src/services/*"],
       "@styles": ["src/styles"],
-      "@styles/*": ["src/styles/*"],
       "@test": ["src/test"],
-      "@test/*": ["src/test/*"],
       "test-utils": ["src/test/test-utils.tsx"],
       "@theme": ["src/theme"],
-      "@theme/*": ["src/theme/*"],
       "@types": ["src/types"],
-      "@types/*": ["src/types/*"],
       "@utils": ["src/utils"],
-      "@utils/*": ["src/utils/*"],
-      "@validations": ["src/validations"],
-      "@validations/*": ["src/validations/*"]
+      "@validations": ["src/validations"]
     },
     "types": ["node", "jest"]
-  } 
+  }
 }
