@@ -13,6 +13,8 @@ import {
 } from '@testing-library/react-native';
 import { PropsWithChildren, ReactElement } from 'react';
 
+import { Toast } from '@components';
+import { AuthCredentialsProvider } from '@services';
 import { theme } from '@theme';
 
 const queryClientConfig: QueryClientConfig = {
@@ -44,11 +46,14 @@ const ScreenProvidersWrapper = () => {
   const queryClient = new QueryClient(queryClientConfig);
 
   return ({ children }: PropsWithChildren) => (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <NavigationContainer>{children}</NavigationContainer>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <AuthCredentialsProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <Toast />
+          <NavigationContainer>{children}</NavigationContainer>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </AuthCredentialsProvider>
   );
 };
 

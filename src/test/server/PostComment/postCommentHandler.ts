@@ -1,11 +1,16 @@
+import { cloneDeep } from 'lodash';
 import { http, HttpResponse } from 'msw';
+
 import { BASE_URL, PageAPI } from '@api';
 import { PostCommentAPI, POST_COMMENT_ENDPOINT } from '@domain';
-
 import { mockedData } from './mocks';
 
 const POST_COMMENT_URL = `${BASE_URL}${POST_COMMENT_ENDPOINT}`;
-let inMemoryResponse = { ...mockedData.mockedPostCommentResponse };
+let inMemoryResponse = cloneDeep(mockedData.mockedPostCommentResponse);
+
+export function resetInMemoryResponse() {
+  inMemoryResponse = cloneDeep(mockedData.mockedPostCommentResponse);
+}
 
 export const postCommentHandlers = [
   http.get<never, never, PageAPI<PostCommentAPI>>(
@@ -35,6 +40,22 @@ export const postCommentHandlers = [
       };
 
       return HttpResponse.json(newPostCommentAPI, { status: 201 });
+    }
+  ),
+  http.delete<{ postCommentId: string }>(
+    `${POST_COMMENT_URL}/:postCommentId`,
+    async ({ params }) => {
+      const { postCommentId } = params;
+
+      inMemoryResponse.data = inMemoryResponse.data.filter(item => {
+        return item.id.toString() !== postCommentId;
+      });
+      inMemoryResponse.meta = {
+        ...inMemoryResponse.meta,
+        total: inMemoryResponse.meta.total - 1
+      };
+
+      return HttpResponse.json({ message: 'removed' }, { status: 200 });
     }
   )
 ];

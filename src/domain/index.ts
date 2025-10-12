@@ -12,6 +12,7 @@ export * from './postComment/postCommentTypes';
 export * from './postComment/postCommentService';
 export * from './postComment/useCases';
 
+export * from './user/userAdapter';
 export * from './user/userService';
 export * from './user/userTypes';
 export * from './user/useCases';

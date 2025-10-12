@@ -28,6 +28,7 @@ export function Toast() {
 
   return (
     <Animated.View
+      testID="toast-message"
       {...S.animatedViewStyles({
         fadeAnimationValue: fadeAnimation.value,
         position
