@@ -1,5 +1,7 @@
 export interface UsePaginatedListQueryOptions {
   queryKey: ReadonlyArray<unknown>;
+  enabled?: boolean;
+  staleTime?: number;
 }
 
 export interface UsePaginatedListResult<Data> {

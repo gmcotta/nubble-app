@@ -6,7 +6,7 @@ async function getById(userId: number): Promise<UserAPI> {
   return response.data;
 }
 
-async function getList(search?: string): Promise<PageAPI<UserAPI>> {
+async function getList(search: string): Promise<PageAPI<UserAPI>> {
   const response = await api.get<PageAPI<UserAPI>>('/users', {
     params: {
       search

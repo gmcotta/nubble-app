@@ -18,7 +18,9 @@ export function useTanstackQueryImpl<Data>(
     queryFn: ({ pageParam = 1 }) => getList(pageParam as number),
     initialPageParam: 1,
     getNextPageParam: ({ meta }) =>
-      meta.hasNextPage ? meta.currentPage + 1 : null
+      meta.hasNextPage ? meta.currentPage + 1 : null,
+    enabled: options?.enabled,
+    staleTime: options?.staleTime
   });
 
   useEffect(() => {
