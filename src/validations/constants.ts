@@ -1,16 +1,19 @@
-export const errorMessages = {
-  username: {
-    invalid: 'Username inválido'
+export const ERROR_MESSAGES = {
+  USERNAME: {
+    INVALID: 'Username inválido',
+    SHORT: 'Username muito curto',
+    UNAVAILABLE: 'Username indisponível'
   },
-  fullName: {
-    short: 'Nome muito curto',
-    long: 'Nome muito longo'
+  FULL_NAME: {
+    SHORT: 'Nome muito curto',
+    LONG: 'Nome muito longo'
   },
-  email: {
-    invalid: 'E-mail inválido'
+  EMAIL: {
+    INVALID: 'E-mail inválido',
+    UNAVAILABLE: 'E-mail indisponível'
   },
-  password: {
-    required: 'Senha obrigatória',
-    short: 'Senha deve ter no mínimo 8 caracteres'
+  PASSWORD: {
+    REQUIRED: 'Senha obrigatória',
+    SHORT: 'Senha deve ter no mínimo 8 caracteres'
   }
 };

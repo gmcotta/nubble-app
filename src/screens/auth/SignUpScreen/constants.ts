@@ -1,9 +1,9 @@
 import { UseResetNavigationSuccessProps } from '@hooks';
 
-export const resetNavigationValues: UseResetNavigationSuccessProps = {
+export const RESET_PROPS: UseResetNavigationSuccessProps = {
   originRoute: 'LoginScreen',
   successScreenParams: {
-    title: `Sua conta foi criada com sucesso!`,
+    title: 'Sua conta foi criada com sucesso!',
     description: 'Agora é só fazer login na nossa plataforma.',
     icon: {
       name: 'checkRound',
@@ -12,25 +12,29 @@ export const resetNavigationValues: UseResetNavigationSuccessProps = {
   }
 };
 
-export const screenValues = {
-  title: 'Criar uma conta',
-  usernameInput: {
+export const SCREEN_VALUES = {
+  TITLE: 'Criar uma conta',
+  USERNAME_INPUT: {
     label: 'Seu username',
     placeholder: '@'
   },
-  nameInput: {
-    label: 'Nome completo',
-    placeholder: 'Digite seu nome completo'
+  FIRST_NAME_INPUT: {
+    label: 'Nome',
+    placeholder: 'Digite seu nome'
   },
-  emailInput: {
+  LAST_NAME_INPUT: {
+    label: 'Sobrenome',
+    placeholder: 'Digite seu sobrenome'
+  },
+  EMAIL_INPUT: {
     label: 'E-mail',
     placeholder: 'Digite seu e-mail'
   },
-  passwordInput: {
+  PASSWORD_INPUT: {
     label: 'Senha',
     placeholder: 'Digite sua senha'
   },
-  submitButton: {
-    title: 'Criar uma conta'
+  SUBMIT_BUTTON: {
+    TITLE: 'Criar uma conta'
   }
 };

@@ -1,0 +1,1 @@
+export { registerAuthCredentialsInterceptor } from './authCredentialsInterceptor';

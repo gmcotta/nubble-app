@@ -2,50 +2,53 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import { Button, FormTextInput, Screen, Text } from '@components';
+import { useAuthForgotPassword } from '@domain';
 import { useResetNavigationSuccess } from '@hooks';
-import { resetNavigationValues, screenValues } from './constants';
+import { useToastActionsService } from '@services';
+import * as C from './ForgotPasswordScreen';
 import { ForgotPasswordFormSchema } from './props';
-import { forgotPasswordSchema } from './schema';
+import { forgotPasswordSchema, defaultValues } from './schema';
+import * as S from './styles';
 
 export function ForgotPasswordScreen() {
   const { control, formState, handleSubmit } =
     useForm<ForgotPasswordFormSchema>({
       resolver: zodResolver(forgotPasswordSchema),
-      defaultValues: {
-        email: ''
-      },
-      mode: 'onChange'
+      defaultValues
     });
-  const { reset } = useResetNavigationSuccess({ ...resetNavigationValues });
+
+  const { reset } = useResetNavigationSuccess(C.RESET_PARAMS);
+  const { showToast } = useToastActionsService();
+
+  const { isLoading, requestNewPassword } = useAuthForgotPassword({
+    onSuccess: () => {
+      reset();
+    },
+    onError: message => {
+      showToast({ type: 'error', message });
+    }
+  });
 
   function submitForm(formValues: ForgotPasswordFormSchema) {
-    console.log(formValues);
-    navigateToSuccessScreen();
-  }
-
-  function navigateToSuccessScreen() {
-    reset();
+    requestNewPassword(formValues.email);
   }
 
   return (
     <Screen canGoBack>
-      <Text preset="headingLarge" marginTop="s24">
-        {screenValues.title}
-      </Text>
-      <Text preset="paragraphLarge" marginTop="s16">
-        {screenValues.description}
-      </Text>
+      <Text {...S.titleStyles}>{C.SCREEN_VALUES.TITLE}</Text>
+      <Text {...S.descriptionStyles}>{C.SCREEN_VALUES.DESCRIPTION}</Text>
       <FormTextInput
         control={control}
         name="email"
-        boxProps={{ marginTop: 's32' }}
-        {...screenValues.emailInput}
+        boxProps={S.textInputStyles}
+        {...C.SCREEN_VALUES.EMAIL_INPUT}
       />
       <Button
-        title={screenValues.submitButton.title}
+        loading={isLoading}
+        title={C.SCREEN_VALUES.SUBMIT_BUTTON.TITLE}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
-        marginTop="s48"
+        {...S.buttonStyles}
       />
     </Screen>
   );

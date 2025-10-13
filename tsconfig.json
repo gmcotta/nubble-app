@@ -5,21 +5,23 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "*": ["src/*"],
+      "@api": ["src/api"],
+      "@branding": ["src/branding"],
       "@components": ["src/components"],
-      "@components/*": ["src/components/*"],
+      "@domain": ["src/domain"],
       "@hooks": ["src/hooks"],
-      "@hooks/*": ["src/hooks/*"],
+      "@infra": ["src/infra"],
       "@routes": ["src/routes"],
-      "@routes/*": ["src/routes/*"],
       "@screens": ["src/screens"],
-      "@screens/*": ["src/screens/*"],
+      "@services": ["src/services"],
       "@styles": ["src/styles"],
-      "@styles/*": ["src/styles/*"],
+      "@test": ["src/test"],
+      "test-utils": ["src/test/test-utils.tsx"],
       "@theme": ["src/theme"],
-      "@theme/*": ["src/theme/*"],
-      "@validations": ["src/validations"],
-      "@validations/*": ["src/validations/*"]
-    }
-  } 
+      "@types": ["src/types"],
+      "@utils": ["src/utils"],
+      "@validations": ["src/validations"]
+    },
+    "types": ["node", "jest"]
+  }
 }
