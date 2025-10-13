@@ -1,5 +1,5 @@
-export * from './AppStack';
+export * from './AppStack/AppStack';
 export * from './AppStack/props';
 
-export * from './AuthStack';
+export * from './AuthStack/AuthStack';
 export * from './AuthStack/props';

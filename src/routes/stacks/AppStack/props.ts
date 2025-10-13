@@ -13,6 +13,7 @@ export type AppStackParamList = {
   ProfileScreen: {
     userId: number;
   };
+  SearchScreen: undefined;
 };
 
 export type AppScreenProps<RouteName extends keyof AppStackParamList> =

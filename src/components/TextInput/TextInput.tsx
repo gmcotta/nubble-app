@@ -10,6 +10,7 @@ import * as S from './styles';
 export function TextInput({
   label,
   errorMessage = '',
+  leftComponent,
   rightComponent,
   boxProps,
   ...textInputProps
@@ -22,10 +23,13 @@ export function TextInput({
   };
 
   return (
-    <Box {...boxProps}>
+    <Box {...S.containerStyles} {...boxProps}>
       <Pressable onPress={focusInput}>
-        <Text {...S.labelStyles}>{label}</Text>
+        {label ? <Text {...S.labelStyles}>{label}</Text> : null}
         <Box {...S.inputContainerStyles(errorMessage)}>
+          {leftComponent ? (
+            <Box {...S.leftComponentContainerStyles}>{leftComponent}</Box>
+          ) : null}
           <RNTextInput
             ref={textInputRef}
             placeholderTextColor={colors.gray2}

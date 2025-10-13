@@ -7,4 +7,5 @@ export interface ScreenProps extends RestyleBoxProps {
   canGoBack?: boolean;
   scrollable?: boolean;
   title?: string;
+  headerComponent?: ReactNode;
 }
