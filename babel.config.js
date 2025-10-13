@@ -10,7 +10,7 @@ module.exports = {
         alias: {
           '@api': './src/api',
           '@branding': './src/branding',
-          '@components': './src/component',
+          '@components': './src/components',
           '@domain': './src/domain',
           '@hooks': './src/hooks',
           '@infra': './src/infra',

@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@shopify/restyle';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import { Toast } from '@components';
 import { Router } from '@routes';
 import { AuthCredentialsProvider } from '@services';
