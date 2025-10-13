@@ -1,11 +1,16 @@
 import { useState } from 'react';
+
 import { Icon, Screen, Text, TextInput } from '@components';
-import { useRestyleTheme } from '@hooks';
+import { useUserSearch } from '@domain';
+import { useDebounce, useRestyleTheme } from '@hooks';
 import { SearchScreenProps } from './props';
 
 export function SearchScreen({}: SearchScreenProps) {
   const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search);
   const { colors } = useRestyleTheme();
+
+  const { data: userList } = useUserSearch(debouncedSearch);
 
   return (
     <Screen
@@ -20,7 +25,9 @@ export function SearchScreen({}: SearchScreenProps) {
         />
       }
     >
-      <Text>Search Screen</Text>
+      {userList.map(user => (
+        <Text key={user.id}>{user.username}</Text>
+      ))}
     </Screen>
   );
 }
