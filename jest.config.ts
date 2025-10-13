@@ -4,11 +4,11 @@ const config: Config = {
   preset: 'react-native',
   coveragePathIgnorePatterns: ['/node_modules/'],
   collectCoverageFrom: [
-    'src/{components,domain,hooks,infra,screens,utils}/**/*.{js,jsx,ts,tsx}',
-    '!src/{components,hooks,infra,screens,utils}/**/index.ts',
-    '!src/{components,domain,hooks,infra,screens,utils}/**/props.ts',
-    '!src/components/Icon/icons/*.{ts,tsx}',
-    '!src/{components,infra}/**/{constants,mappers,styles,variants}.ts',
+    'src/{component,domain,hooks,infra,screens,utils}/**/*.{js,jsx,ts,tsx}',
+    '!src/{component,hooks,infra,screens,utils}/**/index.ts',
+    '!src/{component,domain,hooks,infra,screens,utils}/**/props.ts',
+    '!src/component/Icon/icons/*.{ts,tsx}',
+    '!src/{component,infra}/**/{constants,mappers,styles,variants}.ts',
     '!src/domain/index.ts',
     '!src/domain/{auth,user}/useCases/index.ts',
     '!src/screens/**/{constants,props,styles}.ts'
