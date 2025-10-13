@@ -13,12 +13,10 @@ async function getList(
     per_page: 10
   });
 
-  const meta = apiAdapter.toPageMetaData(postCommentListPaginationAPI.meta);
-  const data = postCommentListPaginationAPI.data.map(d =>
-    postCommentAdapter.toCommentPost(d)
+  return apiAdapter.toPageModel(
+    postCommentListPaginationAPI,
+    postCommentAdapter.toCommentPost
   );
-
-  return { meta, data };
 }
 
 async function create(postId: number, message: string): Promise<PostComment> {
