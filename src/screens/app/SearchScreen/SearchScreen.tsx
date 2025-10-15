@@ -1,10 +1,23 @@
 import { useState } from 'react';
-
 import { FlatList, ListRenderItemInfo } from 'react-native';
+
 import { Icon, ProfileUser, Screen, TextInput } from '@components';
 import { User, useUserSearch } from '@domain';
 import { useDebounce, useRestyleTheme } from '@hooks';
+import { SearchHistory } from './components';
 import { SearchScreenProps } from './props';
+
+function renderItem({ item }: ListRenderItemInfo<User>) {
+  return (
+    <ProfileUser
+      user={{
+        id: item.id,
+        profileUrl: item.profileUrl,
+        username: item.username
+      }}
+    />
+  );
+}
 
 export function SearchScreen({}: SearchScreenProps) {
   const [search, setSearch] = useState('');
@@ -12,18 +25,6 @@ export function SearchScreen({}: SearchScreenProps) {
   const { colors } = useRestyleTheme();
 
   const { data: userList } = useUserSearch(debouncedSearch);
-
-  function renderItem({ item }: ListRenderItemInfo<User>) {
-    return (
-      <ProfileUser
-        user={{
-          id: item.id,
-          profileUrl: item.profileUrl,
-          username: item.username
-        }}
-      />
-    );
-  }
 
   return (
     <Screen
@@ -38,11 +39,15 @@ export function SearchScreen({}: SearchScreenProps) {
         />
       }
     >
-      <FlatList
-        data={userList}
-        keyExtractor={item => item.username}
-        renderItem={renderItem}
-      />
+      {search.length === 0 ? (
+        <SearchHistory />
+      ) : (
+        <FlatList
+          data={userList}
+          keyExtractor={item => item.username}
+          renderItem={renderItem}
+        />
+      )}
     </Screen>
   );
 }
