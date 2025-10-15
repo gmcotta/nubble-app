@@ -1,13 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
 import { GestureResponderEvent } from 'react-native';
 
-import { PressableBox, ProfileAvatar, Text } from '@components';
+import { Box, PressableBox, ProfileAvatar, Text } from '@components';
 import { ProfileUserProps } from './props';
 import * as S from './styles';
 
 export function ProfileUser({
   user,
   onPress,
+  profileAvatarProps,
+  rightComponent,
   ...pressableProps
 }: ProfileUserProps) {
   const navigation = useNavigation();
@@ -28,8 +30,11 @@ export function ProfileUser({
       {...S.profileBoxStyles}
       {...pressableProps}
     >
-      <ProfileAvatar profileURL={user.profileUrl} />
-      <Text {...S.profileTextStyles}>{user.username}</Text>
+      <Box {...S.leftContainerStyles}>
+        <ProfileAvatar {...profileAvatarProps} profileURL={user.profileUrl} />
+        <Text {...S.profileTextStyles}>{user.username}</Text>
+      </Box>
+      {rightComponent && rightComponent}
     </PressableBox>
   );
 }

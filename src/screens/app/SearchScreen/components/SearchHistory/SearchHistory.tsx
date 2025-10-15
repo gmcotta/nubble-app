@@ -1,10 +1,20 @@
 import { FlatList, ListRenderItemInfo } from 'react-native';
 
-import { Box, ProfileUser, Text } from '@components';
+import { Box, Icon, ProfileUser, Text } from '@components';
 import { User } from '@domain';
-import { useSearchHistoryService } from '@services';
+import {
+  useSearchHistoryActionsService,
+  useSearchHistoryService
+} from '@services';
 
-function renderItem({ item }: ListRenderItemInfo<User>) {
+function renderItem(
+  { item }: ListRenderItemInfo<User>,
+  removeUser: (userId: number) => void
+) {
+  function handleDelete() {
+    removeUser(item.id);
+  }
+
   return (
     <ProfileUser
       user={{
@@ -12,19 +22,26 @@ function renderItem({ item }: ListRenderItemInfo<User>) {
         profileUrl: item.profileUrl,
         username: item.username
       }}
+      profileAvatarProps={{
+        size: 48
+      }}
+      rightComponent={<Icon name="trash" onPress={handleDelete} />}
     />
   );
 }
 
 export function SearchHistory() {
   const userList = useSearchHistoryService();
+  const { removeUser } = useSearchHistoryActionsService();
   return (
     <Box>
       <FlatList
         data={userList}
-        renderItem={renderItem}
+        renderItem={item => renderItem(item, removeUser)}
         ListHeaderComponent={
-          <Text preset="headingMedium">Buscas recentes</Text>
+          <Text preset="headingMedium" marginBottom="s16">
+            Buscas recentes
+          </Text>
         }
         keyExtractor={item => item.username}
       />

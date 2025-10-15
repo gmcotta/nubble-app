@@ -10,6 +10,10 @@ export const useSearchHistoryStore = create<SearchHistoryService>()(
       userList: [],
       addUser: user => {
         const userList = get().userList;
+
+        const isUserInList = userList.find(item => item.id === user.id);
+        if (isUserInList) return;
+
         const newList = [...userList, user];
         set({ userList: newList });
       },
