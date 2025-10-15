@@ -7,15 +7,17 @@ import {
   ProfileScreen,
   SearchScreen
 } from '@screens';
-import { AppStackParamList } from './props';
+import { AppStackParamList, AppStackParams } from './props';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
-export function AppStack() {
+export function AppStack({
+  initialRouteName = 'AppTabNavigator'
+}: AppStackParams) {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false, fullScreenGestureEnabled: true }}
-      initialRouteName="AppTabNavigator"
+      initialRouteName={initialRouteName}
     >
       <Stack.Screen name="AppTabNavigator" component={AppTabNavigator} />
       <Stack.Screen name="SettingsScreen" component={SettingsScreen} />

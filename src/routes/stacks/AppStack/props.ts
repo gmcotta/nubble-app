@@ -16,5 +16,9 @@ export type AppStackParamList = {
   SearchScreen: undefined;
 };
 
+export interface AppStackParams {
+  initialRouteName?: keyof AppStackParamList | undefined;
+}
+
 export type AppScreenProps<RouteName extends keyof AppStackParamList> =
   NativeStackScreenProps<AppStackParamList, RouteName>;
