@@ -1,23 +1,35 @@
 import { useNavigation } from '@react-navigation/native';
+import { GestureResponderEvent } from 'react-native';
 
-import { ProfileAvatar, Text, TouchableOpacityBox } from '@components';
+import { PressableBox, ProfileAvatar, Text } from '@components';
 import { ProfileUserProps } from './props';
 import * as S from './styles';
 
-export function ProfileUser({ user }: ProfileUserProps) {
+export function ProfileUser({
+  user,
+  onPress,
+  ...pressableProps
+}: ProfileUserProps) {
   const navigation = useNavigation();
 
+  function handleOnPress(event: GestureResponderEvent) {
+    if (onPress) {
+      onPress(event);
+    }
+
+    navigation.navigate('ProfileScreen', {
+      userId: user.id
+    });
+  }
+
   return (
-    <TouchableOpacityBox
-      onPress={() => {
-        navigation.navigate('ProfileScreen', {
-          userId: user.id
-        });
-      }}
+    <PressableBox
+      onPress={handleOnPress}
       {...S.profileBoxStyles}
+      {...pressableProps}
     >
       <ProfileAvatar profileURL={user.profileUrl} />
       <Text {...S.profileTextStyles}>{user.username}</Text>
-    </TouchableOpacityBox>
+    </PressableBox>
   );
 }
