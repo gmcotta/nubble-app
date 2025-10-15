@@ -2,32 +2,31 @@ import { cloneDeep } from 'lodash';
 import { http, HttpResponse } from 'msw';
 
 import { BASE_URL, PageAPI } from '@api';
-import { PostCommentAPI, POST_COMMENT_ENDPOINT } from '@domain';
-import { mockedData } from './mocks';
+import { PostCommentAPI, POST_COMMENT_API_PATH } from '@domain';
+import { postCommentMockedData } from './mocks';
 
-const POST_COMMENT_URL = `${BASE_URL}${POST_COMMENT_ENDPOINT}`;
-let inMemoryResponse = cloneDeep(mockedData.mockedPostCommentResponse);
+const FULL_URL = `${BASE_URL}${POST_COMMENT_API_PATH}`;
+let inMemoryResponse = cloneDeep(
+  postCommentMockedData.mockedPostCommentResponse
+);
 
 export function resetInMemoryResponse() {
-  inMemoryResponse = cloneDeep(mockedData.mockedPostCommentResponse);
+  inMemoryResponse = cloneDeep(postCommentMockedData.mockedPostCommentResponse);
 }
 
 export const postCommentHandlers = [
-  http.get<never, never, PageAPI<PostCommentAPI>>(
-    POST_COMMENT_URL,
-    async () => {
-      return HttpResponse.json(inMemoryResponse, {
-        status: 200
-      });
-    }
-  ),
+  http.get<never, never, PageAPI<PostCommentAPI>>(FULL_URL, async () => {
+    return HttpResponse.json(inMemoryResponse, {
+      status: 200
+    });
+  }),
   http.post<never, { post_id: number; message: string }>(
-    POST_COMMENT_URL,
+    FULL_URL,
     async ({ request }) => {
       const body = await request.json();
 
       const newPostCommentAPI: PostCommentAPI = {
-        ...mockedData.postCommentAPI,
+        ...postCommentMockedData.postCommentAPI,
         id: 2,
         post_id: body.post_id,
         message: body.message
@@ -43,7 +42,7 @@ export const postCommentHandlers = [
     }
   ),
   http.delete<{ postCommentId: string }>(
-    `${POST_COMMENT_URL}/:postCommentId`,
+    `${FULL_URL}/:postCommentId`,
     async ({ params }) => {
       const { postCommentId } = params;
 

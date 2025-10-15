@@ -55,7 +55,7 @@ const mockedPostCommentResponse: PageAPI<PostCommentAPI> = {
   data: [postCommentAPI, mateusPostCommentAPI]
 };
 
-export const mockedData = {
+export const postCommentMockedData = {
   POST_ID,
   postCommentAPI,
   mockedPostCommentResponse,
