@@ -1,5 +1,5 @@
-import { PageMetaData } from '@types';
-import { PaginationMetaDataAPI } from './apiTypes';
+import { Page, PageMetaData } from '@types';
+import { PageAPI, PaginationMetaDataAPI } from './apiTypes';
 
 function toPageMetaData(meta: PaginationMetaDataAPI): PageMetaData {
   return {
@@ -13,6 +13,17 @@ function toPageMetaData(meta: PaginationMetaDataAPI): PageMetaData {
   };
 }
 
+function toPageModel<APIType, ModelType>(
+  page: PageAPI<APIType>,
+  adapterToModel: (api: APIType) => ModelType
+): Page<ModelType> {
+  const meta = toPageMetaData(page.meta);
+  const data = page.data.map(item => adapterToModel(item));
+
+  return { meta, data };
+}
+
 export const apiAdapter = {
-  toPageMetaData
+  toPageMetaData,
+  toPageModel
 };

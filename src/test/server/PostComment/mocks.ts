@@ -1,30 +1,8 @@
 import { PageAPI } from '@api';
-import { AuthCredentials, PostCommentAPI, userAdapter, UserAPI } from '@domain';
+import { PostCommentAPI } from '@domain';
+import { mockUtils } from '../../mocks/mocksUtils';
 
 const POST_ID = 1;
-
-const mateusUserAPI: UserAPI = {
-  id: 7,
-  first_name: 'Mateus',
-  last_name: 'de Souza',
-  username: 'mateussouza',
-  email: 'msouza@coffstack.com',
-  temp_token: null,
-  remember_me_token: null,
-  temp_token_created_at: null,
-  remember_me_token_created_at: null,
-  profile_url:
-    'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/8-mateus.png',
-  is_online: false,
-  full_name: 'Mateus de Souza'
-};
-
-const mateusAuthCredentials: AuthCredentials = {
-  token: 'access-token',
-  expires_at: '2030-10-07T12:08:50.433+00:00',
-  refreshToken: 'refresh-token',
-  user: userAdapter.toUser(mateusUserAPI)
-};
 
 const mateusPostCommentAPI: PostCommentAPI = {
   id: 113,
@@ -33,7 +11,7 @@ const mateusPostCommentAPI: PostCommentAPI = {
   post_id: POST_ID,
   created_at: '2023-10-20T10:26:18.000+00:00',
   updated_at: '2023-10-21T07:46:21.828+00:00',
-  user: mateusUserAPI,
+  user: mockUtils.mateusUserAPI,
   meta: {}
 };
 
@@ -77,10 +55,9 @@ const mockedPostCommentResponse: PageAPI<PostCommentAPI> = {
   data: [postCommentAPI, mateusPostCommentAPI]
 };
 
-export const mockedData = {
+export const postCommentMockedData = {
   POST_ID,
   postCommentAPI,
   mockedPostCommentResponse,
-  mateusAuthCredentials,
   mateusPostCommentAPI
 };

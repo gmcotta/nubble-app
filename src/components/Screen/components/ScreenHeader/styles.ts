@@ -12,7 +12,8 @@ export const headerContainerStyles: RestyleBoxProps = {
 
 export const backButtonStyles: TouchableOpacityBoxProps = {
   flexDirection: 'row',
-  alignItems: 'center'
+  alignItems: 'center',
+  marginRight: 's10'
 };
 
 export const backButtonTextStyles: TextProps = {

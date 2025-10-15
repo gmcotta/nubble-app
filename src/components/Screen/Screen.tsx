@@ -12,6 +12,7 @@ export function Screen({
   scrollable = false,
   title = '',
   style,
+  headerComponent,
   ...boxProps
 }: ScreenProps) {
   const { top, bottom } = useAppSafeArea();
@@ -30,7 +31,9 @@ export function Screen({
           style={[{ paddingTop: top, paddingBottom: bottom }, style]}
           {...boxProps}
         >
-          {canGoBack ? <ScreenHeader title={title} /> : null}
+          {canGoBack ? (
+            <ScreenHeader title={title} headerComponent={headerComponent} />
+          ) : null}
           {children}
         </Box>
       </Container>

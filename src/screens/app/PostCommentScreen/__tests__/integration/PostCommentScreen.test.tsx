@@ -2,7 +2,12 @@ import { Alert, AlertButton } from 'react-native';
 
 import { screen, renderScreen, fireEvent, act, waitFor } from 'test-utils';
 import { authCredentialsStorage } from '@services';
-import { postCommentMockedData, resetInMemoryResponse, server } from '@test';
+import {
+  mockUtils,
+  postCommentMockedData,
+  resetInMemoryResponse,
+  server
+} from '@test';
 import { PostCommentScreen } from '../../PostCommentScreen';
 
 beforeAll(() => {
@@ -53,7 +58,7 @@ describe('integration: PostCommentScreen', () => {
   it('should update automatically the list and show toast message when comment is deleted successfully', async () => {
     jest
       .spyOn(authCredentialsStorage, 'get')
-      .mockResolvedValue(postCommentMockedData.mateusAuthCredentials);
+      .mockResolvedValue(mockUtils.mateusAuthCredentials);
 
     let mockedConfirm: AlertButton['onPress'];
     const mockedAlert = jest

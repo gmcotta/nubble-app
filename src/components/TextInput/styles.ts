@@ -1,5 +1,10 @@
 import { RestyleBoxProps, TextProps } from '@components';
 
+export const containerStyles: RestyleBoxProps = {
+  flexGrow: 1,
+  flexShrink: 1
+};
+
 export const labelStyles: TextProps = {
   preset: 'paragraphMedium',
   marginBottom: 's4'
@@ -15,6 +20,10 @@ export function inputContainerStyles(errorMessage?: string): RestyleBoxProps {
     alignItems: 'center'
   };
 }
+
+export const leftComponentContainerStyles: RestyleBoxProps = {
+  marginRight: 's16'
+};
 
 export const rightComponentContainerStyles: RestyleBoxProps = {
   marginLeft: 's16'

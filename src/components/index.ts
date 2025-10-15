@@ -24,11 +24,17 @@ export * from './PostItem/props';
 export * from './ProfileAvatar/ProfileAvatar';
 export * from './ProfileAvatar/props';
 
+export * from './ProfileUser/ProfileUser';
+export * from './ProfileUser/props';
+
 export * from './Restyle/Box/RestyleBox';
 export * from './Restyle/Box/props';
 
 export * from './Restyle/Text/RestyleText';
 export * from './Restyle/Text/props';
+
+export * from './Restyle/PressableBox/PressableBox';
+export * from './Restyle/PressableBox/props';
 
 export * from './Restyle/TouchableOpacityBox/TouchableOpacityBox';
 export * from './Restyle/TouchableOpacityBox/props';
