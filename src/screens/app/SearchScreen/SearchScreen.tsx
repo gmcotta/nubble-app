@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import { Icon, Screen, Text, TextInput } from '@components';
-import { useUserSearch } from '@domain';
+import { FlatList, ListRenderItemInfo } from 'react-native';
+import { Icon, ProfileUser, Screen, TextInput } from '@components';
+import { User, useUserSearch } from '@domain';
 import { useDebounce, useRestyleTheme } from '@hooks';
 import { SearchScreenProps } from './props';
 
@@ -11,6 +12,18 @@ export function SearchScreen({}: SearchScreenProps) {
   const { colors } = useRestyleTheme();
 
   const { data: userList } = useUserSearch(debouncedSearch);
+
+  function renderItem({ item }: ListRenderItemInfo<User>) {
+    return (
+      <ProfileUser
+        user={{
+          id: item.id,
+          profileUrl: item.profileUrl,
+          username: item.username
+        }}
+      />
+    );
+  }
 
   return (
     <Screen
@@ -25,9 +38,11 @@ export function SearchScreen({}: SearchScreenProps) {
         />
       }
     >
-      {userList.map(user => (
-        <Text key={user.id}>{user.username}</Text>
-      ))}
+      <FlatList
+        data={userList}
+        keyExtractor={item => item.username}
+        renderItem={renderItem}
+      />
     </Screen>
   );
 }
