@@ -11,6 +11,7 @@ const config: Config = {
     '!src/{components,infra}/**/{constants,mappers,styles,variants}.ts',
     '!src/domain/index.ts',
     '!src/domain/{auth,user}/useCases/index.ts',
+    '!src/domain/**/*Types.ts',
     '!src/screens/**/{constants,props,styles}.ts'
   ],
   transformIgnorePatterns: [

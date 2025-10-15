@@ -16,7 +16,11 @@ export function ScreenHeader({
 
   return (
     <Box {...S.headerContainerStyles}>
-      <TouchableOpacityBox onPress={handleGoBack} {...S.backButtonStyles}>
+      <TouchableOpacityBox
+        testID="screen-back-button"
+        onPress={handleGoBack}
+        {...S.backButtonStyles}
+      >
         <Icon size={C.ICON_SIZE} name="arrowLeft" color="primary" />
         {!title && !headerComponent ? (
           <Text {...S.backButtonTextStyles}>
