@@ -33,6 +33,9 @@ export * from './Restyle/Box/props';
 export * from './Restyle/Text/RestyleText';
 export * from './Restyle/Text/props';
 
+export * from './Restyle/PressableBox/PressableBox';
+export * from './Restyle/PressableBox/props';
+
 export * from './Restyle/TouchableOpacityBox/TouchableOpacityBox';
 export * from './Restyle/TouchableOpacityBox/props';
 

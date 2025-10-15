@@ -1,5 +1,6 @@
+import { PressableBoxProps } from '@components';
 import { User } from '@domain';
 
-export interface ProfileUserProps {
+export type ProfileUserProps = {
   user: Pick<User, 'id' | 'profileUrl' | 'username'>;
-}
+} & PressableBoxProps;
