@@ -24,6 +24,9 @@ export * from './PostItem/props';
 export * from './ProfileAvatar/ProfileAvatar';
 export * from './ProfileAvatar/props';
 
+export * from './ProfileUser/ProfileUser';
+export * from './ProfileUser/props';
+
 export * from './Restyle/Box/RestyleBox';
 export * from './Restyle/Box/props';
 

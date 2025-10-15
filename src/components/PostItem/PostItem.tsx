@@ -1,12 +1,20 @@
-import { Box } from '@components';
-import { PostActions, PostBottom, PostHeader, PostImage } from './components';
+import { Box, ProfileUser } from '@components';
+import { PostActions, PostBottom, PostImage } from './components';
 import { PostItemProps } from './props';
 import * as S from './styles';
 
 export function PostItem({ post }: PostItemProps) {
   return (
     <Box {...S.containerStyles}>
-      <PostHeader author={post.author} />
+      <Box {...S.profileContainerStyles}>
+        <ProfileUser
+          user={{
+            id: post.author.id,
+            profileUrl: post.author.profileURL,
+            username: post.author.userName
+          }}
+        />
+      </Box>
       <PostImage imageURL={post.imageURL} />
       <PostActions
         commentCount={post.commentCount}

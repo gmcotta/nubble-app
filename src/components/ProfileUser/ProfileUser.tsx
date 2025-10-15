@@ -1,24 +1,23 @@
 import { useNavigation } from '@react-navigation/native';
 
 import { ProfileAvatar, Text, TouchableOpacityBox } from '@components';
-import { PostHeaderProps } from './props';
+import { ProfileUserProps } from './props';
 import * as S from './styles';
 
-export function PostHeader({ author }: PostHeaderProps) {
-  const { profileURL, userName } = author;
+export function ProfileUser({ user }: ProfileUserProps) {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacityBox
       onPress={() => {
         navigation.navigate('ProfileScreen', {
-          userId: author.id
+          userId: user.id
         });
       }}
       {...S.profileBoxStyles}
     >
-      <ProfileAvatar profileURL={profileURL} />
-      <Text {...S.profileTextStyles}>{userName}</Text>
+      <ProfileAvatar profileURL={user.profileUrl} />
+      <Text {...S.profileTextStyles}>{user.username}</Text>
     </TouchableOpacityBox>
   );
 }
