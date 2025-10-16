@@ -2,6 +2,7 @@ import { Dimensions, FlatList, Image } from 'react-native';
 
 import { Screen } from '@components';
 import { useCameraRoll } from '@services';
+import { Header } from './components';
 import { NewPostScreenProps } from './props';
 
 const SCREEN_WIDTH = Dimensions.get('screen').width;
@@ -16,6 +17,9 @@ export function NewPostScreen({}: NewPostScreenProps) {
       <FlatList
         data={list}
         keyExtractor={item => item}
+        ListHeaderComponent={
+          <Header imageUri={list[0]} imageWidth={SCREEN_WIDTH} />
+        }
         renderItem={({ item }) => (
           <Image
             source={{ uri: item }}
