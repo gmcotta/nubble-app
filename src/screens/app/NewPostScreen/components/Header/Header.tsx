@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ImageBackground } from 'react-native';
 
 import { Box, Button, Icon, Text } from '@components';
+import * as C from './constants';
 import { HeaderProps } from './props';
 import * as S from './styles';
 
@@ -20,13 +21,13 @@ export function Header({ imageUri, imageWidth }: HeaderProps) {
       >
         <Button
           variant="ghost"
-          title="Escolher essa"
-          marginBottom="s24"
+          title={C.SCREEN_VALUES.BUTTON_TEXT}
           onPress={navigateToPublishPostScreen}
+          {...S.buttonStyles}
         />
       </ImageBackground>
       <Box {...S.optionStyles}>
-        <Text preset="headingSmall">Sua galeria</Text>
+        <Text preset="headingSmall">{C.SCREEN_VALUES.GALLERY_TEXT}</Text>
         <Icon name="camera" />
       </Box>
     </Box>

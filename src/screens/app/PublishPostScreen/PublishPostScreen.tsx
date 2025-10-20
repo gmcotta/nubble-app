@@ -10,18 +10,18 @@ export function PublishPostScreen({ route }: PublishPostScreenProps) {
   const [description, setDescription] = useState('');
   const { imageUri } = route.params;
   return (
-    <Screen scrollable canGoBack title={C.title}>
+    <Screen scrollable canGoBack title={C.SCREEN_VALUES.TITLE}>
       <Image source={{ uri: imageUri }} style={S.imageStyles} />
       <Text preset="headingSmall" {...S.headingStyles}>
-        {C.headingText}
+        {C.SCREEN_VALUES.HEADING}
       </Text>
       <TextInput
         value={description}
         onChangeText={setDescription}
-        placeholder={C.textInputPlaceholderText}
+        placeholder={C.SCREEN_VALUES.PLACEHOLDER_TEXT}
         containerProps={S.textInputContainerStyles}
       />
-      <Button title={C.buttonText} marginTop="s56" />
+      <Button title={C.SCREEN_VALUES.BUTTON_TEXT} {...S.buttonStyles} />
     </Screen>
   );
 }

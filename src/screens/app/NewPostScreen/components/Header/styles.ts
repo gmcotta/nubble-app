@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { RestyleBoxProps } from '@components';
+import { ButtonProps, RestyleBoxProps } from '@components';
 
 export const imageBackgroundStyles = (imageWidth: number) =>
   StyleSheet.create({
@@ -17,4 +17,8 @@ export const optionStyles: RestyleBoxProps = {
   justifyContent: 'space-between',
   paddingHorizontal: 's24',
   paddingVertical: 's16'
+};
+
+export const buttonStyles: Omit<ButtonProps, 'title'> = {
+  marginBottom: 's24'
 };

@@ -1,5 +1,5 @@
 import { Dimensions, ImageStyle, StyleProp } from 'react-native';
-import { RestyleBoxProps, TextProps } from '@components';
+import { ButtonProps, RestyleBoxProps, TextProps } from '@components';
 
 const IMAGE_WIDTH = Dimensions.get('screen').width / 2;
 
@@ -18,4 +18,8 @@ export const headingStyles: TextProps = {
 export const textInputContainerStyles: RestyleBoxProps = {
   borderWidth: 0,
   paddingLeft: 's0'
+};
+
+export const buttonStyles: Omit<ButtonProps, 'title'> = {
+  marginTop: 's56'
 };
