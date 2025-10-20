@@ -12,7 +12,7 @@ export function Button({
 }: ButtonProps) {
   const activeVariant = buttonVariants[variant];
   const activeModifier = disabled ? 'disabled' : 'default';
-  const color = activeVariant[activeModifier].content;
+  const color = activeVariant[activeModifier].content.color;
 
   return (
     <TouchableOpacityBox
@@ -25,10 +25,15 @@ export function Button({
       {loading ? (
         <ActivityIndicator
           testID="button-activity-indicator"
-          color={activeVariant[activeModifier].content}
+          color={activeVariant[activeModifier].content.color}
         />
       ) : (
-        <Text {...S.buttonTextStyles(color)}>{title}</Text>
+        <Text
+          {...S.buttonTextStyles(color)}
+          {...activeVariant[activeModifier].content.textProps}
+        >
+          {title}
+        </Text>
       )}
     </TouchableOpacityBox>
   );

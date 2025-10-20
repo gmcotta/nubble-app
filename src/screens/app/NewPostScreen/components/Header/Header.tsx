@@ -11,7 +11,7 @@ export function Header({ imageUri, imageWidth }: HeaderProps) {
         source={{ uri: imageUri }}
         style={S.imageBackgroundStyles(imageWidth).imageBackground}
       >
-        <Button title="Escolher essa" marginBottom="s24" />
+        <Button variant="ghost" title="Escolher essa" marginBottom="s24" />
       </ImageBackground>
       <Box {...S.optionStyles}>
         <Text preset="headingSmall">Sua galeria</Text>
