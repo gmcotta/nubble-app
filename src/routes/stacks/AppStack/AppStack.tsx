@@ -5,7 +5,8 @@ import {
   SettingsScreen,
   PostCommentScreen,
   ProfileScreen,
-  SearchScreen
+  SearchScreen,
+  PublishPostScreen
 } from '@screens';
 import { AppStackParamList, AppStackParams } from './props';
 
@@ -24,6 +25,7 @@ export function AppStack({
       <Stack.Screen name="PostCommentScreen" component={PostCommentScreen} />
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
+      <Stack.Screen name="PublishPostScreen" component={PublishPostScreen} />
     </Stack.Navigator>
   );
 }

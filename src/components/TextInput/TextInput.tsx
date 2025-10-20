@@ -13,6 +13,7 @@ export function TextInput({
   leftComponent,
   rightComponent,
   boxProps,
+  containerProps,
   ...textInputProps
 }: TextInputProps) {
   const textInputRef = useRef<RNTextInput>(null);
@@ -26,7 +27,7 @@ export function TextInput({
     <Box {...S.containerStyles} {...boxProps}>
       <Pressable onPress={focusInput}>
         {label ? <Text {...S.labelStyles}>{label}</Text> : null}
-        <Box {...S.inputContainerStyles(errorMessage)}>
+        <Box {...S.inputContainerStyles(errorMessage)} {...containerProps}>
           {leftComponent ? (
             <Box {...S.leftComponentContainerStyles}>{leftComponent}</Box>
           ) : null}

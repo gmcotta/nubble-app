@@ -4,5 +4,6 @@ export * from './MyProfileScreen/MyProfileScreen';
 export * from './NewPostScreen/NewPostScreen';
 export * from './PostCommentScreen/PostCommentScreen';
 export * from './ProfileScreen/ProfileScreen';
+export * from './PublishPostScreen/PublishPostScreen';
 export * from './SearchScreen/SearchScreen';
 export * from './SettingsScreen/SettingsScreen';

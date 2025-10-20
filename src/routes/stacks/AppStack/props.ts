@@ -14,6 +14,9 @@ export type AppStackParamList = {
     userId: number;
   };
   SearchScreen: undefined;
+  PublishPostScreen: {
+    imageUri?: string;
+  };
 };
 
 export interface AppStackParams {
