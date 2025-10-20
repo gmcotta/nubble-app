@@ -1,4 +1,4 @@
 export interface HeaderProps {
-  imageUri: string;
+  imageUri?: string;
   imageWidth: number;
 }
