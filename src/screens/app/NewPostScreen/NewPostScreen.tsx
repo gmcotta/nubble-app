@@ -10,7 +10,7 @@ const NUM_COLUMNS = 4;
 const ITEM_WIDTH = SCREEN_WIDTH / NUM_COLUMNS;
 
 export function NewPostScreen({}: NewPostScreenProps) {
-  const { list } = useCameraRoll();
+  const { list, fetchNextPage } = useCameraRoll(true);
 
   return (
     <Screen canGoBack title="Novo post" noPaddingHorizontal>
@@ -27,6 +27,8 @@ export function NewPostScreen({}: NewPostScreenProps) {
           />
         )}
         numColumns={4}
+        onEndReachedThreshold={0.1}
+        onEndReached={fetchNextPage}
       />
     </Screen>
   );
