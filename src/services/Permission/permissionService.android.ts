@@ -1,5 +1,9 @@
 import { Permission, PermissionsAndroid, Platform } from 'react-native';
-import { PermissionName, PermissionStatus } from './permissionTypes';
+import {
+  PermissionName,
+  PermissionService,
+  PermissionStatus
+} from './permissionTypes';
 
 function mapNameToPermission(name: PermissionName): Permission | null {
   switch (name) {
@@ -40,7 +44,7 @@ async function request(name: PermissionName): Promise<PermissionStatus> {
   return 'unavailable';
 }
 
-export const permissionService = {
+export const permissionService: PermissionService = {
   check,
   request
 };
