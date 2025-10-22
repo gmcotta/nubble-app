@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { FlatList, Image, Pressable } from 'react-native';
 
-import { Screen } from '@components';
+import { PermissionManager, Screen } from '@components';
 import { useCameraRoll, usePermission } from '@services';
 import { Header } from './components';
 import * as C from './constants';
@@ -24,23 +24,28 @@ export function NewPostScreen({}: NewPostScreenProps) {
   }
 
   return (
-    <Screen canGoBack title={C.SCREEN_VALUES.TITLE} noPaddingHorizontal>
-      <FlatList
-        ref={flatListRef}
-        data={list}
-        keyExtractor={item => item}
-        ListHeaderComponent={
-          <Header imageUri={selectedImage} imageWidth={C.SCREEN_WIDTH} />
-        }
-        renderItem={({ item }) => (
-          <Pressable onPress={() => handleSelectImage(item)}>
-            <Image source={{ uri: item }} style={S.imageStyles} />
-          </Pressable>
-        )}
-        numColumns={C.NUM_COLUMNS}
-        onEndReachedThreshold={0.1}
-        onEndReached={fetchNextPage}
-      />
-    </Screen>
+    <PermissionManager
+      permissionName="photoLibrary"
+      description={C.SCREEN_VALUES.PERMISSION_DESCRIPTION}
+    >
+      <Screen canGoBack title={C.SCREEN_VALUES.TITLE} noPaddingHorizontal>
+        <FlatList
+          ref={flatListRef}
+          data={list}
+          keyExtractor={item => item}
+          ListHeaderComponent={
+            <Header imageUri={selectedImage} imageWidth={C.SCREEN_WIDTH} />
+          }
+          renderItem={({ item }) => (
+            <Pressable onPress={() => handleSelectImage(item)}>
+              <Image source={{ uri: item }} style={S.imageStyles} />
+            </Pressable>
+          )}
+          numColumns={C.NUM_COLUMNS}
+          onEndReachedThreshold={0.1}
+          onEndReached={fetchNextPage}
+        />
+      </Screen>
+    </PermissionManager>
   );
 }

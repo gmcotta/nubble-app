@@ -18,6 +18,9 @@ export * from './Icon/registry';
 export * from './PasswordInput/PasswordInput';
 export * from './PasswordInput/props';
 
+export * from './PermissionManager/PermissionManager';
+export * from './PermissionManager/props';
+
 export * from './PostItem/PostItem';
 export * from './PostItem/props';
 

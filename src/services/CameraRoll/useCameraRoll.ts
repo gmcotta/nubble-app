@@ -1,6 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-// import { PermissionsAndroid, Platform } from 'react-native';
 
 import { QueryKeys } from '@infra';
 import { cameraRollService } from './cameraRollService';
@@ -21,6 +20,12 @@ export function useCameraRoll(
     enabled: hasPermission
   });
 
+  function fetchNextPage() {
+    if (hasPermission) {
+      query.fetchNextPage();
+    }
+  }
+
   useEffect(() => {
     if (query.data) {
       const newList = query.data.pages.reduce<string[]>((prev, curr) => {
@@ -37,6 +42,6 @@ export function useCameraRoll(
   return {
     list,
     hasNextPage: query.hasNextPage,
-    fetchNextPage: () => query.fetchNextPage()
+    fetchNextPage
   };
 }
