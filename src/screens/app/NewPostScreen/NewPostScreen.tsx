@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { FlatList, Image, Pressable } from 'react-native';
 
 import { Screen } from '@components';
-import { useCameraRoll } from '@services';
+import { useCameraRoll, usePermission } from '@services';
 import { Header } from './components';
 import * as C from './constants';
 import { NewPostScreenProps } from './props';
@@ -12,7 +12,11 @@ export function NewPostScreen({}: NewPostScreenProps) {
   const [selectedImage, setSelectedImage] = useState<string>();
   const flatListRef = useRef<FlatList>(null);
 
-  const { list, fetchNextPage } = useCameraRoll(true, setSelectedImage);
+  const permission = usePermission('photoLibrary');
+  const { list, fetchNextPage } = useCameraRoll(
+    permission.status === 'granted',
+    setSelectedImage
+  );
 
   function handleSelectImage(imageUri: string) {
     setSelectedImage(imageUri);
