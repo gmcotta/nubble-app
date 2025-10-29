@@ -5,6 +5,7 @@ import { BellOnIcon } from './icons/bell-on';
 import { BookmarkIcon } from './icons/bookmark';
 import { BookmarkFillIcon } from './icons/bookmark-fill';
 import { CameraIcon } from './icons/camera';
+import { CameraClickIcon } from './icons/camera-click';
 import { ChatIcon } from './icons/chat';
 import { ChatOnIcon } from './icons/chat-on';
 import { CheckIcon } from './icons/check';
@@ -64,5 +65,6 @@ export const iconRegistry = {
   // Maiores
   checkRound: CheckRoundIcon,
   messageRound: MessageRoundIcon,
-  errorRound: ErrorRoundIcon
+  errorRound: ErrorRoundIcon,
+  cameraClick: CameraClickIcon
 };

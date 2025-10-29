@@ -14,6 +14,10 @@ export function Header({ imageUri, imageWidth }: HeaderProps) {
     navigation.navigate('PublishPostScreen', { imageUri });
   }
 
+  function navigateToCamera() {
+    navigation.navigate('CameraScreen');
+  }
+
   return (
     <Box>
       <ImageBackground
@@ -29,7 +33,7 @@ export function Header({ imageUri, imageWidth }: HeaderProps) {
       </ImageBackground>
       <Box {...S.optionStyles}>
         <Text preset="headingSmall">{C.SCREEN_VALUES.GALLERY_TEXT}</Text>
-        <Icon name="camera" />
+        <Icon name="camera" onPress={navigateToCamera} />
       </Box>
     </Box>
   );

@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppTabNavigator } from '@routes';
 import {
+  CameraScreen,
   SettingsScreen,
   PostCommentScreen,
   ProfileScreen,
@@ -26,6 +27,7 @@ export function AppStack({
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
       <Stack.Screen name="PublishPostScreen" component={PublishPostScreen} />
+      <Stack.Screen name="CameraScreen" component={CameraScreen} />
     </Stack.Navigator>
   );
 }

@@ -1,3 +1,4 @@
+export * from './CameraScreen/CameraScreen';
 export * from './FavoriteScreen/FavoriteScreen';
 export * from './HomeScreen/HomeScreen';
 export * from './MyProfileScreen/MyProfileScreen';

@@ -17,6 +17,7 @@ export type AppStackParamList = {
   PublishPostScreen: {
     imageUri?: string;
   };
+  CameraScreen: undefined;
 };
 
 export interface AppStackParams {
