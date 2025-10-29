@@ -1,6 +1,15 @@
-import { ButtonProps, ScreenProps, TextProps } from '@components';
+import {
+  ButtonProps,
+  RestyleBoxProps,
+  ScreenProps,
+  TextProps
+} from '@components';
 
 export const screenStyles: ScreenProps['style'] = {
+  flex: 1
+};
+
+export const flexContainerStyles: RestyleBoxProps = {
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center'

@@ -64,5 +64,7 @@
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Publish new posts</string>
+  <key>NSCameraUsageDescription</key>
+  <string>Take photos to publish new posts</string>
 </dict>
 </plist>
