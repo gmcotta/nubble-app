@@ -1,5 +1,5 @@
 import { useIsFocused, useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import {
   Camera,
@@ -15,7 +15,10 @@ import * as C from './constants';
 import * as S from './styles';
 
 export function CameraScreen({}: AppScreenProps<'CameraScreen'>) {
+  const cameraRef = useRef<Camera>(null);
+
   const [flashOn, setFlashOn] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const navigation = useNavigation();
   const { top } = useAppSafeArea();
 
@@ -35,6 +38,16 @@ export function CameraScreen({}: AppScreenProps<'CameraScreen'>) {
     setFlashOn(old => !old);
   }
 
+  async function takePhoto() {
+    if (!cameraRef.current) return;
+    const photoFile = await cameraRef.current.takePhoto({
+      flash: flashOn ? 'on' : 'off'
+    });
+    navigation.navigate('PublishPostScreen', {
+      imageUri: `file://${photoFile.path}`
+    });
+  }
+
   return (
     <PermissionManager
       description={C.SCREEN_VALUES.PERMISSION_DESCRIPTION}
@@ -43,10 +56,14 @@ export function CameraScreen({}: AppScreenProps<'CameraScreen'>) {
       <Box {...S.ContainerStyles}>
         {device !== undefined ? (
           <Camera
-            style={StyleSheet.absoluteFill}
+            ref={cameraRef}
             device={device}
             format={format}
             isActive={isActive}
+            photo
+            photoQualityBalance="quality"
+            onInitialized={() => setIsReady(true)}
+            style={StyleSheet.absoluteFill}
           />
         ) : null}
         <Box {...S.ControlsContainerStyles}>
@@ -66,7 +83,14 @@ export function CameraScreen({}: AppScreenProps<'CameraScreen'>) {
             <Box width={20} />
           </Box>
           <Box {...S.BottomControlContainerStyles}>
-            <Icon color="grayWhite" name="cameraClick" size={80} />
+            {isReady ? (
+              <Icon
+                color="grayWhite"
+                name="cameraClick"
+                size={80}
+                onPress={takePhoto}
+              />
+            ) : null}
           </Box>
         </Box>
       </Box>
