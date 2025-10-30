@@ -1,10 +1,17 @@
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import {
+  Camera,
+  Templates,
+  useCameraDevice,
+  useCameraFormat
+} from 'react-native-vision-camera';
 
 import { Box, Icon, PermissionManager } from '@components';
-import { useAppSafeArea } from '@hooks';
+import { useAppSafeArea, useAppState } from '@hooks';
 import { AppScreenProps } from '@routes';
-
+import * as C from './constants';
 import * as S from './styles';
 
 export function CameraScreen({}: AppScreenProps<'CameraScreen'>) {
@@ -12,17 +19,36 @@ export function CameraScreen({}: AppScreenProps<'CameraScreen'>) {
   const navigation = useNavigation();
   const { top } = useAppSafeArea();
 
+  const device = useCameraDevice('back', {
+    physicalDevices: [
+      'telephoto-camera',
+      'ultra-wide-angle-camera',
+      'wide-angle-camera'
+    ]
+  });
+  const format = useCameraFormat(device, Templates.Instagram);
+  const isFocused = useIsFocused();
+  const appState = useAppState();
+  const isActive = isFocused && appState === 'active';
+
   function toggleFlash() {
     setFlashOn(old => !old);
   }
 
   return (
     <PermissionManager
-      description="Permita o Nubble acessar a câmera para poder tirar as fotos do post"
+      description={C.SCREEN_VALUES.PERMISSION_DESCRIPTION}
       permissionName="camera"
     >
       <Box {...S.ContainerStyles}>
-        <Box {...S.CameraScreenStyles} />
+        {device !== undefined ? (
+          <Camera
+            style={StyleSheet.absoluteFill}
+            device={device}
+            format={format}
+            isActive={isActive}
+          />
+        ) : null}
         <Box {...S.ControlsContainerStyles}>
           <Box {...S.TopControlContainerStyles(top)}>
             <Icon

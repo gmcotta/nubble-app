@@ -1,15 +1,8 @@
-import { StyleSheet } from 'react-native';
-
 import { RestyleBoxProps } from '@components';
 import * as C from './constants';
 
 export const ContainerStyles: RestyleBoxProps = {
   flex: 1
-};
-
-export const CameraScreenStyles: RestyleBoxProps = {
-  backgroundColor: 'grayWhite',
-  style: StyleSheet.absoluteFill
 };
 
 export const ControlsContainerStyles: RestyleBoxProps = {
