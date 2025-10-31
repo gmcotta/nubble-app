@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { FlatList, Image, Pressable } from 'react-native';
 
 import { PermissionManager, Screen } from '@components';
-import { useCameraRoll, usePermission } from '@services';
+import { useMultimediaGetPhotos, usePermission } from '@services';
 import { Header } from './components';
 import * as C from './constants';
 import { NewPostScreenProps } from './props';
@@ -13,7 +13,7 @@ export function NewPostScreen({}: NewPostScreenProps) {
   const flatListRef = useRef<FlatList>(null);
 
   const permission = usePermission('photoLibrary');
-  const { list, fetchNextPage } = useCameraRoll(
+  const { list, fetchNextPage } = useMultimediaGetPhotos(
     permission.status === 'granted',
     setSelectedImage
   );

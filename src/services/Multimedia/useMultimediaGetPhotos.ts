@@ -2,10 +2,10 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
 import { QueryKeys } from '@infra';
-import { cameraRollService } from './cameraRollService';
-import { PhotoListPaginated } from './cameraRollTypes';
+import { multimediaService } from './multimediaService';
+import { PhotoListPaginated } from './multimediaTypes';
 
-export function useCameraRoll(
+export function useMultimediaGetPhotos(
   hasPermission: boolean,
   onInitialLoad?: (imageUri: string) => void
 ) {
@@ -15,7 +15,7 @@ export function useCameraRoll(
     queryKey: [QueryKeys.CameraRollList],
     initialPageParam: undefined,
     queryFn: ({ pageParam }) =>
-      cameraRollService.getPhotos(pageParam as string | undefined),
+      multimediaService.getPhotos(pageParam as string | undefined),
     getNextPageParam: ({ cursor }) => cursor,
     enabled: hasPermission
   });

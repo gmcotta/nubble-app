@@ -13,7 +13,8 @@
     "test:watch": "yarn test --watch",
     "prepare": "husky",
     "adb:reverse:api": "adb reverse tcp:3333 tcp:3333",
-    "adb:input:text": "adb shell input text"
+    "adb:input:text": "adb shell input text",
+    "preCommit": "yarn lint && yarn typeCheck && yarn test"
   },
   "dependencies": {
     "@babel/plugin-transform-export-namespace-from": "^7.27.1",
