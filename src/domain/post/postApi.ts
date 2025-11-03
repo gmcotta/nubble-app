@@ -17,9 +17,8 @@ async function createPost(
   const form = new FormData();
   form.append('text', text);
   form.append('imageCover', imageCover);
-  const response = await api.post<PostAPI>('/user/post', {
-    form
-  });
+
+  const response = await api.postForm<PostAPI>('/user/post', form);
   return response.data;
 }
 
