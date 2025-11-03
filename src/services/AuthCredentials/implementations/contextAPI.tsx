@@ -8,8 +8,8 @@ import {
 
 import { registerAuthCredentialsInterceptor } from '@api';
 import { AuthCredentials, authService } from '@domain';
-import { AuthCredentialsService } from '@services';
 import { authCredentialsStorage } from '../authCredentialsStorage';
+import { AuthCredentialsService } from '../authCredentialsTypes';
 
 const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,
