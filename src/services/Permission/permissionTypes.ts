@@ -1,0 +1,12 @@
+export type PermissionName = 'photoLibrary' | 'camera';
+
+export type PermissionStatus =
+  | 'granted'
+  | 'denied'
+  | 'never_ask_again'
+  | 'unavailable';
+
+export interface PermissionService {
+  request: (name: PermissionName) => Promise<PermissionStatus>;
+  check: (name: PermissionName) => Promise<PermissionStatus>;
+}

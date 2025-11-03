@@ -1,5 +1,5 @@
-import { RestyleText } from '@components';
 import { fontFamilyValues, fontSizesValues } from '@styles';
+import { RestyleText } from '../Restyle/Text/RestyleText';
 import { TextProps, TextVariants } from './props';
 
 function getFontFamily(

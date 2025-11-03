@@ -1,7 +1,7 @@
 import { KeyboardAvoidingView, Platform } from 'react-native';
 
-import { Box } from '@components';
 import { useAppSafeArea, useRestyleTheme } from '@hooks';
+import { Box } from '../Restyle/Box/RestyleBox';
 import { ScrollViewContainer, ViewContainer, ScreenHeader } from './components';
 import { ScreenProps } from './props';
 import * as S from './styles';
@@ -13,6 +13,7 @@ export function Screen({
   title = '',
   style,
   headerComponent,
+  noPaddingHorizontal = false,
   ...boxProps
 }: ScreenProps) {
   const { top, bottom } = useAppSafeArea();
@@ -27,12 +28,14 @@ export function Screen({
     >
       <Container backgroundColor={colors.background}>
         <Box
-          {...S.initialboxStyles}
+          {...S.initialboxStyles(noPaddingHorizontal)}
           style={[{ paddingTop: top, paddingBottom: bottom }, style]}
           {...boxProps}
         >
           {canGoBack ? (
-            <ScreenHeader title={title} headerComponent={headerComponent} />
+            <Box {...S.headerBoxStyles(noPaddingHorizontal)}>
+              <ScreenHeader title={title} headerComponent={headerComponent} />
+            </Box>
           ) : null}
           {children}
         </Box>

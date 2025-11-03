@@ -1,7 +1,8 @@
 import { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
-import { authApi, authService } from '@domain';
 import { AuthCredentialsService } from '@services';
+import { authApi } from '../../domain/auth/authApi';
+import { authService } from '../../domain/auth/authService';
 import { api } from '../apiConfig';
 
 export function registerAuthCredentialsInterceptor({

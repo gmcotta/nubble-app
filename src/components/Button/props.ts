@@ -1,7 +1,7 @@
-import { TouchableOpacityBoxProps } from '@components';
+import { TextProps, TouchableOpacityBoxProps } from '@components';
 import { ThemeColors } from '@theme';
 
-export type ButtonVariants = 'primary' | 'outline';
+export type ButtonVariants = 'primary' | 'outline' | 'ghost';
 
 export type ButtonModifiers = {
   default: ButtonUI;
@@ -10,7 +10,10 @@ export type ButtonModifiers = {
 
 export interface ButtonUI {
   container: TouchableOpacityBoxProps;
-  content: ThemeColors;
+  content: {
+    color: ThemeColors;
+    textProps?: TextProps;
+  };
 }
 
 export interface ButtonProps extends TouchableOpacityBoxProps {

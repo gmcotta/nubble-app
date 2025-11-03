@@ -1,4 +1,4 @@
-import { User, UserAPI } from '@domain';
+import { User, UserAPI } from '../user/userTypes';
 
 export interface AuthCredentialsAPI {
   auth: {

@@ -1,4 +1,4 @@
-import { UserAPI } from '@domain';
+import { UserAPI } from '../user/userTypes';
 
 export interface PostComment {
   id: number; // 117;

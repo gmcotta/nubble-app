@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { Pressable, TextInput as RNTextInput } from 'react-native';
 
-import { Box, Text } from '@components';
 import { useRestyleTheme } from '@hooks';
+import { Box } from '../Restyle/Box/RestyleBox';
+import { Text } from '../Text/Text';
 import * as C from './constants';
 import { TextMessageProps } from './props';
 import * as S from './styles';

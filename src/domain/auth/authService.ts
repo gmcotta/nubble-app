@@ -1,7 +1,7 @@
 import { api } from '@api';
-import { AuthCredentials, AuthSignUpData } from '@domain';
 import { authAdapter } from './authAdapter';
 import { authApi } from './authApi';
+import { AuthCredentials, AuthSignUpData } from './authTypes';
 
 async function signIn(
   email: string,

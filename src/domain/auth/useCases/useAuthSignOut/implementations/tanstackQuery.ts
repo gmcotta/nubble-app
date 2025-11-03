@@ -1,10 +1,10 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { authService } from '@domain';
 import {
   useAuthCredentialsService,
   useSearchHistoryActionsService
 } from '@services';
+import { authService } from '../../../authService';
 import { UseAuthSignOutResult } from '../props';
 
 export function useTanstackQueryImpl(): UseAuthSignOutResult {

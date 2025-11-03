@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { Icon, TextInput } from '@components';
+import { Icon } from '../Icon/Icon';
+import { TextInput } from '../TextInput/TextInput';
 import { PasswordInputProps } from './props';
 
 export function PasswordInput(props: PasswordInputProps) {

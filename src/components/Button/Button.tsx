@@ -1,4 +1,6 @@
-import { ActivityIndicator, Text, TouchableOpacityBox } from '@components';
+import { ActivityIndicator } from '../ActivityIndicator/ActivityIndicator';
+import { TouchableOpacityBox } from '../Restyle/TouchableOpacityBox/TouchableOpacityBox';
+import { Text } from '../Text/Text';
 import { ButtonProps } from './props';
 import * as S from './styles';
 import { buttonVariants } from './variants';
@@ -12,7 +14,7 @@ export function Button({
 }: ButtonProps) {
   const activeVariant = buttonVariants[variant];
   const activeModifier = disabled ? 'disabled' : 'default';
-  const color = activeVariant[activeModifier].content;
+  const color = activeVariant[activeModifier].content.color;
 
   return (
     <TouchableOpacityBox
@@ -25,10 +27,15 @@ export function Button({
       {loading ? (
         <ActivityIndicator
           testID="button-activity-indicator"
-          color={activeVariant[activeModifier].content}
+          color={activeVariant[activeModifier].content.color}
         />
       ) : (
-        <Text {...S.buttonTextStyles(color)}>{title}</Text>
+        <Text
+          {...S.buttonTextStyles(color)}
+          {...activeVariant[activeModifier].content.textProps}
+        >
+          {title}
+        </Text>
       )}
     </TouchableOpacityBox>
   );

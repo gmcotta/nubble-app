@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 
 import { api } from '@api';
-import { UserAPI } from '@domain';
+import { UserAPI } from '../user/userTypes';
 import {
   AuthCredentialsAPI,
   AuthSignOutAPI,

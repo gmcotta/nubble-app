@@ -1,4 +1,4 @@
-import { User } from '@domain';
+import { User } from '../../userTypes';
 
 export interface UseGetUserByIdResult {
   user: User | undefined;

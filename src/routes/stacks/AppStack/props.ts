@@ -1,7 +1,7 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { AppBottomTabParamList } from '@routes';
+import { AppBottomTabParamList } from '../../tabs';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppBottomTabParamList>;
@@ -14,6 +14,10 @@ export type AppStackParamList = {
     userId: number;
   };
   SearchScreen: undefined;
+  PublishPostScreen: {
+    imageUri?: string;
+  };
+  CameraScreen: undefined;
 };
 
 export interface AppStackParams {

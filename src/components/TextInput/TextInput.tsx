@@ -1,9 +1,10 @@
 import { useRef } from 'react';
 import { Pressable, TextInput as RNTextInput } from 'react-native';
 
-import { Box, Text } from '@components';
 import { useRestyleTheme } from '@hooks';
 import { textInputStyles } from '@styles';
+import { Box } from '../Restyle/Box/RestyleBox';
+import { Text } from '../Text/Text';
 import { TextInputProps } from './props';
 import * as S from './styles';
 
@@ -13,6 +14,7 @@ export function TextInput({
   leftComponent,
   rightComponent,
   boxProps,
+  containerProps,
   ...textInputProps
 }: TextInputProps) {
   const textInputRef = useRef<RNTextInput>(null);
@@ -26,7 +28,7 @@ export function TextInput({
     <Box {...S.containerStyles} {...boxProps}>
       <Pressable onPress={focusInput}>
         {label ? <Text {...S.labelStyles}>{label}</Text> : null}
-        <Box {...S.inputContainerStyles(errorMessage)}>
+        <Box {...S.inputContainerStyles(errorMessage)} {...containerProps}>
           {leftComponent ? (
             <Box {...S.leftComponentContainerStyles}>{leftComponent}</Box>
           ) : null}

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { userService } from '@domain';
 import { QueryKeys } from '@infra';
+import { userService } from '../../../../user/userService';
 
 export function useTanstackQueryImpl(userId: number) {
   const query = useQuery({

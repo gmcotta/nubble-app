@@ -1,7 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { GestureResponderEvent } from 'react-native';
 
-import { Box, PressableBox, ProfileAvatar, Text } from '@components';
+import { ProfileAvatar } from '../ProfileAvatar/ProfileAvatar';
+import { Box } from '../Restyle/Box/RestyleBox';
+import { PressableBox } from '../Restyle/PressableBox/PressableBox';
+import { Text } from '../Text/Text';
 import { ProfileUserProps } from './props';
 import * as S from './styles';
 

@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from 'test-utils';
-import { authService } from '@domain';
+import { authService } from '../../authService';
 import { useAuthSignIn } from '../useAuthSignIn/useAuthSignIn';
 import { mockedAuthCredentials } from './mocks';
 

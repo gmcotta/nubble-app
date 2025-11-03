@@ -1,4 +1,5 @@
 import { apiAdapter } from '@api';
+import { ImageForUpload } from '@services';
 import { Page } from '@types';
 import { postAdapter } from './postAdapter';
 import { postApi } from './postApi';
@@ -10,6 +11,15 @@ async function getList(page: number): Promise<Page<Post>> {
   return apiAdapter.toPageModel(postListPaginationAPI, postAdapter.toPost);
 }
 
+async function createPost(
+  text: string,
+  imageCover: ImageForUpload
+): Promise<Post> {
+  const postDataAPI = await postApi.createPost(text, imageCover);
+  return postAdapter.toPost(postDataAPI);
+}
+
 export const postService = {
-  getList
+  getList,
+  createPost
 };
