@@ -1,5 +1,5 @@
-import { postCommentService } from '@domain';
 import { MutationOptions, useMutation } from '@infra';
+import { postCommentService } from '../../../../postComment/postCommentService';
 import { MutationVariables, UseRemovePostCommentResult } from '../props';
 
 export function useReactImpl({

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { userService, User } from '@domain';
+import { userService } from '../../../userService';
+import { User } from '../../../userTypes';
 
 export function useReactImpl(userId: number) {
   const [user, setUser] = useState<User | undefined>(undefined);

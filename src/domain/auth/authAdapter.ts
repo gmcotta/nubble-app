@@ -1,4 +1,5 @@
-import { AuthCredentials, AuthCredentialsAPI, userAdapter } from '@domain';
+import { userAdapter } from '../user/userAdapter';
+import { AuthCredentials, AuthCredentialsAPI } from './authTypes';
 
 function toAuthCredentials(authSignInAPI: AuthCredentialsAPI): AuthCredentials {
   return {

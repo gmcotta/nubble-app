@@ -1,5 +1,5 @@
-import { authService } from '@domain';
 import { QueryKeys } from '@infra';
+import { authService } from '../../authService';
 import { useTanstackQueryImpl } from './implementations';
 import {
   UseAuthIsValueAvailableImplParams,

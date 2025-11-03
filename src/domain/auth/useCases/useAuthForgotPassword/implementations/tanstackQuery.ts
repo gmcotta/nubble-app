@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { authService } from '@domain';
 import { MutationOptions } from '@infra';
+import { authService } from '../../../authService';
 import { UseAuthForgotPasswordResult } from '../props';
 
 export function useTanstackQueryImpl(

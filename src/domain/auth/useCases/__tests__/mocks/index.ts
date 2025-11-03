@@ -1,4 +1,4 @@
-import { AuthCredentials } from '@domain';
+import { AuthCredentials } from '../../../../auth/authTypes';
 
 export const mockedAuthCredentials: AuthCredentials = {
   token: 'access-token',

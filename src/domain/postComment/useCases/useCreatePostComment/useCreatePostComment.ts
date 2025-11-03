@@ -1,5 +1,5 @@
-import { PostComment } from '@domain';
 import { MutationOptions } from '@infra';
+import { PostComment } from '../../postCommentTypes';
 import { useTanstackQueryImpl } from './implementations';
 import { UseCreatePostCommentResult } from './props';
 

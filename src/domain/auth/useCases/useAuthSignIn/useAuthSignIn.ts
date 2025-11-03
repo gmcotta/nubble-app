@@ -1,5 +1,5 @@
-import { AuthCredentials } from '@domain';
 import { MutationOptions } from '@infra';
+import { AuthCredentials } from '../../authTypes';
 import { useTanstackQueryImpl } from './implementations/tanstackQuery';
 import { UseAuthSignInResult } from './props';
 
