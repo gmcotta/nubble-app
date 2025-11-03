@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { AppTabNavigator } from '@routes';
 import {
   CameraScreen,
   SettingsScreen,
@@ -9,6 +8,7 @@ import {
   SearchScreen,
   PublishPostScreen
 } from '@screens';
+import { AppTabNavigator } from '../../tabs/AppTabNavigator';
 import { AppStackParamList, AppStackParams } from './props';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();

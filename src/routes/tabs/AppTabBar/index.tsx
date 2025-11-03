@@ -2,7 +2,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import { Box, Icon, Text, TouchableOpacityBox } from '@components';
 import { useAppSafeArea } from '@hooks';
-import { AppBottomTabParamList } from '@routes';
+import { AppBottomTabParamList } from '../AppTabNavigator/props';
 import { mapScreenToProps } from './mapper';
 import {
   tabBarContainerStyles,
