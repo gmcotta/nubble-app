@@ -23,13 +23,13 @@ export function PublishPostScreen({
     }
   });
 
-  function publishPost() {
+  async function publishPost() {
     if (!imageUri) {
       showToast({ message: 'Sem imagem para publicar!', type: 'error' });
       return;
     }
 
-    createPost({ text: description, imageUri });
+    await createPost({ text: description, imageUri });
   }
 
   return (

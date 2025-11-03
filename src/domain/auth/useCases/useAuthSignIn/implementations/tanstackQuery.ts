@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { MutationOptions } from '@infra';
-import { useAuthCredentialsService } from '../../../../../services/AuthCredentials/useAuthCredentialsService';
+import { useAuthCredentialsService } from '@services';
 import { authService } from '../../../authService';
 import { AuthCredentials } from '../../../authTypes';
 import { MutationVariables, UseAuthSignInResult } from '../props';

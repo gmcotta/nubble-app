@@ -11,6 +11,7 @@ import {
 import { Box, Icon, PermissionManager } from '@components';
 import { useAppSafeArea, useAppState } from '@hooks';
 import { AppScreenProps } from '@routes';
+import { multimediaService } from '@services';
 import * as C from './constants';
 import * as S from './styles';
 
@@ -44,7 +45,7 @@ export function CameraScreen({}: AppScreenProps<'CameraScreen'>) {
       flash: flashOn ? 'on' : 'off'
     });
     navigation.navigate('PublishPostScreen', {
-      imageUri: `file://${photoFile.path}`
+      imageUri: multimediaService.prepareImageUri(photoFile.path)
     });
   }
 
