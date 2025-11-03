@@ -1,4 +1,5 @@
-import { Box, ProfileUser } from '@components';
+import { ProfileUser } from '../ProfileUser/ProfileUser';
+import { Box } from '../Restyle/Box/RestyleBox';
 import { PostActions, PostBottom, PostImage } from './components';
 import { PostItemProps } from './props';
 import * as S from './styles';

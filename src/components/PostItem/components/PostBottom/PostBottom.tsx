@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 
-import { Box, Text, TouchableOpacityBox } from '@components';
+import { Box } from '../../../Restyle/Box/RestyleBox';
+import { TouchableOpacityBox } from '../../../Restyle/TouchableOpacityBox/TouchableOpacityBox';
+import { Text } from '../../../Text/Text';
 import * as C from './constants';
 import { PostBottomProps } from './props';
 import * as S from './styles';

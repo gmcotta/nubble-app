@@ -1,6 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 
-import { TouchableOpacityBox, Icon, Text, Box, ScreenProps } from '@components';
+import { Icon } from '../../../Icon/Icon';
+import { Box } from '../../../Restyle/Box/RestyleBox';
+import { TouchableOpacityBox } from '../../../Restyle/TouchableOpacityBox/TouchableOpacityBox';
+import { Text } from '../../../Text/Text';
+import { ScreenProps } from '../../props';
 import * as C from './constants';
 import * as S from './styles';
 

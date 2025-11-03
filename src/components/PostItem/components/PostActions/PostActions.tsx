@@ -1,4 +1,7 @@
-import { Box, Icon, Text, TouchableOpacityBox } from '@components';
+import { Icon } from '../../../Icon/Icon';
+import { Box } from '../../../Restyle/Box/RestyleBox';
+import { TouchableOpacityBox } from '../../../Restyle/TouchableOpacityBox/TouchableOpacityBox';
+import { Text } from '../../../Text/Text';
 
 import { ItemProps, PostActionsProps } from './props';
 import * as S from './styles';

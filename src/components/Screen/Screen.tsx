@@ -1,7 +1,7 @@
 import { KeyboardAvoidingView, Platform } from 'react-native';
 
-import { Box } from '@components';
 import { useAppSafeArea, useRestyleTheme } from '@hooks';
+import { Box } from '../Restyle/Box/RestyleBox';
 import { ScrollViewContainer, ViewContainer, ScreenHeader } from './components';
 import { ScreenProps } from './props';
 import * as S from './styles';

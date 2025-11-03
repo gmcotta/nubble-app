@@ -1,7 +1,11 @@
 import { Linking, Platform } from 'react-native';
 
-import { ActivityIndicator, Box, Button, Screen, Text } from '@components';
 import { usePermission } from '@services';
+import { ActivityIndicator } from '../ActivityIndicator/ActivityIndicator';
+import { Button } from '../Button/Button';
+import { Box } from '../Restyle/Box/RestyleBox';
+import { Screen } from '../Screen/Screen';
+import { Text } from '../Text/Text';
 import * as C from './constants';
 import { PermissionManagerProps } from './props';
 import * as S from './styles';

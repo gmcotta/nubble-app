@@ -1,5 +1,7 @@
-import { Box, Icon, Text } from '@components';
 import { ToastProps } from '@services';
+import { Icon } from '../../../Icon/Icon';
+import { Box } from '../../../Restyle/Box/RestyleBox';
+import { Text } from '../../../Text/Text';
 import { mapTypeToIcon } from './mappers';
 import * as S from './styles';
 

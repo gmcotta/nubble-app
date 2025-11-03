@@ -1,9 +1,10 @@
 import { useRef } from 'react';
 import { Pressable, TextInput as RNTextInput } from 'react-native';
 
-import { Box, Text } from '@components';
 import { useRestyleTheme } from '@hooks';
 import { textInputStyles } from '@styles';
+import { Box } from '../Restyle/Box/RestyleBox';
+import { Text } from '../Text/Text';
 import { TextInputProps } from './props';
 import * as S from './styles';
 
